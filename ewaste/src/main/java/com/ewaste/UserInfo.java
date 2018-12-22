@@ -20,10 +20,7 @@ public class UserInfo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
-	@Column(name = "age")
-	private Integer age;
+	private Long uid;
 
 	@Column(name = "first_name")
 	private String firstName;
@@ -31,12 +28,81 @@ public class UserInfo {
 	@Column(name = "last_name")
 	private String lastName;
 
-	public Long getId() {
-		return id;
+	@Column(name = "password")
+	private String password;
+
+	@Column(name = "age")
+	private Integer age;
+
+	@Column(name = "gender")
+	private String gender;
+
+	@Column(name = "address")
+	private String address;
+
+	@Column(name = "phone_no")
+	private String phone_no;
+
+	@Column(name = "email")
+	private String email;
+
+	@Column(name = "role")
+	private String role;
+
+	public String getPassword() {
+		return password;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPhone_no() {
+		return phone_no;
+	}
+
+	public void setPhone_no(String phone_no) {
+		this.phone_no = phone_no;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public Long getUid() {
+		return uid;
+	}
+
+	public void setUid(Long uid) {
+		this.uid = uid;
 	}
 
 	public Integer getAge() {

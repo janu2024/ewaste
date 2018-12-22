@@ -11,34 +11,53 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user_cart")
+@Table(name = "seller_cart")
 public class UserCart {
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "user_id", nullable = false, referencedColumnName = "id")
+	@JoinColumn(name = "user_id", nullable = false, referencedColumnName = "uid")
 	private UserInfo userInfo;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long cid;
 
-	@Column(name = "cartName")
-	private String cartName;
+	@Column(name = "cart_status")
+	private String cartStatus;
 
-	public Long getId() {
-		return id;
+	@Column(name = "total_price")
+	private Long total_price;
+
+	public UserInfo getUserInfo() {
+		return userInfo;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setUserInfo(UserInfo userInfo) {
+		this.userInfo = userInfo;
 	}
 
-	public String getCartName() {
-		return cartName;
+	public Long getCid() {
+		return cid;
 	}
 
-	public void setCartName(String cartName) {
-		this.cartName = cartName;
+	public void setCid(Long cid) {
+		this.cid = cid;
+	}
+
+	public Long getTotal_price() {
+		return total_price;
+	}
+
+	public void setTotal_price(Long total_price) {
+		this.total_price = total_price;
+	}
+
+	public String getCartStatus() {
+		return cartStatus;
+	}
+
+	public void setCartStatus(String cartStatus) {
+		this.cartStatus = cartStatus;
 	}
 
 }
