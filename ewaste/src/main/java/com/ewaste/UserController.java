@@ -3,6 +3,8 @@ package com.ewaste;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -13,19 +15,24 @@ public class UserController {
 	@Autowired
 	UserService service;
 
-	@GetMapping(value = "/saveUser")
-	public ModelAndView saveUserInfo() {
+	@GetMapping(value = "/index")
+	public ModelAndView userCreate() {
 
-		UserInfo u = new UserInfo();
-		u.setFirstName("abc");
-		u.setAge(1);
-		u.setLastName("def");
+		ModelAndView m = new ModelAndView();
+		m.addObject("user", new UserInfo());
+		m.setViewName("index");
+		return m;
 
+	}
+
+	@PostMapping(value = "/saveUser")
+	public ModelAndView saveUserInfo(@ModelAttribute UserInfo u) {
 		UserInfo u2 = service.saveUser(u);
-		service.deleteUser(u2);
-		System.out.println(u2);
 
-		return null;
+		ModelAndView m = new ModelAndView();
+		m.addObject("user", u2);
+		m.setViewName("register");
+		return m;
 
 	}
 }

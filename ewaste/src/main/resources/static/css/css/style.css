@@ -1,0 +1,817 @@
+/*--
+Author: W3Layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+--*/
+
+/*-- Reset-Code --*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+ol,ul{list-style:none;margin:0px;padding:0px;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
+a{text-decoration:none;}
+.txt-rt{text-align:right;}/* text align right */
+.txt-lt{text-align:left;}/* text align left */
+.txt-center{text-align:center;}/* text align center */
+.float-rt{float:right;}/* float right */
+.float-lt{float:left;}/* float left */
+.clear{clear:both;}/* clear float */
+.pos-relative{position:relative;}/* Position Relative */
+.pos-absolute{position:absolute;}/* Position Absolute */
+.vertical-base{	vertical-align:baseline;}/* vertical align baseline */
+.vertical-top{	vertical-align:top;}/* vertical align top */
+nav.vertical ul li{	display:block;}/* vertical menu */
+nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
+img{max-width:100%;}
+body {
+	padding: 0;
+	margin: 0;
+	font-family: 'Raleway', sans-serif;
+	background:#479ccf;
+}
+body a {
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	-ms-transition: 0.5s all;
+	text-decoration: none;
+}
+body a:hover {
+	text-decoration: none;
+}
+body a:focus, a:hover {
+	text-decoration: none;
+}
+input[type="button"], input[type="submit"] {
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	-ms-transition: 0.5s all;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+    font-family: 'Raleway', sans-serif;
+    font-weight:600;
+	letter-spacing:1px;
+		
+}
+.clear{
+	clear:both;
+}
+p {
+	margin: 0;
+	color:#000;
+	letter-spacing:1px;
+	line-height:1.8em;
+	font-size:14px;
+	font-weight:400;
+}
+.row{
+	margin:0px;
+	padding:0px;
+}
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+a:focus, a:hover {
+	text-decoration: none;
+	outline: none;
+}
+img{
+	width:100%;
+}
+/*-- //Reset-Code --*/
+/******** SAP ************/
+.sap_tabs{
+	clear:both;
+}
+.tab_box{
+	background:#fd926d;
+	padding: 2em;
+}
+.top1{
+	margin-top: 2%;
+}
+
+.resp-tabs-list {
+    list-style: none;
+    text-align: left;
+}
+.tab-1.resp-tab-content.resp-tab-content-active {
+    margin-top: 20px;
+}
+.login-form input[type="text"], .login-form input[type="email"], .login-form input[type="password"] {
+    outline: none;
+    font-size: 1em;
+    color: #000;
+    padding: .6em 1em;
+    margin: 0;
+    width: 100%;
+	border:none;
+	border: 1px solid #f4f5f7;
+    -webkit-appearance: none;
+    display: block;
+    background: #f4f5f7;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -o-border-radius: 2px;
+    -ms-border-radius: 2px;
+    border-radius: 2px;
+	background-color:#f4f5f7;
+	   
+}
+.login-form h2, .login-form h3 {
+    font-size: 2.2em;
+    color: #000;
+    text-align: center;
+    margin-bottom:30px;
+    line-height: 0.7em;
+    font-weight: 100;
+    letter-spacing: 2px;
+}
+.login-form h5 {
+    font-size: 0.9em;
+    color: #000;
+    margin: 1.5em 0 .8em;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+
+.resp-tab-item {
+    color: #fff;
+    font-size: 25px;
+    cursor: pointer;
+    padding: 1px 0px 8px 0px;
+    display: inline-block;
+    margin: 0;
+    text-align: center;
+    list-style: none;
+    outline: none;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    margin: 0;
+    background: #4CAF50;
+    padding: 15px 45px;
+}
+/*-- wthree --*/
+.resp-tab-active {
+    text-shadow: none;
+    color: #fff;
+    border-bottom: 3px solid #fff;
+    background: #1cc7d0;
+    padding: 15px 47px;
+}
+
+.w3l_full {
+    padding: 45px;
+    background-color: #fff;
+    max-width: 400px;
+    margin: 0 auto;
+	height: 440px;
+}
+h2.resp-accordion {
+	cursor: pointer;
+	padding: 5px;
+	display: none;
+}
+.resp-tab-content {
+	display: none;
+}
+.resp-content-active, .resp-accordion-active {
+   display: block;
+}
+.resp-tab-item label{
+	margin-right:8px;
+}
+.w3layouts_pik {
+    float: left;
+    width: 40%;
+    margin-right: 20px;
+}
+.agileits_w3layouts_grid h6 {
+    font-size: 15px;
+    color: #fff;
+    margin-top:0px;
+}
+.w3layouts_drp {
+    float: left;
+    width: 40%;
+    margin-left: 15px;
+}
+.W3l_fir {
+    float: left;
+    width: 44%;
+	margin: 10px 0px;
+	margin-right: 35px;
+}
+.w3l_fb{
+    float: left;
+    width: 47%;
+	margin: 10px 0px;
+	margin-right: 6%;
+    padding: 10px;
+    color: #fff;
+    background: #3b5998;
+    border: 2px solid #3b5998;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    border-radius: 0px;	
+}
+i.fab.fa-facebook-f{
+	color:#3b5998;
+}
+.w3l_ln{
+    float: left;
+    width: 47%;
+	margin: 10px 0px;
+	margin-right: 6%;
+    padding: 10px;
+    color: #fff;
+    background: #0077B5;
+    border: 2px solid #0077B5;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    border-radius: 0px;	
+}
+i.fab.fa-linkedin-in{
+	color:#0077B5;
+}
+ ::-webkit-input-placeholder {
+color:#000 !important;
+}
+:-moz-placeholder { /* Firefox 18- */
+color:#000 !important;
+}
+::-moz-placeholder {  /* Firefox 19+ */
+color:#000 !important;
+}
+:-ms-input-placeholder {  
+color:#000 !important;
+}
+.login-top.agileits h4{
+    color: #000;
+    text-align: center;
+    font-size: 21px;
+    width: 10%;
+    margin: 20px auto;
+    border: 1px solid #000;
+    border-radius: 50%;
+    height: 37px;
+    line-height: 37px;
+}
+.W3l_lst {
+    float: left;
+    width: 40%;
+	margin: 10px 0px 10px 30px;
+}
+.W3_eml {
+    float: left;
+    width:40%;
+	margin-bottom: 15px;
+}
+
+.w3layouts_main_grid i {
+    float: left;
+    width: 10%;
+    color: #fff;
+    padding: 5px;
+    border: 1px solid #fff;
+    text-align: center;
+    border-radius: 50%;
+	background-color: #fff;
+}
+.w3layouts_main_grid h6 {
+    font-size: 15px;
+    color: #fff;
+    margin-left: 40px;
+    margin-top: 5px;
+}
+.w3l_tw{
+	float: left;
+    width:47%;
+	margin-bottom: 15px;
+	margin: 10px 0px;
+	padding: 10px;
+    color: #fff;
+    background: #55acee;
+    border: 2px solid #55acee;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: 600;
+	border-radius: 0px;
+}
+i.fab.fa-twitter{
+	color:#55acee;
+}
+.w3l_gp{
+	float: left;
+    width:47%;
+	margin-bottom: 15px;
+	margin: 10px 0px;
+	padding: 10px;
+    color: #fff;
+	background: #d34836;
+    border: 2px solid #d34836;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    border-radius: 0px;	
+}
+i.fab.fa-google-plus-g{
+	color:#d34836;
+}
+.W3_phn {
+    float: left;
+    width: 47%;
+      margin: 10px 0px;
+}
+.agile_dat {
+    float: left;
+    width:40%;
+    margin-bottom: 15px;
+}
+.w3ls_dat {
+    float: left;
+    width: 40%;
+}
+.wthree_nop {
+    float: left;
+    width: 40%;
+	margin: 15px 0px;
+}
+.agile_time {
+    width: 40%;
+    float: left;
+    margin-left: 37px;
+}
+.agile_time h5 {
+    color: #fff;
+}
+.wthree_jrn {
+    float: left;
+    width: 40%;
+    margin: 15px 0px;
+	margin-left: 35px;
+}
+
+h1 {
+    font-size: 50px;
+    text-align: center;
+    color: #fff5ee;
+    font-weight: 600;
+    margin: 30px 0px;
+}
+
+.w3ls_time {
+    float: left;
+    width: 40%;
+    margin-left: 38px;	
+}
+.w3ls_time h5 {
+    color: #fff;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 13px;
+    color: #000;
+    background-color:#f4f5f7;
+    border: 2px solid #fff;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: 600;
+	border:none;
+	border: 1px solid #f4f5f7;
+}
+
+	input[type="password"] {
+	 width: 100%;
+    padding: 13px;
+    color: #000;
+    background-color: #f4f5f7;
+    border: 2px solid #fff;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: 600;
+	border:none;
+	border: 1px solid #f4f5f7;
+	}
+.agileits_main_grid.w3_agileits_main_grid {
+    margin: 10px 0px;
+}
+.agileinfo_main_grid1 {
+    margin: 10px 0px;
+}
+.agileinfo_main_grid {
+    margin: 10px 0px;
+}
+.nam1 h5 {
+    color: #fff;
+	margin-bottom: 10px;
+}
+
+.nam1 {
+    float: left;
+    width: 40%;
+}
+.w3l_code h5 {
+    color: #fff;
+	margin-bottom: 10px;
+}
+.wthree_grid1 h5 {
+    color: #fff;
+}
+.agileits_w3layouts_main_grid.w3ls_main_grid {
+    margin: 10px 0px;
+}
+.wthree_grid1 {
+    float: left;
+    width: 20%;
+	margin: 0px 45px;
+}
+.agile_dat h5 {
+    color: #fff;
+    margin-bottom: 10px;
+	font-size:15px;
+}
+.w3ls_dat h5 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+.wthree_nop h5 {
+    color: #fff;
+}
+.wthree_jrn h5 {
+    color: #fff;
+}
+.W3l_fir h5 {
+    color: #000;
+    margin-bottom: 10px;
+}
+.agileits_w3layouts_grid2 {
+    float: left;
+    width: 40%;
+	margin-right: 20px;
+}
+.W3l_lst h5 {
+    color: #000;
+    margin-bottom: 10px;
+}
+.W3_eml h5 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+.W3_phn h5 {
+    color: #000;
+    margin-bottom: 10px;
+}
+.w3l_code {
+    float: left;
+    width: 40%;
+    }
+.agileits_grid h5 {
+    color: #fff;
+	    margin-bottom: 10px;
+}
+.agileits_w3layouts_grid h5 {
+    color: #fff;
+}
+.wthree_grid h5 {
+    color: #fff;
+	
+}
+.agileinfo_grid h5 {
+    color: #fff;
+}
+.login-top.agileinfo h2 {
+    color: #fff;
+}
+.agileits_gride {
+    float: left;
+    width: 40%;
+}
+.agileits_gride h5 {
+	color:#fff;
+	margin-bottom: 10px;
+}
+.wthree_gridr {
+    float: left;
+    width: 26%;
+	margin: 0px 10px;
+}
+.wthree_gridr h5 {
+    color:#fff;
+}
+.agileits_w3layouts_gridg {
+    float: left;
+    width: 29%;
+}
+.agileits_w3layouts_gridg h5 {
+   color:#fff;
+}
+.w3_agileits_main_grid.w3l_main_grid {
+    margin: 10px 0px;
+}
+.agileits_w3layouts_main_gridl {
+    float: left;
+    width: 30%;
+}
+.agileits_w3layouts_main_gridr {
+    float: left;
+    width: 40%;
+}
+.agileits_w3layouts_main_gridl {
+    float: left;
+    width: 40%;
+    margin: 10px 20px 10px 0px;
+}
+input[type="date"] {
+	width: 100%;
+    padding: 10px;
+    color: #fff;
+    background-color: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: 600;
+	
+}
+input[type="time"] {
+	width: 100%;
+    padding: 10px;
+    color: #fff;
+    background-color: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: 600;
+	margin-top: 10px;
+}
+input[type="number"] {
+	width: 100%;
+    padding: 10px;
+    color: #fff;
+    background-color: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-top: 10px;	
+}
+.w3_main_grid_right {
+    text-align: center;
+}
+.agileits_grid {
+    float: left;
+    width: 40%;
+	margin-right:20px;
+}
+.agileits_w3layouts_grid {
+    float: left;
+    width: 40%;
+    margin-right: 20px;
+}
+.wthree_grid {
+    float: left;
+    width: 40%;
+    margin-right: 20px;
+}
+.agileinfo_grid1 h5 {
+    color: #fff;
+	margin-bottom: 10px;
+}
+.agileinfo_grid1 {
+    float: left;
+    width: 40%;
+}
+.agileits_w3layouts_grid2 h5 {
+    color: #fff;
+}
+.agileits_w3layouts_grid3 {
+    color: #fff;
+    float: left;
+    width: 40%;
+}
+
+select {
+	width:100%;
+    padding: 10px;
+    color: #fff;
+    background-color: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-top: 10px;	
+}
+label {
+	margin: 0;
+	color:#fff;
+}
+
+.aitssubmitw3ls {
+    text-align: center;
+	width: 100%;
+	margin-top:25px;
+ }
+.login-form input[type="submit"] {
+    padding: 10px 30px;
+    border-radius: 0px;
+    outline: none;
+    border: 0;
+    font-size: 15px;
+    letter-spacing: 1px;
+    color:#fff;
+    cursor: pointer;
+    font-weight: 600;
+    background-color: #f14728;
+	margin-top:25px;
+	width: 30%;
+} 
+.login-agileits-bottom h6 {
+    color: rgba(0, 0, 0, 0.43);
+    margin-top: 15px;
+}
+.w3l_fb:hover {
+    background: #2955b2;
+    border: 2px solid #2955b2;
+}
+.w3l_tw:hover {
+    background: #3590d5;
+    border: 2px solid #3590d5;
+}
+.w3l_ln:hover {
+    background: #0b99e3;
+    border: 2px solid #0b99e3;
+}
+.w3l_gp:hover {
+    background: #e12f18;
+    border: 2px solid #e12f18;
+}
+.login-agileits-bottom a {
+    color: #000;
+}
+input[type="submit"] {
+    padding: 10px 30px;
+    border-radius: 0px;
+    outline: none;
+    border: 0;
+    font-size: 15px;
+    letter-spacing: 1px;
+    color:#fff;
+    cursor: pointer;
+    font-weight: 600;
+    background-color: #f14728;
+	width: 30%;
+} 
+.resp-tab-item {
+    color:#fff;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px 0px 8px 0px;
+    display: inline-block;
+    margin: 0;
+    text-align: center;
+    list-style: none;
+    outline: none;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    margin: 0;
+        background: #e6e6fa;
+    padding: 10px 30px;
+    border-radius: 0px;
+   	letter-spacing: 2px;
+	margin-right: 15px;
+	font-weight:600;
+}
+.resp-tab-active {
+    text-shadow: none;
+    color: #fff;
+    background: #479ccf;
+    
+}
+.footer {
+    text-align: center;
+	margin:50px 0px 0;
+	
+}
+.footer p{
+	color:#fff;
+	font-size:15px;	
+}
+.footer a {
+    color: #fff;
+}
+
+/** Responsive **/
+
+@media screen and (max-width: 480px){
+.w3l_full {
+    margin: 0 3vw;
+}
+.W3l_fir {
+    width: 42%;
+}
+}
+@media screen and (max-width: 414px){
+h1 {
+    font-size: 40px;
+    margin: 20px 0px;
+}
+
+.login-top.agileits h4 {
+    width: 15%;
+}
+.w3layouts_main_grid h6 {
+    margin-left: 25px;
+}
+.W3l_fir {
+    width: 40%;
+}
+
+input[type="submit"] {
+    width: 50%;
+}
+.resp-tab-item {
+    padding: 10px 20px;
+}	
+}
+@media screen and (max-width: 384px){
+.resp-tab-item {
+    padding: 10px 10px;
+}
+.w3layouts_main_grid h6 {
+    font-size: 13px;
+}
+.w3l_fb {
+    padding: 7px;
+}
+.w3l_tw {
+    padding: 7px;
+}
+.w3l_ln {
+    padding: 7px;
+}
+.w3l_gp {
+    padding: 7px;
+}
+.W3l_fir {
+    width: 100%;
+}
+.W3_phn {
+    width: 100%;
+}
+.aitssubmitw3ls {
+    margin-top: 15px;
+}
+.w3l_full {
+    height: 510px;
+}
+.login-form input[type="submit"] {
+    width: 50%;
+}
+.w3l_full {
+    padding: 24px;
+}
+h1 {
+    font-size: 33px;
+    margin: 10px 0px;
+}	
+}        
+/** /Responsive **/
