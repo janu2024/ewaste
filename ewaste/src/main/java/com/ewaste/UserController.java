@@ -15,12 +15,12 @@ public class UserController {
 	@Autowired
 	UserService service;
 
-	@GetMapping(value = "/index")
+	@GetMapping(value = "/login")
 	public ModelAndView userCreate() {
 
 		ModelAndView m = new ModelAndView();
 		m.addObject("user", new UserInfo());
-		m.setViewName("index");
+		m.setViewName("login");
 		return m;
 
 	}
