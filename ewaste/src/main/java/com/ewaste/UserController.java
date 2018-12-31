@@ -19,8 +19,8 @@ public class UserController {
 	public ModelAndView userCreate() {
 
 		ModelAndView m = new ModelAndView();
-		m.addObject("user", new UserInfo());
-		m.setViewName("login");
+		m.addObject("user", new UserInfo());// blank object
+		m.setViewName("login");// html page
 		return m;
 
 	}
