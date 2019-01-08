@@ -24,6 +24,17 @@ public class UserController {
 		return m;
 
 	}
+	
+	@GetMapping(value = "/index")
+	public ModelAndView  index() {
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("user", new UserInfo());// blank object
+		m.setViewName("index");// html page
+		return m;
+		
+	}	
+		
 
 	@PostMapping(value = "/saveUser")
 	public ModelAndView saveUserInfo(@ModelAttribute UserInfo u) {
