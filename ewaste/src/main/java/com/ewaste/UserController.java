@@ -24,17 +24,47 @@ public class UserController {
 		return m;
 
 	}
-	
+
 	@GetMapping(value = "/index")
-	public ModelAndView  index() {
+	public ModelAndView index() {
 
 		ModelAndView m = new ModelAndView();
 		m.addObject("user", new UserInfo());// blank object
 		m.setViewName("index");// html page
 		return m;
-		
-	}	
-		
+
+	}
+
+	@GetMapping(value = "/productselling")
+	public ModelAndView productselling() {
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("user", new UserInfo());// blank object
+		m.setViewName("productselling");// html page
+		return m;
+
+	}
+
+	@GetMapping(value = "/product")
+	public ModelAndView product() {
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("user", new UserInfo());// blank object
+		m.setViewName("product");// html page
+		return m;
+
+	}
+
+	@PostMapping(value = "/features")
+	public ModelAndView shoppingcart(@ModelAttribute UserInfo u) {
+		UserInfo u2 = service.saveUser(u);
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("user", u2);
+		m.setViewName("features");
+		return m;
+
+	}
 
 	@PostMapping(value = "/saveUser")
 	public ModelAndView saveUserInfo(@ModelAttribute UserInfo u) {
@@ -46,4 +76,5 @@ public class UserController {
 		return m;
 
 	}
+
 }
