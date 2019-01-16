@@ -55,13 +55,13 @@ public class UserController {
 
 	}
 
-	@PostMapping(value = "/features")
+	@GetMapping(value = "/features")
 	public ModelAndView shoppingcart(@ModelAttribute UserInfo u) {
 		UserInfo u2 = service.saveUser(u);
 
 		ModelAndView m = new ModelAndView();
 		m.addObject("user", u2);
-		m.setViewName("features");
+		m.setViewName("shoping-cart");
 		return m;
 
 	}
