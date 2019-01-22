@@ -66,6 +66,39 @@ public class UserController {
 
 	}
 
+	@GetMapping(value = "/blog")
+	public ModelAndView blog(@ModelAttribute UserInfo u) {
+		UserInfo u2 = service.saveUser(u);
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("user", u2);
+		m.setViewName("blog");
+		return m;
+
+	}
+
+	@GetMapping(value = "/contact2")
+	public ModelAndView contact2(@ModelAttribute UserInfo u) {
+		UserInfo u2 = service.saveUser(u);
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("user", u2);
+		m.setViewName("contact2");
+		return m;
+
+	}
+
+	@GetMapping(value = "/contact")
+	public ModelAndView contact(@ModelAttribute UserInfo u) {
+		UserInfo u2 = service.saveUser(u);
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("user", u2);
+		m.setViewName("contact");
+		return m;
+
+	}
+
 	@PostMapping(value = "/saveUser")
 	public ModelAndView saveUserInfo(@ModelAttribute UserInfo u) {
 		UserInfo u2 = service.saveUser(u);
