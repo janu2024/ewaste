@@ -88,6 +88,16 @@ public class UserController {
 
 	}
 
+	@GetMapping(value = "/about2")
+	public ModelAndView about2(@ModelAttribute UserInfo u) {
+		UserInfo u2 = service.saveUser(u);
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("user", u2);
+		m.setViewName("about2");
+		return m;
+
+	}
 	@GetMapping(value = "/contact")
 	public ModelAndView contact(@ModelAttribute UserInfo u) {
 		UserInfo u2 = service.saveUser(u);
