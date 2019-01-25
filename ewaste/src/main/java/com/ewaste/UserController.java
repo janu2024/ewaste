@@ -26,11 +26,11 @@ public class UserController {
 	}
 
 	@GetMapping(value = "/index")
-	public ModelAndView index() {
+	public ModelAndView index2() {
 
 		ModelAndView m = new ModelAndView();
 		m.addObject("user", new UserInfo());// blank object
-		m.setViewName("index");// html page
+		m.setViewName("index2");// html page
 		return m;
 
 	}
