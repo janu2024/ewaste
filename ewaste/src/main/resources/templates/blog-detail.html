@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 	<title>Blog Detail</title>
 	<meta charset="UTF-8">
@@ -25,8 +28,8 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" th:href="@{/css/vendor/perfect-scrollbar/perfect-scrollbar.css}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
-	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/cssmain/util.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/cssmain/main.css}">
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
@@ -74,37 +77,42 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a th:href="@{/index.html}">Home</a>
+								<a th:href="@{/user/index}">Home</a>
 								<ul class="sub-menu">
 									<li><a th:href="@{/index.html}">Homepage 1</a></li>
 									<li><a th:href="@{/home-02.html}">Homepage 2</a></li>
 									<li><a th:href="@{/home-03.html}">Homepage 3</a></li>
 								</ul>
 							</li>
+							
+							<li>
+								<a th:href="@{/user/admin}">Admin</a>
+							</li>
+						
 
 							<li>
-								<a th:href="@{/product.html}">Shop</a>
+								<a th:href="@{/user/product}">Shop</a>
 							</li>
 							
 							<li>
-								<a th:href="@{/productselling.html}">productselling</a>
+								<a th:href="@{/user/productselling}">Productselling</a>
 							</li>
 
 
 							<li class="label1" data-label1="hot">
-								<a th:href="@{/shoping-cart.html}">Features</a>
+								<a th:href="@{/user/features}">Features</a>
 							</li>
 
 							<li class="active-menu">
-								<a th:href="@{/blog.html}">Blog</a>
+								<a th:href="@{/user/blog}">Blog</a>
 							</li>
 
 							<li>
-								<a th:href="@{/about.html}">About</a>
+								<a th:href="@{/user/about}">About</a>
 							</li>
 
 							<li>
-								<a th:href="@{/contact.html}">Contact</a>
+								<a th:href="@{/user/contact}">Contact</a>
 							</li>
 						</ul>
 					</div>	
@@ -227,7 +235,7 @@
 		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
 			<div class="container-search-header">
 				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-					<img th:src="{/images/imagesmain/icons/icon-close2.png}" alt="CLOSE">
+					<img th:src="@{/images/imagesmain/icons/icon-close2.png}" alt="CLOSE">
 				</button>
 
 				<form class="wrap-search-header flex-w p-l-15">
@@ -509,7 +517,7 @@
 							<ul>
 								<li class="flex-w flex-t p-b-30">
 									<a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
-										<img th:src="{/images/imagesmain/product-min-01.jpg}" alt="PRODUCT">
+										<img th:src="@{/images/imagesmain/product-min-01.jpg}" alt="PRODUCT">
 									</a>
 
 									<div class="size-215 flex-col-t p-t-8">
@@ -823,7 +831,7 @@
 					</a>
 
 					<a href="#" class="m-all-1">
-						<img th:src="{/images/imagesmain/icons/icon-pay-04.png}" alt="ICON-PAY">
+						<img th:src="@{/images/imagesmain/icons/icon-pay-04.png}" alt="ICON-PAY">
 					</a>
 
 					<a href="#" class="m-all-1">
@@ -886,7 +894,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		});
 	</script>
 <!--===============================================================================================-->
-	<script th:src="@{/js/main.js}"></script>
+	<script th:src="@{/js/jsmain/main.js}"></script>
 
 </body>
 </html>

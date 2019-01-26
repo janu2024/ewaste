@@ -29,8 +29,8 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" th:href="@{/css/vendor/perfect-scrollbar/perfect-scrollbar.css}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
-	<link rel="stylesheet" type="text/css" th:href="@{css/main.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/cssmain/util.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/cssmain/main.css}">
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
@@ -71,7 +71,7 @@
 					
 					<!-- Logo desktop -->		
 					<a href="#" class="logo">
-						<img th:src="@{/images/imagesmain/icons/logo-01.png" alt="IMG-LOGO">
+						<img th:src="@{/images/imagesmain/icons/logo-01.png}" alt="IMG-LOGO">
 					</a>
 
 					<!-- Menu desktop -->
@@ -87,23 +87,31 @@
 							</li>
 
 							<li>
-								<a th:href="@{/user/product.html}">Shop</a>
+								<a th:href="@{/user/admin}">Admin</a>
 							</li>
-
-							<li class="label1" data-label1="hot">
-								<a th:href="@{/shoping-cart.html}">Features</a>
+						
+							<li>
+								<a th:href="@{/user/product}">Shop</a>
 							</li>
 
 							<li>
-								<a th:href="@{/blog.html}">Blog</a>
+								<a th:href="@{/user/productselling}">ProductSelling</a>
+							</li>
+							
+							<li class="label1" data-label1="hot">
+								<a th:href="@{/user/features}">Features</a>
+							</li>
+
+							<li>
+								<a th:href="@{/user/blog}">Blog</a>
 							</li>
 
 							<li class="active-menu">
-								<a th:href="@{/about.html}">About</a>
+								<a th:href="@{/user/about}">About</a>
 							</li>
 
 							<li>
-								<a th:href="@{/contact.html}">Contact</a>
+								<a th:href="@{/user/contact}">Contact</a>
 							</li>
 						</ul>
 					</div>	
@@ -130,7 +138,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a th:href="@{/index.html}"><img th:src="@/images/imagesmain/icons/logo-01.png}" alt="IMG-LOGO"></a>
+				<a th:href="@{/index.html}"><img th:src="@{/images/imagesmain/icons/logo-01.png}" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -226,7 +234,7 @@
 		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
 			<div class="container-search-header">
 				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-					<img th:src="@{/images/imagesmain/icons/icon-close2.png" alt="CLOSE}">
+					<img th:src="@{/images/imagesmain/icons/icon-close2.png}" alt="CLOSE}">
 				</button>
 
 				<form class="wrap-search-header flex-w p-l-15">
@@ -290,7 +298,7 @@
 
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
-							<img th:src="@{/images/imagesmain/item-cart-03.jpg" alt="IMG">
+							<img th:src="@{/images/imagesmain/item-cart-03.jpg}" alt="IMG">
 						</div>
 
 						<div class="header-cart-item-txt p-t-8">
@@ -529,17 +537,17 @@
 					</a>
 
 					<a href="#" class="m-all-1">
-						<img th:src="@{/images/imagesmain/icons/icon-pay-04.png" alt="ICON-PAY">
+						<img th:src="@{/images/imagesmain/icons/icon-pay-04.png}" alt="ICON-PAY">
 					</a>
 
 					<a href="#" class="m-all-1">
-						<img th:src="@{/images/imagesmain/icons/icon-pay-05.png" alt="ICON-PAY">
+						<img th:src="@{/images/imagesmain/icons/icon-pay-05.png}" alt="ICON-PAY">
 					</a>
 				</div>
 
 				<p class="stext-107 cl6 txt-center">
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a th:href="@{/https://colorlib.com}" target="_blank">Colorlib</a> &amp; distributed by <a th:href="@{/https://themewagon.com"} target="_blank">ThemeWagon</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a th:href="@{/https://colorlib.com}" target="_blank">Colorlib</a> &amp; distributed by <a th:href="@{/https://themewagon.com}" target="_blank">ThemeWagon</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
 				</p>
@@ -592,7 +600,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		});
 	</script>
 <!--===============================================================================================-->
-	<script th:src="@{/js/main.js}"></script>
+	<script th:src="@{/js/jsmain/main.js}"></script>
 	
 </body>
 </html>
