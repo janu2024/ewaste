@@ -26,21 +26,21 @@ public class UserController {
 	}
 
 	@GetMapping(value = "/index")
-	public ModelAndView index() {
+	public ModelAndView index2() {
 
 		ModelAndView m = new ModelAndView();
 		m.addObject("user", new UserInfo());// blank object
-		m.setViewName("index");// html page
+		m.setViewName("index2");// html page
 		return m;
 
 	}
 
 	@GetMapping(value = "/productselling")
-	public ModelAndView productselling() {
+	public ModelAndView productselling2() {
 
 		ModelAndView m = new ModelAndView();
 		m.addObject("user", new UserInfo());// blank object
-		m.setViewName("productselling");// html page
+		m.setViewName("productselling2");// html page
 		return m;
 
 	}
@@ -54,17 +54,29 @@ public class UserController {
 		return m;
 
 	}
+	
+	@GetMapping(value = "/product2")
+	public ModelAndView product2() {
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("user", new UserInfo());// blank object
+		m.setViewName("product2");// html page
+		return m;
+
+	}
 
 	@GetMapping(value = "/features")
-	public ModelAndView shoppingcart(@ModelAttribute UserInfo u) {
+	public ModelAndView shoppingcart2(@ModelAttribute UserInfo u) {
 		UserInfo u2 = service.saveUser(u);
 
 		ModelAndView m = new ModelAndView();
 		m.addObject("user", u2);
-		m.setViewName("shoping-cart");
+		m.setViewName("shopping-cart2");
 		return m;
 
 	}
+	
+	
 
 	@GetMapping(value = "/blog")
 	public ModelAndView blog(@ModelAttribute UserInfo u) {
@@ -73,6 +85,17 @@ public class UserController {
 		ModelAndView m = new ModelAndView();
 		m.addObject("user", u2);
 		m.setViewName("blog");
+		return m;
+
+	}
+	
+	@GetMapping(value = "/blog2")
+	public ModelAndView blog2(@ModelAttribute UserInfo u) {
+		UserInfo u2 = service.saveUser(u);
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("user", u2);
+		m.setViewName("blog2");
 		return m;
 
 	}
@@ -88,6 +111,16 @@ public class UserController {
 
 	}
 
+	@GetMapping(value = "/about2")
+	public ModelAndView about2(@ModelAttribute UserInfo u) {
+		UserInfo u2 = service.saveUser(u);
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("user", u2);
+		m.setViewName("about2");
+		return m;
+
+	}
 	@GetMapping(value = "/contact")
 	public ModelAndView contact(@ModelAttribute UserInfo u) {
 		UserInfo u2 = service.saveUser(u);

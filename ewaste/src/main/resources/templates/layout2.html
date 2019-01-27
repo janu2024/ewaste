@@ -32,23 +32,23 @@
 						<!-- Menu desktop -->
 						<div class="menu-desktop">
 							<ul class="main-menu">
-								<li><a th:href="@{/user/product}">Home</a>
+								<li><a th:href="@{/user/index2}">Home</a>
 									<ul class="sub-menu">
 										<li><a th:href="@{/index.html}">Homepage 1</a></li>
 										<li><a th:href="@{/home-02.html}">Homepage 2</a></li>
 										<li><a th:href="@{/home-03.html}">Homepage 3</a></li>
 									</ul></li>
 
-								<li><a th:href="@{/product.html}">Shop</a></li>
+								<li><a th:href="@{/user/product2}">Shop</a></li>
 
 								<li class="label1" data-label1="hot"><a
-									th:href="@{/shoping-cart.html}">Features</a></li>
+									th:href="@{/user/shopping-cart2}">Features</a></li>
 
-								<li><a th:href="@{/blog.html}">Blog</a></li>
+								<li><a th:href="@{/user/blog2}">Blog</a></li>
 
-								<li><a th:href="@{/about.html}">About</a></li>
+								<li><a th:href="@{/user/about2}">About</a></li>
 
-								<li class="active-menu"><a th:href="@{/contact.html}">Contact</a>
+								<li class="active-menu"><a th:href="@{/user/contact2}">Contact</a>
 								</li>
 							</ul>
 						</div>
@@ -129,7 +129,7 @@
 				</ul>
 
 				<ul class="main-menu-m">
-					<li><a th:href="@{/index.html}">Home</a>
+					<li><a th:href="@{/user/index2}">Home</a>
 						<ul class="sub-menu-m">
 							<li><a th:href="@{/index.html}">Homepage 1</a></li>
 							<li><a th:href="@{/home-02.html}">Homepage 2</a></li>
@@ -138,16 +138,16 @@
 							class="fa fa-angle-right" aria-hidden="true"></i>
 					</span></li>
 
-					<li><a th:href="@{/product.html}">Shop</a></li>
+					<li><a th:href="@{/user/product2}">Shop</a></li>
 
-					<li><a th:href="@{/shoping-cart.html}" class="label1 rs1"
+					<li><a th:href="@{/user/shopping-cart2}" class="label1 rs1"
 						data-label1="hot">Features</a></li>
 
-					<li><a th:href="@{/blog.html}">Blog</a></li>
+					<li><a th:href="@{/user/blog2}">Blog</a></li>
 
-					<li><a th:href="@{/about.html}">About</a></li>
+					<li><a th:href="@{/user/about2}">About</a></li>
 
-					<li><a th:href="@{/contact.html}">Contact</a></li>
+					<li><a th:href="@{/user/contact2}">Contact</a></li>
 				</ul>
 			</div>
 
@@ -171,6 +171,76 @@
 				</div>
 			</div>
 		</header>
+		<div class="wrap-header-cart js-panel-cart">
+			<div class="s-full js-hide-cart"></div>
+
+			<div class="header-cart flex-col-l p-l-65 p-r-25">
+				<div class="header-cart-title flex-w flex-sb-m p-b-8">
+					<span class="mtext-103 cl2"> Your Cart </span>
+
+					<div
+						class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+						<i class="zmdi zmdi-close"></i>
+					</div>
+				</div>
+
+				<div class="header-cart-content flex-w js-pscroll">
+					<ul class="header-cart-wrapitem w-full">
+						<li class="header-cart-item flex-w flex-t m-b-12">
+							<div class="header-cart-item-img">
+								<img th:src="@{/images/imagesmain/item-cart-01.jpg}" alt="IMG">
+							</div>
+
+							<div class="header-cart-item-txt p-t-8">
+								<a href="#"
+									class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+									White Shirt Pleat </a> <span class="header-cart-item-info">
+									1 x $19.00 </span>
+							</div>
+						</li>
+
+						<li class="header-cart-item flex-w flex-t m-b-12">
+							<div class="header-cart-item-img">
+								<img th:src="@{/images/imagesmain/item-cart-02.jpg}" alt="IMG">
+							</div>
+
+							<div class="header-cart-item-txt p-t-8">
+								<a href="#"
+									class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+									Converse All Star </a> <span class="header-cart-item-info">
+									1 x $39.00 </span>
+							</div>
+						</li>
+
+						<li class="header-cart-item flex-w flex-t m-b-12">
+							<div class="header-cart-item-img">
+								<img th:src="@{/images/imagesmain/item-cart-03.jpg}" alt="IMG">
+							</div>
+
+							<div class="header-cart-item-txt p-t-8">
+								<a href="#"
+									class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+									Nixon Porter Leather </a> <span class="header-cart-item-info">
+									1 x $17.00 </span>
+							</div>
+						</li>
+					</ul>
+
+					<div class="w-full">
+						<div class="header-cart-total w-full p-tb-40">Total: $75.00
+						</div>
+
+						<div class="header-cart-buttons flex-w w-full">
+							<a th:href="@{/shoping-cart.html}"
+								class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+								View Cart </a> <a th:href="@{/shoping-cart.html}"
+								class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+								Check Out </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 
 		<div layout:fragment="content"></div>
