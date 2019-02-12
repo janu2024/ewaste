@@ -8,8 +8,23 @@
 
 <link th:href="@{/css/login.css}" rel="stylesheet" type="text/css"
 	media="all" />
+<script type="text/javascript" language="javascript"
+	src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script th:src="@{/css/vendor/jquery/jquery-3.2.1.min.js}"></script>
 
 <script type="text/javascript">
+	function createUser() {
+		$.ajax({
+			url : "/login/getUserByEmail?emailId=" + $("#email").val(),
+			cache : false,
+			type : "POST",
+			success : function(html) {
+				$("#results").append(html);
+			}
+		});
+
+	}
+
 	function cambiar_login() {
 		document.querySelector('.cont_forms').className = "cont_forms cont_forms_active_login";
 		document.querySelector('.cont_form_login').style.display = "block";
@@ -93,34 +108,34 @@
 							<a href="#" onclick="ocultar_login_sign_up()"><i
 								class="material-icons">&#xE5C4;</i></a>
 							<h2>LOGIN</h2>
-							<input type="text" th:field="*{email}" placeholder="Email" required="required" /> 
-							<input type="password" th:field="*{password}" placeholder="Password" required="required"/>
+							<input type="text" th:field="*{email}" placeholder="Email"
+								id="emailId" required="required" /> <input type="password"
+								th:field="*{password}" placeholder="Password"
+								required="required" />
 							<button class="btn_login" onclick="cambiar_login()">LOGIN</button>
 						</div>
 					</form>
 
 
-					<form th:action="@{/user/saveUser}" th:object="${user}"
+					<form th:action="@{/login/saveUser}" th:object="${user}"
 						method="post">
 						<div class="cont_form_sign_up">
 							<a href="#" onclick="ocultar_login_sign_up()"><i
 								class="material-icons"></i></a>
 							<h2>SIGN UP</h2>
 
-							<input type="text" th:field="*{firstName}"
-								placeholder="UserNaame" required="required" /> <input
-								type="text" placeholder="UserId" /> <input type="text"
-								th:field="*{email}" placeholder="Email" /> <input type="text"
+							<input type="text" th:field="*{firstName}" placeholder="Name"
+								required="required" /> <input type="text" th:field="*{email}"
+								placeholder="Email" /> <input type="text"
 								th:field="*{phone_no}" placeholder="Phone no." /> <input
 								type="text" th:field="*{address}" placeholder="Address" /> <input
-								type="text" th:field="*{role}" placeholder="Role" /> <input
 								type="radio" value="Male" th:field="*{gender}"
 								placeholder="Male"> Male <input type="radio"
 								th:field="*{gender}" value="Female" placeholder="Female">Female
 							<input type="password" name="password" th:field="*{password}"
 								placeholder="Password" /> <input type="password"
 								placeholder="Confirm Password" />
-							<button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN
+							<button class="btn_sign_up" onclick="createUser()">SIGN
 								UP</button>
 
 

@@ -24,11 +24,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 
-//	@Override
-//	protected void configure(AuthenticationManagerBuilder authManagerBuilder) throws Exception {
-//		authManagerBuilder.userDetailsService(userDetailsService);
-//
-//	}
+	@Override
+	protected void configure(AuthenticationManagerBuilder authManagerBuilder) throws Exception {
+		authManagerBuilder.userDetailsService(userDetailsService);
+
+	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

@@ -36,6 +36,11 @@ public class UserService {
 		userRepo.delete(u);
 	}
 	
+	@Transactional
+	public UserInfo findByEmail(String username) {
+		return userRepo.findByEmail(username);
+	}
+	
 	public User loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserInfo user = userRepo.findByEmail(username);
 
