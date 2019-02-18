@@ -15,10 +15,9 @@ public class UserController {
 
 	@Autowired
 	UserService service;
-	
+
 	@Autowired
 	UserRepository repo;
-
 
 	@GetMapping(value = "/index")
 	public ModelAndView index() {
@@ -29,7 +28,7 @@ public class UserController {
 		return m;
 
 	}
-	
+
 	@GetMapping(value = "/index2")
 	public ModelAndView index2() {
 
@@ -50,8 +49,6 @@ public class UserController {
 
 	}
 
-
-	
 	@GetMapping(value = "/product")
 	public ModelAndView product2() {
 
@@ -72,10 +69,7 @@ public class UserController {
 		return m;
 
 	}
-	
-	
 
-	
 	@GetMapping(value = "/blog")
 	public ModelAndView blog2(@ModelAttribute UserInfo u) {
 		UserInfo u2 = service.saveUser(u);
@@ -87,8 +81,6 @@ public class UserController {
 
 	}
 
-
-
 	@GetMapping(value = "/about")
 	public ModelAndView about2(@ModelAttribute UserInfo u) {
 		UserInfo u2 = service.saveUser(u);
@@ -99,6 +91,7 @@ public class UserController {
 		return m;
 
 	}
+
 	@GetMapping(value = "/contact")
 	public ModelAndView contact(@ModelAttribute UserInfo u) {
 		UserInfo u2 = service.saveUser(u);
@@ -109,7 +102,7 @@ public class UserController {
 		return m;
 
 	}
-	
+
 	@GetMapping(value = "/admin")
 	public ModelAndView admin() {
 
@@ -119,7 +112,17 @@ public class UserController {
 		return m;
 
 	}
-	
+
+	@GetMapping(value = "/admin/{userId}")
+	public ModelAndView getUserDetails(@PathVariable Long userId) {
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("userObj", repo.findById(userId).get());// blank object
+		m.setViewName("admin");// html page
+		return m;
+
+	}
+
 	@GetMapping(value = "/tv")
 	public ModelAndView tv() {
 
@@ -129,8 +132,7 @@ public class UserController {
 		return m;
 
 	}
-	
-	
+
 	@GetMapping(value = "/laptop")
 	public ModelAndView laptop() {
 
@@ -140,7 +142,7 @@ public class UserController {
 		return m;
 
 	}
-	
+
 	@GetMapping(value = "/washing")
 	public ModelAndView mobile() {
 
@@ -150,7 +152,7 @@ public class UserController {
 		return m;
 
 	}
-	
+
 	@GetMapping(value = "/fridge")
 	public ModelAndView fridge() {
 

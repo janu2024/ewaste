@@ -13,6 +13,7 @@
 			style="width: 100%">
 			<thead>
 				<tr>
+					<th>Id</th>
 					<th>FirstName</th>
 					<th>LastName</th>
 					<th>Email</th>
@@ -20,6 +21,8 @@
 			</thead>
 			<tbody>
 				<tr th:each="user : ${userList}">
+					<td><a th:href="@{/user/admin/{uid}(uid=${user.uid})}">View
+							Details</td>
 					<td th:text="${user.firstName}"></td>
 					<td th:text="${user.lastName}"></td>
 					<td th:text="${user.email}"></td>
@@ -38,10 +41,10 @@
 				</tr>
 			</tfoot>
 		</table>
-
+	<!-- 	<input type="text" th:value="${userObj.email}"> -->
+		<!-- 	<div th:text="${userObj.email}"></div>
+ -->
 	</div>
-
-
 
 </body>
 </html>
