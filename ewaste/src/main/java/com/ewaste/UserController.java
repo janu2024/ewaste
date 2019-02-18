@@ -15,16 +15,10 @@ public class UserController {
 
 	@Autowired
 	UserService service;
+	
+	@Autowired
+	UserRepository repo;
 
-	@GetMapping(value = "/login")
-	public ModelAndView userCreate() {
-
-		ModelAndView m = new ModelAndView();
-		m.addObject("user", new UserInfo());// blank object
-		m.setViewName("login");// html page
-		return m;
-
-	}
 
 	@GetMapping(value = "/index")
 	public ModelAndView index() {
@@ -120,7 +114,7 @@ public class UserController {
 	public ModelAndView admin() {
 
 		ModelAndView m = new ModelAndView();
-		m.addObject("user", new UserInfo());// blank object
+		m.addObject("userList", repo.findAll());// blank object
 		m.setViewName("admin");// html page
 		return m;
 
