@@ -136,6 +136,36 @@ public class UserController {
 
 	}
 	
+	
+	@GetMapping(value = "/laptop")
+	public ModelAndView laptop() {
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("user", new UserInfo());// blank object
+		m.setViewName("laptop");// html page
+		return m;
+
+	}
+	
+	@GetMapping(value = "/washing")
+	public ModelAndView mobile() {
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("user", new UserInfo());// blank object
+		m.setViewName("washing");// html page
+		return m;
+
+	}
+	
+	@GetMapping(value = "/fridge")
+	public ModelAndView fridge() {
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("user", new UserInfo());// blank object
+		m.setViewName("fridge");// html page
+		return m;
+
+	}
 
 	@PostMapping(value = "/saveUser")
 	public ModelAndView saveUserInfo(@ModelAttribute UserInfo u) {

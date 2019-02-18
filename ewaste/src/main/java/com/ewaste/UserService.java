@@ -20,14 +20,10 @@ public class UserService {
 	@Autowired
 	UserRepository userRepo;
 
-	@Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
 	
 	public UserInfo saveUser(UserInfo u) {
-        u.setPassword(bCryptPasswordEncoder.encode(u.getPassword()));
-
 		return userRepo.save(u);
 	}
 
