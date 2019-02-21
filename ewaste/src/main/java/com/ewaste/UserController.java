@@ -18,7 +18,7 @@ public class UserController {
 
 	@Autowired
 	UserRepository repo;
-
+	
 	@GetMapping(value = "/index")
 	public ModelAndView index() {
 
@@ -28,6 +28,18 @@ public class UserController {
 		return m;
 
 	}
+	
+	@GetMapping(value = "/registraion")
+	public ModelAndView registraion() {
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("user", new UserInfo());// blank object
+		m.setViewName("registration");// html page
+		return m;
+
+	}
+
+	
 
 	@GetMapping(value = "/index2")
 	public ModelAndView index2() {
