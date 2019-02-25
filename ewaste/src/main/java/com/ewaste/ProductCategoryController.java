@@ -24,7 +24,7 @@ public class ProductCategoryController {
 		ModelAndView m = new ModelAndView();
 		m.addObject("categoryList", categoryRepo.findAll());// blank object
 
-		m.setViewName("index");
+		m.setViewName("productcategory");
 		return m;
 
 	}
@@ -34,27 +34,32 @@ public class ProductCategoryController {
 
 		ModelAndView m = new ModelAndView();
 		m.addObject("subCategoryList", subCategoryRepo.findAll());// blank object
-		m.setViewName("index");// html page
+		m.setViewName("productsubcategory");// html page
 		return m;
 
 	}
 
 	@GetMapping(value = "/createCategory")
-	public String createCategory(@ModelAttribute ProductCategory category) {
-		categoryRepo.save(category);
-		return "redirect:/user/index";
+	public ModelAndView createCategory(@ModelAttribute ProductCategory category) {
+		ModelAndView m = new ModelAndView();
+		m.setViewName("productcategory");// html page
+		return m;
+	}
+	
+	@PostMapping(value = "/createSubCategory")
+	public ModelAndView createSubCategory() {
+		ModelAndView m = new ModelAndView();
+		m.setViewName("productsubcategory");// html page
+		return m;
 	}
 
 	@PostMapping(value = "/saveCategory")
 	public String saveCategory(@ModelAttribute ProductCategory category) {
 		categoryRepo.save(category);
-		return "redirect:/user/index";
+		return "redirect:/user/productcategory";
 	}
 
-	@PostMapping(value = "/createSubCategory")
-	public String createSubCategory() {
-		return "redirect:/user/index";
-	}
+	
 	
 
 	
@@ -62,7 +67,7 @@ public class ProductCategoryController {
 	public String saveSubCategory(@ModelAttribute ProductSubCategory subCategory) {
 		subCategory.setProductCategory(categoryRepo.findById(subCategory.getProductCategory().getCid()).get());
 		subCategoryRepo.save(subCategory);
-		return "redirect:/user/index";
+		return "redirect:/user/productsubcategory";
 	}
 	
 

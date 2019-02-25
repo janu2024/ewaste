@@ -25,8 +25,8 @@
 					<nav class="limiter-menu-desktop container">
 
 						<!-- Logo desktop -->
-						<a href="#" class="logo"> <img
-							th:src="@{/images/logo3.png}" alt="IMG-LOGO">
+						<a href="#" class="logo"> <img th:src="@{/images/logo3.png}"
+							alt="IMG-LOGO">
 						</a>
 
 						<!-- Menu desktop -->
@@ -53,11 +53,19 @@
 
 								<li><a th:href="@{/user/productselling}">ProductSelling</a>
 								</li>
- 
+
 								<li class="label1" data-label1="hot"><a
 									th:href="@{/user/features}">Features</a></li>
 
-								<li><a th:href="@{/user/blog}">Blog</a></li>
+							
+									<li class="active-menu"><a th:href="@{/category}">Category</a>
+									<ul class="sub-menu">
+										<li><a href="@{/category/getcategory}">product category </a></li>
+										<li><a href="@{/category/getsubcategory}">product subcategory</a></li>
+									</ul></li>
+						
+								</li>
+
 
 								<li><a th:href="@{/user/about}">About</a></li>
 
@@ -91,8 +99,8 @@
 			<div class="wrap-header-mobile">
 				<!-- Logo moblie -->
 				<div class="logo-mobile">
-					<a th:href="@{/index.html}"><img
-						th:src="@{/images/logo3.png}" alt="IMG-LOGO"></a>
+					<a th:href="@{/index.html}"><img th:src="@{/images/logo3.png}"
+						alt="IMG-LOGO"></a>
 				</div>
 
 				<!-- Icon header -->
@@ -150,11 +158,11 @@
 						</ul></li>
 
 					<li class=""><a th:href="@{/user/admin}">Admin</a>
-									<ul class="sub-menu">
-										<li><a th:href="@{/user/productlist}">Product List </a></li>
-										<li><a href="home-02.html">User</a></li>
+						<ul class="sub-menu">
+							<li><a th:href="@{/user/productlist}">Product List </a></li>
+							<li><a href="home-02.html">User</a></li>
 
-									</ul></li>
+						</ul></li>
 
 					<li><a th:href="@{/user/product}">Shop</a></li>
 
@@ -163,7 +171,18 @@
 					<li class="label1" data-label1="hot"><a
 						th:href="@{/user/features}">Features</a></li>
 
-					<li><a th:href="@{/user/blog}">Blog</a></li>
+									<li class="active-menu"><a th:href="@{/category}">Category</a>
+									<ul class="sub-menu">
+										<li><a href="@{/category/getCategory}">product category </a></li>
+										<li><a href="@{/category/getSubCategory}">product subcategory</a></li>
+									</ul></li>
+						
+								</li>
+					</li>
+
+
+
+
 
 					<li><a th:href="@{/user/about}">About</a></li>
 
