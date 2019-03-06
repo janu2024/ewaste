@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,6 +30,42 @@ public class ProductCategoryController {
 
 	}
 
+	@GetMapping(value = "/ProductName")
+	public ModelAndView ProductName() {
+
+		ModelAndView m = new ModelAndView();
+		// m.addObject("productnameList", subCategoryRepo.findAll());// blank object
+		m.setViewName("productname");// html page
+		return m;
+
+	}
+
+	@GetMapping(value = "/ProductPrice")
+	public ModelAndView ProductPrice() {
+
+		ModelAndView m = new ModelAndView();
+		// m.addObject("productnameList", subCategoryRepo.findAll());// blank object
+		m.setViewName("productprice");// html page
+		return m;
+
+	}
+
+	@GetMapping(value = "/manageCategory")
+	public ModelAndView createCategory() {
+		ModelAndView m = new ModelAndView();
+		m.addObject("category", new ProductCategory());
+		m.setViewName("manageCategory");// html page
+		return m;
+	}
+
+	@GetMapping(value = "/manageCategory/{categoryId}")
+	public ModelAndView editCategory(@PathVariable long categoryId) {
+		ModelAndView m = new ModelAndView();
+		m.addObject("category", categoryRepo.findById(categoryId).get());
+		m.setViewName("manageCategory");// html page
+		return m;
+	}
+
 	@GetMapping(value = "/getSubCategory")
 	public ModelAndView getSubCategory() {
 
@@ -39,36 +76,27 @@ public class ProductCategoryController {
 
 	}
 
-	@GetMapping(value = "/createCategory")
-	public ModelAndView createCategory(@ModelAttribute ProductCategory category) {
-		ModelAndView m = new ModelAndView();
-		m.setViewName("productcategory");// html page
-		return m;
-	}
-	
-	@PostMapping(value = "/createSubCategory")
+	@GetMapping(value = "/manageSubCategory")
 	public ModelAndView createSubCategory() {
 		ModelAndView m = new ModelAndView();
-		m.setViewName("productsubcategory");// html page
+		m.addObject("subCategory", new ProductSubCategory());
+		m.addObject("categoryList", categoryRepo.findAll());
+
+		m.setViewName("manageSubCategory");// html page
 		return m;
 	}
 
 	@PostMapping(value = "/saveCategory")
 	public String saveCategory(@ModelAttribute ProductCategory category) {
 		categoryRepo.save(category);
-		return "redirect:/user/productcategory";
+		return "redirect:/category/getCategory";
 	}
 
-	
-	
-
-	
 	@PostMapping(value = "/saveSubCategory")
 	public String saveSubCategory(@ModelAttribute ProductSubCategory subCategory) {
 		subCategory.setProductCategory(categoryRepo.findById(subCategory.getProductCategory().getCid()).get());
 		subCategoryRepo.save(subCategory);
-		return "redirect:/user/productsubcategory";
+		return "redirect:/category/getSubCategory";
 	}
-	
 
 }

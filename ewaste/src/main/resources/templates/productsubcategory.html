@@ -4,20 +4,36 @@
 	layout:decorator="layout2">
 <body>
 	<div id="page" layout:fragment="content">
-	
-		<!-- Add dynamic content inside this div -->
-		
-		<div id="dynamicContent">
-			<!-- Title page -->
-		
-		
-		
-		
-		
-		
+
+		<table id="example" class="table table-striped table-bordered"
+			style="width: 100%">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Category Sub Name</th>
+
+					<th>Category Name</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user : ${subCategoryList}">
+					<td><a
+						th:href="@{/category/manageCategory/{uid}(uid=${user.psid})}"><span
+							th:text="${user.psid}"></span></a></td>
+					<td th:text="${user.categoryName}"></td>
+
+					<td th:text="${user.productCategory.categoryName}"></td>
+
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="form-group">
+			<a href="/category/manageSubCategory" class="btn btn-primary">Create
+				Sub Category</a>
 		</div>
-		</div>
-			</body>
-			
+	</div>
+</body>
+
 </html>
-			
