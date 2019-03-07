@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Estate Register Form Responsive Widget Template ::
+	w3layouts</title>
+<!-- Meta-Tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="keywords"
+	content="Estate Register Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+<script>
+	addEventListener("load", function() {
+		setTimeout(hideURLbar, 0);
+	}, false);
+	function hideURLbar() {
+		window.scrollTo(0, 1);
+	}
+</script>
+<!-- //Meta-Tags -->
+
+<!-- css files -->
+<link
+	th:href="@{/webfonts/fontsmain/font-awesome-4.7.0/css/font-awesome.css}"
+	rel="stylesheet" type="text/css" media="all" />
+<link th:href="@{/css/loginstyle.css}" rel="stylesheet" type="text/css"
+	media="all" />
+<!-- //css files -->
+
+<!-- google fonts -->
+<!-- //google fonts -->
+
+</head>
+<body>
+
+	<div class="signupform">
+		<h1>Estate Register Form</h1>
+		<div class="container">
+			<!-- main content -->
+			<div class="agile_info">
+				<div class="w3l_form">
+					<div class="left_grid_info">
+						<img th:src="@{/images/left.png}" alt="" />
+					</div>
+				</div>
+				<div class="w3_info">
+					<input type="hidden" th:value="${userexists}" id="userexists">
+
+					<h2>Sign up for an Account</h2>
+					<p>Vestibulum est nulla, fermentum eget ipsum euismod et,
+						tincidunt at dui dolor sit.</p>
+					<form th:action="@{/login/saveUser}" th:object="${user}"
+						method="post">
+						<div class="input-group">
+							<span><i class="fa fa-user" aria-hidden="true"></i></span> <input
+								type="text" th:field="*{firstName}" placeholder="Full Name"
+								required="required">
+						</div>
+						<div class="input-group">
+							<span><i class="fa fa-user" aria-hidden="true"></i></span> <input
+								type="text" th:field="*{lastName}" placeholder="Last Name"
+								required="required">
+						</div>
+						<div class="input-group">
+							<span><i class="fa fa-user" aria-hidden="true"></i></span> <input
+								type="text" th:field="*{password}" placeholder="Password"
+								required="required">
+						</div>
+						<div class="input-group">
+							<span><i class="fa fa-user" aria-hidden="true"></i></span> <input
+								type="text" th:field="*{age}" placeholder="Age"
+								required="required">
+						</div>
+
+						<div class="input-group">
+							<span><i class="fa fa-user" aria-hidden="true"></i></span>
+						<input
+								type="text" placeholder="gender"
+								required="required">
+							 <input
+								type="radio" value="Male" th:field="*{gender}"
+								>Male <input type="radio"
+								th:field="*{gender}" value="Female" >Female
+						</div>
+
+
+						<div class="input-group">
+							<span><i class="fa fa-user" aria-hidden="true"></i></span> <input
+								type="text" th:field="*{phone_no}" placeholder="Phone Number"
+								required="required">
+						</div>
+						<div class="input-group">
+							<div th:if="${userexists} == 'true'">Email id already
+								exists.</div>
+
+							<span><i class="fa fa-envelope" aria-hidden="true"></i></span> <input
+								type="email" placeholder="Email" th:field="*{email}"
+								required="required">
+
+						</div>
+
+						<div class="input-group">
+							<span><i class="fa fa-lock" aria-hidden="true"></i></span> <input
+								type="Password" name="password" th:field="*{password}"
+								placeholder="Password" required="required">
+						</div>
+						<button class="btn btn-danger btn-block" type="submit">Sign
+							Up</button>
+					</form>
+					<p class="account">
+						Already have an account? <a href="/login">Login</a>
+					</p>
+				</div>
+			</div>
+			<!-- //main content -->
+		</div>
+
+	</div>
+
+</body>
+</html>
