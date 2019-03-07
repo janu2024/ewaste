@@ -30,7 +30,7 @@ public class LoginController {
 		if (dbInfo != null) {
 			model.addAttribute("user", u);
 			model.addAttribute("userexists", "true");
-			return "login";
+			return "registration";
 
 		} else {
 			u.setRole("ROLE_USER");
@@ -44,9 +44,19 @@ public class LoginController {
 	}
 
 	@GetMapping
-	public ModelAndView registeration() {
+	public ModelAndView login() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("login");
+		modelAndView.addObject("user", new UserInfo());// blank object
+		modelAndView.addObject("userexists", "false");
+
+		return modelAndView;
+	}
+	
+	@GetMapping(value="/registration")
+	public ModelAndView registeration() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("registration");
 		modelAndView.addObject("user", new UserInfo());// blank object
 		modelAndView.addObject("userexists", "false");
 
