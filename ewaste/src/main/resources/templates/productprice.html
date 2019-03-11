@@ -12,48 +12,21 @@
 
 
 			<div class="form-group">
-				<label for="sel1">Select list:</label> <select class="form-control"
-					id="sel1">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
+				<label for="usr">Product Category</label> <select
+					required="required" id="productCategoryId" class="form-control"
+					onchange="loadProductSubCategory()">
+					<option value=""></option>
+					<option th:each="i : ${productCategory}" th:value="${i.cid}"
+						th:text="${i.categoryName}"></option>
 				</select>
 			</div>
 
 
 			<div class="form-group">
-				<label for="sel1">Select list:</label> <select class="form-control"
-					id="sel1">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
+				<label for="usr">Product Sub Category</label> <select
+					required="required" class="form-control" id="productSC">
 				</select>
 			</div>
-
-			<div class="form-group">
-				<label for="sel1">Select list:</label> <select class="form-control"
-					id="sel1">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-				</select>
-			</div>
-
-			<div class="form-group">
-				<label for="usr">Name:</label> <input type="text"
-					class="form-control" id="usr">
-			</div>
-
-			<label class="checkbox-inline"><input type="checkbox"
-				value="">Option 1</label> <label class="checkbox-inline"><input
-				type="checkbox" value="">Option 2</label> <label
-				class="checkbox-inline"><input type="checkbox" value="">Option
-				3</label>
-
-			<button type="button" class="btn btn-primary">Apple</button>
 
 		</div>
 	</div>

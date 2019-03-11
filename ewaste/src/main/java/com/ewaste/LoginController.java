@@ -56,7 +56,7 @@ public class LoginController {
 	@GetMapping(value="/registration")
 	public ModelAndView registeration() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("registration");
+		modelAndView.setViewName("register");
 		modelAndView.addObject("user", new UserInfo());// blank object
 		modelAndView.addObject("userexists", "false");
 

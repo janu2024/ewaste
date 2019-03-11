@@ -1,5 +1,8 @@
 package com.ewaste;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -44,10 +48,27 @@ public class ProductCategoryController {
 	public ModelAndView ProductPrice() {
 
 		ModelAndView m = new ModelAndView();
-		// m.addObject("productnameList", subCategoryRepo.findAll());// blank object
+		m.addObject("productCategory", categoryRepo.findAll());// blank object
 		m.setViewName("productprice");// html page
 		return m;
 
+	}
+
+	@GetMapping(value = "/getSubCategoryFromCategory/{categoryId}")
+	@ResponseBody
+	public List<ProductSubCategory> getSubCategoryFromCategory(@PathVariable(name = "categoryId") Long categoryId) {
+		List<ProductSubCategory> resultList = categoryRepo.findById(categoryId).get().getSubCategory();
+		List<ProductSubCategory> filteredList = new ArrayList<>();
+		ProductSubCategory sc;
+
+		for (ProductSubCategory c : resultList) {
+			sc = new ProductSubCategory();
+			sc.setCategoryName(c.getCategoryName());
+			sc.setPsid(c.getPsid());
+			filteredList.add(sc);
+		}
+
+		return filteredList;
 	}
 
 	@GetMapping(value = "/manageCategory")

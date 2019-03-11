@@ -350,3 +350,24 @@
 	});
 
 })(jQuery);
+
+function loadProductSubCategory() {
+	$("#productSC").empty();
+	$("<option />", {
+		val : "",
+		text : ""
+	}).appendTo($("#productSC"));
+	$.ajax({
+		url : "/category/getSubCategoryFromCategory/"
+				+ $("#productCategoryId").val(),
+		type : "get",
+		success : function(data) {
+			$(data).each(function() {
+				$("<option />", {
+					val : this.psid,
+					text : this.categoryName
+				}).appendTo($("#productSC"));
+			});
+		}
+	});
+}
