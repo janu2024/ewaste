@@ -26,10 +26,6 @@
 	rel="stylesheet" type="text/css" media="all" />
 <link th:href="@{/css/loginstyle.css}" rel="stylesheet" type="text/css"
 	media="all" />
-<!-- //css files -->
-
-<!-- google fonts -->
-<!-- //google fonts -->
 
 </head>
 <body>
@@ -46,14 +42,11 @@
 				</div>
 				<div class="w3_info">
 
-					<h2>Sign up for an Account</h2>
-					<p>Vestibulum est nulla, fermentum eget ipsum euismod et,
-						tincidunt at dui dolor sit.</p>
 					<form th:action="@{/login/saveUser}" th:object="${user}"
 						method="post">
 						<div class="input-group">
 							<span><i class="fa fa-user" aria-hidden="true"></i></span> <input
-								type="text" th:field="*{firstName}" placeholder="Full Name"
+								type="text" th:field="*{firstName}" required="required" placeholder="First Name"
 								required="required">
 						</div>
 						<div class="input-group">
@@ -63,25 +56,18 @@
 						</div>
 						<div class="input-group">
 							<span><i class="fa fa-user" aria-hidden="true"></i></span> <input
-								type="text" th:field="*{password}" placeholder="Password"
-								required="required">
-						</div>
-						<div class="input-group">
-							<span><i class="fa fa-user" aria-hidden="true"></i></span> <input
 								type="text" th:field="*{age}" placeholder="Age"
 								required="required">
 						</div>
 
 						<div class="input-group">
-							<span><i class="fa fa-user" aria-hidden="true"></i></span>
-						<input
-								type="text" placeholder="gender"
-								required="required">
-							 <input
-								type="radio" value="Male" th:field="*{gender}"
-								>Male <input type="radio"
-								th:field="*{gender}" value="Female" >Female
+							<span><i class="fa fa-user" aria-hidden="true"></i></span><select
+								name="gender">
+								<option value="male">Male</option>
+								<option value="female">Female</option>
+							</select>
 						</div>
+
 
 
 						<div class="input-group">

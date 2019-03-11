@@ -92,6 +92,8 @@ public class UserController {
 		return m;
 
 	}
+	
+
 
 	@GetMapping(value = "/about")
 	public ModelAndView about2(@ModelAttribute UserInfo u) {

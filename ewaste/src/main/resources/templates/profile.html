@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>user profile form Responsive Widget Template :: W3layouts</title>
+<!-- Meta tag Keywords -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords"
+	content="User Profile Form A Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+<script type="application/x-javascript">
+	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } 
+</script>
+<!-- Meta tag Keywords -->
+<!-- css files -->
+<link href="../css/profilestyle.css" rel="stylesheet" type="text/css"
+	media="all">
+<link rel="stylesheet" href="../css/profile-awesome.css">
+<!-- Font-Awesome-Icons-CSS -->
+<!-- //css files -->
+<!-- online-fonts -->
+<link href="//fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<!--//online-fonts -->
+</head>
+<body>
+	<div class="header">
+		<h1>user profile</h1>
+	</div>
+	<div class="w3-main">
+		<div class="form-w3l">
+			<div class="img">
+				<img src="../images/profile.jpg" alt="image">
+				<h2>Profile here</h2>
+			</div>
+			<form th:action="@{/profile/updateuser}" method="post">
+				<div class="w3l-user">
+					<span><i class="fa fa-user-circle-o w3l-1"
+						aria-hidden="true"></i></span> <input type="text" placeholder="username"
+						required="" th:field="${user.userDetail.name}" />
+
+					<div class="clear"></div>
+				</div>
+
+				<div class="w3l-password">
+					<span><i class="fa fa-lock w3l-2" aria-hidden="true"></i></span> <input
+						type="password" name="password" placeholder="password" required=""
+						th:value="${user.password}" />
+					<div class="clear"></div>
+				</div>
+
+				<div class="w3l-email">
+					<span><i class="fa fa-envelope-o w3l-3" aria-hidden="true"></i></span>
+					<input type="email" placeholder="info@example.com" required=""
+						th:field="${user.email}" />
+
+					<div class="clear"></div>
+				</div>
+
+				<div class="w3l-phone">
+					<span><i class="fa fa-mobile w3l-4" aria-hidden="true"></i></span>
+					<input type="text" placeholder="+001" required=""
+						th:field="${user.userDetail.mobile_no}" />
+
+					<div class="clear"></div>
+				</div>
+				<input type="hidden" name="uid" th:value="${user.uid}">
+					<input type="hidden" placeholder="+001" required=""
+						th:field="${user.userDetail.id}" />
+
+				<div class="w3l-btn">
+					<input type="submit" name="button" value="Save" />
+					<!-- hii -->
+
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
+	<footer>
+		&copy; 2018 user profile form. All rights reserved | Design by <a
+			href="http://w3layouts.com">W3layouts</a>
+	</footer>
+</body>
+</html>

@@ -39,6 +39,17 @@ public class UserInfo {
 
 	@Column(name = "address")
 	private String address;
+ 
+	@Column(name = "pincode")
+	private String pincode;
+	
+	public String getPincode() {
+		return pincode;
+	}
+
+	public void setPincode(String pincode) {
+		this.pincode = pincode;
+	}
 
 	@Column(name = "phone_no")
 	private String phone_no;

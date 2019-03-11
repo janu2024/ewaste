@@ -30,7 +30,7 @@ public class LoginController {
 		if (dbInfo != null) {
 			model.addAttribute("user", u);
 			model.addAttribute("userexists", "true");
-			return "registration";
+			return "register";
 
 		} else {
 			u.setRole("ROLE_USER");
