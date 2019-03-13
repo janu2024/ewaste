@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout2">
+<body>
+	<div id="page" layout:fragment="content">
+
+
+		<div id="dynamicContent">
+			<form th:action="@{/category/saveBrand}" th:object="${brand}"
+				method="post">
+				<div class="form-group">
+					<label for="usr">Product Sub Category</label> <select
+						th:field="*{subCategory.psid}" class="form-control">
+						<option th:each="i : ${subCategoryList}" th:value="${i.psid}"
+							th:text="${i.categoryName}"></option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="usr">Brand Name</label> <input type="text"
+						th:field="*{brandName}" class="form-control" required="required">
+				</div>
+				<input type="hidden" th:field="*{bid}" class="form-control">
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">Save Brand</button>
+				</div>
+
+			</form>
+
+
+
+		</div>
+	</div>
+</body>
+
+</html>

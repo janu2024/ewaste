@@ -22,8 +22,8 @@ public class ProductModel {
 	private String modelName;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "sub_cat_id", nullable = false, referencedColumnName = "psid")
-	private ProductSubCategory subCategory;
+	@JoinColumn(name = "brand_id", nullable = false, referencedColumnName = "bid")
+	private ProductBrand productBrand;
 
 	public Long getMid() {
 		return mid;
@@ -41,15 +41,12 @@ public class ProductModel {
 		this.modelName = modelName;
 	}
 
-	public ProductSubCategory getSubCategory() {
-		return subCategory;
+	public ProductBrand getProductBrand() {
+		return productBrand;
 	}
 
-	public void setSubCategory(ProductSubCategory subCategory) {
-		this.subCategory = subCategory;
+	public void setProductBrand(ProductBrand productBrand) {
+		this.productBrand = productBrand;
 	}
 
-	
-	
-	
 }

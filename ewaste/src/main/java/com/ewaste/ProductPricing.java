@@ -19,10 +19,13 @@ public class ProductPricing {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "m_id", nullable = false, referencedColumnName = "mid")
-	private ProductModel subCategory;
+	private ProductModel productModel;
 
 	@Column(name = "working")
 	private boolean working;
+
+	@Column(name = "numberOfYearsOld")
+	private Long numberOfYearsOld;
 
 	@Column(name = "product_price")
 	private Long productPrice;
@@ -35,12 +38,12 @@ public class ProductPricing {
 		this.pid = pid;
 	}
 
-	public ProductModel getSubCategory() {
-		return subCategory;
+	public ProductModel getProductModel() {
+		return productModel;
 	}
 
-	public void setSubCategory(ProductModel subCategory) {
-		this.subCategory = subCategory;
+	public void setProductModel(ProductModel productModel) {
+		this.productModel = productModel;
 	}
 
 	public boolean isWorking() {
@@ -49,6 +52,14 @@ public class ProductPricing {
 
 	public void setWorking(boolean working) {
 		this.working = working;
+	}
+
+	public Long getNumberOfYearsOld() {
+		return numberOfYearsOld;
+	}
+
+	public void setNumberOfYearsOld(Long numberOfYearsOld) {
+		this.numberOfYearsOld = numberOfYearsOld;
 	}
 
 	public Long getProductPrice() {
@@ -61,5 +72,5 @@ public class ProductPricing {
 
 
 	
-
+	
 }
