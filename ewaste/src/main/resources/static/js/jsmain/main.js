@@ -371,3 +371,67 @@ function loadProductSubCategory() {
 		}
 	});
 }
+
+function loadProductSubCategoryForSelling() {
+	$("#productSC").empty();
+	$("<option />", {
+		val : "",
+		text : ""
+	}).appendTo($("#productSC"));
+	$.ajax({
+		url : "/productselling/getSubCategory/"
+				+ $("#productCategoryId").val(),
+		type : "get",
+		success : function(data) {
+			$(data).each(function() {
+				$("<option />", {
+					val : this.psid,
+					text : this.categoryName
+				}).appendTo($("#productSC"));
+			});
+		}
+	});
+}
+
+function loadProductBrandForSelling() {
+	$("#productBrand").empty();
+	$("<option />", {
+		val : "",
+		text : ""
+	}).appendTo($("#productBrand"));
+	$.ajax({
+		url : "/productselling/getBrand/"
+				+ $("#productSC").val(),
+		type : "get",
+		success : function(data) {
+			$(data).each(function() {
+				$("<option />", {
+					val : this.bid,
+					text : this.brandName
+				}).appendTo($("#productBrand"));
+			});
+		}
+	});
+}
+
+
+function loadProductModelForSelling() {
+	$("#productModel").empty();
+	$("<option />", {
+		val : "",
+		text : ""
+	}).appendTo($("#productModel"));
+	$.ajax({
+		url : "/productselling/getModel/"
+				+ $("#productBrand").val(),
+		type : "get",
+		success : function(data) {
+			$(data).each(function() {
+				$("<option />", {
+					val : this.mid,
+					text : this.modelName
+				}).appendTo($("#productModel"));
+			});
+		}
+	});
+}

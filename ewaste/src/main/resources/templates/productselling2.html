@@ -3,195 +3,68 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout2">
 <body>
-<title>ProductSelling</title>
+	<title>ProductSelling</title>
 	<div id="page" layout:fragment="content">
-	
+
 		<!-- Add dynamic content inside this div -->
-		
+
 		<div id="dynamicContent">
-			<!-- Title page -->
-			
-			
-			
-			
-			
-			
-		<!-- 	
-			<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/images/imagesmain/bg-01.jpg');">
-		<h2 class="ltext-105 cl0 txt-center">
-			Contact
-		</h2>
-	</section>	
--->
 
-	<!-- Content page -->
-	<section class="bg0 p-t-104 p-b-116">
-		<div class="container">
-			<div class="flex-w flex-tr">
-				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+			<!-- Content page -->
+			<div class="container">
+				<div class=" bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
 					<form>
-						<h4 class="mtext-105 cl2 txt-center p-b-30">
-							Your Product
-						</h4>
-						
-						
-							<div class="form-group">
-				<label for="usr">Product Category</label> <select
-					required="required" id="categoryName" class="form-control">
-					<option value=""></option>
-					<option th:each="i : ${productCategory}" th:value="${i.cid}"
-						th:text="${i.categoryName}"></option>
-				</select>
-			</div>
-						
-						
-							
-							<div class="form-group">
-				<label for="usr">Product Subcategory</label> <select
-					required="required" id="categoryName" class="form-control">
-					<option value=""></option>
-					<option th:each="i : ${productCategory}" th:value="${i.cid}"
-						th:text="${i.categoryName}"></option>
-				</select>
-			</div>
-					
-						
-							<div class="form-group">
-				<label for="usr">Product Brand</label> <select
-					required="required" id="categoryName" class="form-control">
-					<option value=""></option>
-					<option th:each="i : ${productCategory}" th:value="${i.cid}"
-						th:text="${i.categoryName}"></option>
-				</select>
-			</div>
-					
-						
-							<div class="form-group">
-				<label for="usr">Product Model</label> <select
-					required="required" id="categoryName" class="form-control">
-					<option value=""></option>
-					<option th:each="i : ${productCategory}" th:value="${i.cid}"
-						th:text="${i.categoryName}"></option>
-				</select>
-			</div>
-						
-			
-			
-							
+						<h4 class="mtext-105 cl2 txt-center p-b-30">Your Product</h4>
 
-<!-- <div class="bor8 m-b-20 how-pos4-parent">
-<div class="row">
-<div class="container">			
-<div class="col-xs-12">
-            
-<a class="btn btn-primary btn-select btn-select-light">
-    <input type="hidden" class="btn-select-input" id="" name="" value="" />
-    <span class="btn-select-value">Product Type</span>
-    <span class='btn-select-arrow glyphicon glyphicon-chevron-down'></span>
-    <ul>
-        <li>Option 1</li>
-        <li>Option 2</li>
-        <li>Option 3</li>
-        <li>Option 4</li>
-    </ul>
-</a>
-            
 
-</div>
-</div>
-</div>
-</div>
-
-<div class="bor8 m-b-20 how-pos4-parent">
-<div class="row">
-<div class="container">			
-<div class="col-xs-12">
-						
-	<a class="btn btn-primary btn-select btn-select-light">
-    <input type="hidden" class="btn-select-input" id="" name="" value="" />
-    
-    <span class="btn-select-value">Model</span>
-    <span class='btn-select-arrow glyphicon glyphicon-chevron-down'></span>
-    <ul>
-        <li>Option 1</li>
-        <li>Option 2</li>
-        <li>Option 3</li>
-        <li>Option 4</li>
-    </ul>
-</a>
-</div>
-</div>
-</div>
-</div>
-
-<div class="bor8 m-b-20 how-pos4-parent">
-<div class="row">
-<div class="container">			
-<div class="col-xs-12">
-						
-	<a class="btn btn-primary btn-select btn-select-light">
-    <input type="hidden" class="btn-select-input" id="" name="" value="" />
-    
-    <span class="btn-select-value">Comapny</span>
-    <span class='btn-select-arrow glyphicon glyphicon-chevron-down'></span>
-    <ul>
-        <li>Option 1</li>
-        <li>Option 2</li>
-        <li>Option 3</li>
-        <li>Option 4</li>
-    </ul>
-</a>
-</div>
-</div>
-</div>
-</div>
-
-<div class="bor8 m-b-20 how-pos4-parent">
-<div class="row">
-<div class="container">			
-<div class="col-xs-12">
-						
-	<a class="btn btn-primary btn-select btn-select-light">
-    <input type="hidden" class="btn-select-input" id="" name="" value="" />
-    
-    <span class="btn-select-value">Status of Product</span>
-    <span class='btn-select-arrow glyphicon glyphicon-chevron-down'></span>
-    <ul>
-        <li>Option 1</li>
-        <li>Option 2</li>
-        <li>Option 3</li>
-        <li>Option 4</li>
-    </ul>
-</a>
-</div>
-</div>
-</div>
-</div>
--->
-
-<div class="bor8 m-b-20 how-pos4-parent">
-			 <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="" placeholder="Price">
-							<img class="how-pos4 pointer-none" th:src="@{https://www.google.com/imgres?imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Fee%2FIndian_Rupee_symbol.svg&imgrefurl=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FFile%3AIndian_Rupee_symbol.svg&docid=GDx03ENwCu4kfM&tbnid=yP9nSTEZWEbH6M%3A&vet=10ahUKEwi8q-ijtf_gAhULeCsKHUopDO8QMwhNKAAwAA..i&w=541&h=800&safe=active&bih=625&biw=1366&q=rupee%20sign%20in%20text&ved=0ahUKEwi8q-ijtf_gAhULeCsKHUopDO8QMwhNKAAwAA&iact=mrc&uact=8}" alt="ICON">
+						<div class="form-group">
+							<label for="usr">Product Category</label> <select
+								onchange="loadProductSubCategoryForSelling()"
+								required="required" id="productCategoryId" class="form-control">
+								<option value=""></option>
+								<option th:each="i : ${categoryList}" th:value="${i.cid}"
+									th:text="${i.categoryName}"></option>
+							</select>
 						</div>
-<button type="button" class="btn btn-primary">Submit</button>	
-						<!--<div class="bor8 m-b-30">
-							<textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="msg" placeholder="How Can We Help?"></textarea>
-						</div>-->
 
-						<!--<button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
-							Submit
-						</button>-->
-						</form>
+
+
+						<div class="form-group">
+							<label for="usr">Product Subcategory</label> <select
+								onchange="loadProductBrandForSelling()" id="productSC"
+								required="required" class="form-control">
+								<option value=""></option>
+							</select>
 						</div>
-					
-					
-				
-				
+
+
+						<div class="form-group">
+							<label for="usr">Product Brand</label> <select onchange="loadProductModelForSelling()"
+								required="required" id="productBrand" class="form-control">
+								<option value=""></option>
+							</select>
+						</div>
+
+
+						<div class="form-group">
+							<label for="usr">Product Model</label> <select
+								required="required" id="productModel" class="form-control">
+								<option value=""></option>
+							</select>
+						</div>
+
+
+
+						<button type="button" class="btn btn-primary">Sell
+							Product</button>
+					</form>
+				</div>
+
+
+
+
 			</div>
-		</div>
-	</section>	
 		</div>
 	</div>
 </body>
 </html>
-	
