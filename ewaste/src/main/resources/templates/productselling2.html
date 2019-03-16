@@ -11,12 +11,18 @@
 		<div id="dynamicContent">
 			<!-- Title page -->
 			
+			
+			
+			
+			
+			
+		<!-- 	
 			<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/images/imagesmain/bg-01.jpg');">
 		<h2 class="ltext-105 cl0 txt-center">
 			Contact
 		</h2>
 	</section>	
-
+-->
 
 	<!-- Content page -->
 	<section class="bg0 p-t-104 p-b-116">
@@ -27,8 +33,53 @@
 						<h4 class="mtext-105 cl2 txt-center p-b-30">
 							Your Product
 						</h4>
+						
+						
+							<div class="form-group">
+				<label for="usr">Product Category</label> <select
+					required="required" id="categoryName" class="form-control">
+					<option value=""></option>
+					<option th:each="i : ${productCategory}" th:value="${i.cid}"
+						th:text="${i.categoryName}"></option>
+				</select>
+			</div>
+						
+						
+							
+							<div class="form-group">
+				<label for="usr">Product Subcategory</label> <select
+					required="required" id="categoryName" class="form-control">
+					<option value=""></option>
+					<option th:each="i : ${productCategory}" th:value="${i.cid}"
+						th:text="${i.categoryName}"></option>
+				</select>
+			</div>
+					
+						
+							<div class="form-group">
+				<label for="usr">Product Brand</label> <select
+					required="required" id="categoryName" class="form-control">
+					<option value=""></option>
+					<option th:each="i : ${productCategory}" th:value="${i.cid}"
+						th:text="${i.categoryName}"></option>
+				</select>
+			</div>
+					
+						
+							<div class="form-group">
+				<label for="usr">Product Model</label> <select
+					required="required" id="categoryName" class="form-control">
+					<option value=""></option>
+					<option th:each="i : ${productCategory}" th:value="${i.cid}"
+						th:text="${i.categoryName}"></option>
+				</select>
+			</div>
+						
+			
+			
+							
 
-<div class="bor8 m-b-20 how-pos4-parent">
+<!-- <div class="bor8 m-b-20 how-pos4-parent">
 <div class="row">
 <div class="container">			
 <div class="col-xs-12">
@@ -116,13 +167,13 @@
 </div>
 </div>
 </div>
-
+-->
 
 <div class="bor8 m-b-20 how-pos4-parent">
 			 <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="" placeholder="Price">
-							<img class="how-pos4 pointer-none" th:src="@{/images/imagesmain/icons/icon-email.png}" alt="ICON">
+							<img class="how-pos4 pointer-none" th:src="@{https://www.google.com/imgres?imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Fee%2FIndian_Rupee_symbol.svg&imgrefurl=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FFile%3AIndian_Rupee_symbol.svg&docid=GDx03ENwCu4kfM&tbnid=yP9nSTEZWEbH6M%3A&vet=10ahUKEwi8q-ijtf_gAhULeCsKHUopDO8QMwhNKAAwAA..i&w=541&h=800&safe=active&bih=625&biw=1366&q=rupee%20sign%20in%20text&ved=0ahUKEwi8q-ijtf_gAhULeCsKHUopDO8QMwhNKAAwAA&iact=mrc&uact=8}" alt="ICON">
 						</div>
-
+<button type="button" class="btn btn-primary">Submit</button>	
 						<!--<div class="bor8 m-b-30">
 							<textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="msg" placeholder="How Can We Help?"></textarea>
 						</div>-->
@@ -136,56 +187,6 @@
 					
 				
 				
-
-				<div class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
-					<div class="flex-w w-full p-b-42">
-						<span class="fs-18 cl5 txt-center size-211">
-							<span class="lnr lnr-map-marker"></span>
-						</span>
-
-						<div class="size-212 p-t-2">
-							<span class="mtext-110 cl2">
-								Address
-							</span>
-
-							<p class="stext-115 cl6 size-213 p-t-18">
-								Coza Store Center 8th floor, 379 Hudson St, New York, NY 10018 US
-							</p>
-						</div>
-					</div>
-
-					<div class="flex-w w-full p-b-42">
-						<span class="fs-18 cl5 txt-center size-211">
-							<span class="lnr lnr-phone-handset"></span>
-						</span>
-
-						<div class="size-212 p-t-2">
-							<span class="mtext-110 cl2">
-								Lets Talk
-							</span>
-
-							<p class="stext-115 cl1 size-213 p-t-18">
-								+1 800 1236879
-							</p>
-						</div>
-					</div>
-
-					<div class="flex-w w-full">
-						<span class="fs-18 cl5 txt-center size-211">
-							<span class="lnr lnr-envelope"></span>
-						</span>
-
-						<div class="size-212 p-t-2">
-							<span class="mtext-110 cl2">
-								Sale Support
-							</span>
-
-							<p class="stext-115 cl1 size-213 p-t-18">
-								contact@example.com
-							</p>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 	</section>	
