@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout2">
+<body>
+	<div id="page" layout:fragment="content">
+
+
+		<div id="dynamicContent">
+			<form th:action="@{/category/savPricing}"
+				th:object="${productPricing}" method="post">
+				<div class="form-group">
+					<label for="usr">Product Model</label> <select
+						th:field="*{productModel.mid}" class="form-control">
+						<option th:each="i : ${modelList}" th:value="${i.mid}"
+							th:text="${i.modelName}"></option>
+					</select>
+				</div>
+
+
+				<div class="form-group">
+					<label for="usr">Working? </label> <input type="checkbox"
+						th:field="*{working}">
+
+				</div>
+
+				<div class="form-group pt-1">
+					<label for="usr">Number of years Old </label> <input type="number"
+						th:field="*{numberOfYearsOld}" class="form-control"
+						required="required">
+				</div>
+
+
+				<div class="form-group">
+					<label for="usr">Product Price</label> <input type="number"
+						th:field="*{productPrice}" class="form-control"
+						required="required">
+				</div>
+
+
+
+				<input type="hidden" th:field="*{pid}" class="form-control">
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">Save Pricing</button>
+				</div>
+
+			</form>
+
+
+
+		</div>
+	</div>
+</body>
+
+</html>
