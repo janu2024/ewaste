@@ -22,13 +22,13 @@ public class ProductCategoryController {
 
 	@Autowired
 	ProductSubCategoryRepository subCategoryRepo;
-	
+
 	@Autowired
 	ProductBrandRepository brandRepo;
-	
+
 	@Autowired
 	ProductModelRepository modelRepo;
-	
+
 	@Autowired
 	ProductPricingRepository pricingRepo;
 
@@ -62,9 +62,6 @@ public class ProductCategoryController {
 		return m;
 
 	}
-	
-	
-
 
 	@GetMapping(value = "/getSubCategoryFromCategory/{categoryId}")
 	@ResponseBody
@@ -141,7 +138,7 @@ public class ProductCategoryController {
 		return m;
 
 	}
-	
+
 	@PostMapping(value = "/saveBrand")
 	public String saveBrand(@ModelAttribute ProductBrand brand) {
 		brand.setSubCategory(subCategoryRepo.findById(brand.getSubCategory().getPsid()).get());
@@ -149,7 +146,6 @@ public class ProductCategoryController {
 		return "redirect:/category/getBrand";
 	}
 
-	
 	@GetMapping(value = "/manageBrand")
 	public ModelAndView manageBrand() {
 		ModelAndView m = new ModelAndView();
@@ -158,18 +154,16 @@ public class ProductCategoryController {
 		m.setViewName("manageBrand");// html page
 		return m;
 	}
-	
+
 	@GetMapping(value = "/manageBrand/{brandId}")
 	public ModelAndView editBrand(@PathVariable long brandId) {
 		ModelAndView m = new ModelAndView();
-		m.addObject("brand",brandRepo.findById(brandId).get());
+		m.addObject("brand", brandRepo.findById(brandId).get());
 		m.addObject("subCategoryList", subCategoryRepo.findAll());
 		m.setViewName("manageBrand");// html page
 		return m;
 	}
-	
-	
-	
+
 	@GetMapping(value = "/getModel")
 	public ModelAndView getModel() {
 
@@ -179,7 +173,7 @@ public class ProductCategoryController {
 		return m;
 
 	}
-	
+
 	@GetMapping(value = "/manageModel")
 	public ModelAndView manageModel() {
 		ModelAndView m = new ModelAndView();
@@ -188,17 +182,16 @@ public class ProductCategoryController {
 		m.setViewName("manageModel");// html page
 		return m;
 	}
-	
+
 	@GetMapping(value = "/manageModel/{modelId}")
 	public ModelAndView editModel(@PathVariable long modelId) {
 		ModelAndView m = new ModelAndView();
-		m.addObject("model",modelRepo.findById(modelId).get());
+		m.addObject("model", modelRepo.findById(modelId).get());
 		m.addObject("brandList", brandRepo.findAll());
 		m.setViewName("manageModel");// html page
 		return m;
 	}
-	
-	
+
 	@PostMapping(value = "/saveModel")
 	public String saveModel(@ModelAttribute ProductModel model) {
 		model.setProductBrand(brandRepo.findById(model.getProductBrand().getBid()).get());
@@ -206,5 +199,39 @@ public class ProductCategoryController {
 		return "redirect:/category/getModel";
 	}
 
+	@GetMapping(value = "/getPricing")
+	public ModelAndView getPricing() {
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("pricingList", pricingRepo.findAll());// blank object
+		m.setViewName("productPricing");// html page
+		return m;
+
+	}
+
+	@GetMapping(value = "/managePricing")
+	public ModelAndView managePricing() {
+		ModelAndView m = new ModelAndView();
+		m.addObject("productPricing", new ProductPricing());
+		m.addObject("modelList", modelRepo.findAll());
+		m.setViewName("managePricing");// html page
+		return m;
+	}
+
+	@PostMapping(value = "/savPricing")
+	public String saveModel(@ModelAttribute ProductPricing pricing) {
+		pricing.setProductModel(modelRepo.findById(pricing.getProductModel().getMid()).get());
+		pricingRepo.save(pricing);
+		return "redirect:/category/getPricing";
+	}
 	
+	@GetMapping(value = "/managePricing/{pricingId}")
+	public ModelAndView editPricing(@PathVariable long pricingId) {
+		ModelAndView m = new ModelAndView();
+		m.addObject("productPricing", pricingRepo.findById(pricingId).get());
+		m.addObject("modelList", modelRepo.findAll());
+		m.setViewName("managePricing");// html page
+		return m;
+	}
+
 }
