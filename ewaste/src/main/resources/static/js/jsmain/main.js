@@ -378,19 +378,40 @@ function loadProductSubCategoryForSelling() {
 		val : "",
 		text : ""
 	}).appendTo($("#productSC"));
-	$.ajax({
-		url : "/productselling/getSubCategory/"
-				+ $("#productCategoryId").val(),
-		type : "get",
-		success : function(data) {
-			$(data).each(function() {
-				$("<option />", {
-					val : this.psid,
-					text : this.categoryName
-				}).appendTo($("#productSC"));
+	$("#productBrand").empty();
+	$("<option />", {
+		val : "",
+		text : ""
+	}).appendTo($("#productBrand"));
+	$("#productModel").empty();
+	$("<option />", {
+		val : "",
+		text : ""
+	}).appendTo($("#productModel"));
+	$("#numberOfYears").empty();
+	$("<option />", {
+		val : "",
+		text : ""
+	}).appendTo($("#numberOfYears"));
+	$("#isWorking").empty();
+	$("<option />", {
+		val : "",
+		text : ""
+	}).appendTo($("#isWorking"));
+	$
+			.ajax({
+				url : "/productselling/getSubCategory/"
+						+ $("#productCategoryId").val(),
+				type : "get",
+				success : function(data) {
+					$(data).each(function() {
+						$("<option />", {
+							val : this.psid,
+							text : this.categoryName
+						}).appendTo($("#productSC"));
+					});
+				}
 			});
-		}
-	});
 }
 
 function loadProductBrandForSelling() {
@@ -399,9 +420,23 @@ function loadProductBrandForSelling() {
 		val : "",
 		text : ""
 	}).appendTo($("#productBrand"));
+	$("#productModel").empty();
+	$("<option />", {
+		val : "",
+		text : ""
+	}).appendTo($("#productModel"));
+	$("#numberOfYears").empty();
+	$("<option />", {
+		val : "",
+		text : ""
+	}).appendTo($("#numberOfYears"));
+	$("#isWorking").empty();
+	$("<option />", {
+		val : "",
+		text : ""
+	}).appendTo($("#isWorking"));
 	$.ajax({
-		url : "/productselling/getBrand/"
-				+ $("#productSC").val(),
+		url : "/productselling/getBrand/" + $("#productSC").val(),
 		type : "get",
 		success : function(data) {
 			$(data).each(function() {
@@ -413,17 +448,26 @@ function loadProductBrandForSelling() {
 		}
 	});
 }
-
-
+var productPricingInfo = [];
 function loadProductModelForSelling() {
 	$("#productModel").empty();
 	$("<option />", {
 		val : "",
 		text : ""
 	}).appendTo($("#productModel"));
+	$("#numberOfYears").empty();
+	$("<option />", {
+		val : "",
+		text : ""
+	}).appendTo($("#numberOfYears"));
+	$("#isWorking").empty();
+	$("<option />", {
+		val : "",
+		text : ""
+	}).appendTo($("#isWorking"));
+
 	$.ajax({
-		url : "/productselling/getModel/"
-				+ $("#productBrand").val(),
+		url : "/productselling/getModel/" + $("#productBrand").val(),
 		type : "get",
 		success : function(data) {
 			$(data).each(function() {
@@ -434,4 +478,72 @@ function loadProductModelForSelling() {
 			});
 		}
 	});
+}
+var productPricingData = [];
+function loadProductPricingForSelling() {
+	$("#numberOfYears").empty();
+	$("<option />", {
+		val : "",
+		text : ""
+	}).appendTo($("#numberOfYears"));
+	$("#isWorking").empty();
+	$("<option />", {
+		val : "",
+		text : ""
+	}).appendTo($("#isWorking"));
+	$.ajax({
+		url : "/productselling/getPricing/" + $("#productModel").val(),
+		type : "get",
+		success : function(data) {
+			productPricingData = data;
+			$(data).each(function() {
+				$("<option />", {
+					val : this.numberOfYearsOld,
+					text : this.numberOfYearsOld
+				}).appendTo($("#numberOfYears"));
+			});
+		}
+	});
+}
+
+function loadWorkingNonWorkingInfo() {
+	$("#isWorking").empty();
+	var numberOfYears = $("#numberOfYears").val();
+	$("<option />", {
+		val : "",
+		text : ""
+	}).appendTo($("#isWorking"));
+	var arrayItem = [];
+	$(productPricingData).each(
+			function() {
+				if (numberOfYears == this.numberOfYearsOld
+						&& arrayItem.indexOf(this.working) == -1) {
+					arrayItem.push(this.working);
+					$("<option />", {
+						val : this.working,
+						text : this.working == false ? 'No' : 'Yes'
+					}).appendTo($("#isWorking"));
+				}
+			});
+}
+
+function showProductPricing() {
+	var numberOfYears = $("#numberOfYears").val();
+	var isWorking = $("#isWorking").val();
+	var productPrice = 0;
+	var pricingId = 0;
+	$(productPricingData).each(
+			function() {
+				var fieldVal=this.working==false?'false':'true';
+				if (numberOfYears == this.numberOfYearsOld
+						&& isWorking == fieldVal) {
+					productPrice = this.productPrice;
+					pricingId = this.pid;
+
+				}
+			});
+
+	$("#availableSellingPrice").val(productPrice);
+	$("#sellingProductId").val(pricingId);
+
 }
