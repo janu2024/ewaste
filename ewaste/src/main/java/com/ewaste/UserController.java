@@ -56,7 +56,7 @@ public class UserController {
 
 		ModelAndView m = new ModelAndView();
 		m.addObject("user", new UserInfo());// blank object
-		m.setViewName("productselling");// html page
+		m.setViewName("productselling2");// html page
 		return m;
 
 	}
@@ -92,8 +92,6 @@ public class UserController {
 		return m;
 
 	}
-	
-
 
 	@GetMapping(value = "/about")
 	public ModelAndView about2(@ModelAttribute UserInfo u) {
@@ -116,6 +114,20 @@ public class UserController {
 		return m;
 
 	}
+	
+	
+	@GetMapping(value = "/profile")
+	public ModelAndView profile(@ModelAttribute UserInfo u) {
+		UserInfo u2 = service.saveUser(u);
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("user", u2);
+		m.setViewName("Profile");
+		return m;
+
+	}
+	
+	
 
 	@GetMapping(value = "/admin")
 	public ModelAndView admin() {
@@ -173,6 +185,17 @@ public class UserController {
 		ModelAndView m = new ModelAndView();
 		m.addObject("user", new UserInfo());// blank object
 		m.setViewName("fridge");// html page
+		return m;
+
+	}
+	
+
+	@GetMapping(value = "/transportation")
+	public ModelAndView transportation() {
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("userList", repo.findAll());//
+		m.setViewName("transportation");// html page
 		return m;
 
 	}

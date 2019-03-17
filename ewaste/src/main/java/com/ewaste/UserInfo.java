@@ -31,6 +31,14 @@ public class UserInfo {
 	@Column(name = "password")
 	private String password;
 
+	public String getPinCode() {
+		return pinCode;
+	}
+
+	public void setPinCode(String pinCode) {
+		this.pinCode = pinCode;
+	}
+
 	@Column(name = "age")
 	private Integer age;
 
@@ -47,6 +55,11 @@ public class UserInfo {
 
 	@Column(name = "role")
 	private String role;
+	
+
+	@Column(name = "pincode")
+	private String pinCode;
+	
 
 	public String getPassword() {
 		return password;

@@ -19,7 +19,7 @@
 			<tbody>
 				<tr th:each="user : ${subCategoryList}">
 					<td><a
-						th:href="@{/category/manageCategory/{uid}(uid=${user.psid})}"><span
+						th:href="@{/category/manageSubCategory/{uid}(uid=${user.psid})}"><span
 							th:text="${user.psid}"></span></a></td>
 					<td th:text="${user.categoryName}"></td>
 

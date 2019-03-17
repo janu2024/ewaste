@@ -56,7 +56,7 @@
 							Help & FAQs
 						</a>
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+						<a th:href="@{/user/profile}" class="flex-c-m trans-04 p-lr-25">
 							My Account
 						</a>
 
@@ -85,7 +85,7 @@
 							<li class="active-menu">
 								<a href="@{/user/index}">Home</a>
 								<ul class="sub-menu">
-									<li><a th:href="@{/productselling.html}">Product Selling </a></li>
+									<li><a th:href="@{/productselling}">Product Selling </a></li>
 									<li><a href="home-02.html">Product Buying</a></li>
 									<li><a href="home-03.html">Homepage 3</a></li>
 								</ul>
@@ -107,10 +107,8 @@
 								<a th:href="@{/user/features}">Features</a>
 							</li>
 
-							<li>
-								<a th:href="@{/user/category}">Category</a>
-							</li>
-
+							
+							 
 							<li>
 								<a th:href="@{/user/about}">About</a>
 							</li>
@@ -214,17 +212,20 @@
 				</li>
 
 				<li>
+					<a th:href="@{/user/admin}">Admin</a>
+				</li>
+				<li>
 					<a th:href="@{/product.html}">Shop</a>
 				</li>
-
+				<li>
+					<a th:href="@{/user/productselling}">ProductSelling</a>
+				</li>
+				
 				<li>
 					<a th:href="@{/shoping-cart.html}" class="label1 rs1" data-label1="hot">Features</a>
-				</li>
-
-				<li>
-					<a th:href="@{/blog.html}">Blog</a>
-				</li>
-
+				</li>		
+			
+				
 				<li>
 					<a th:href="@{/about.html}">About</a>
 				</li>

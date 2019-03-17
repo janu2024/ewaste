@@ -58,21 +58,32 @@
 									th:href="@{/user/features}">Features</a></li>
 
 
-								<li class="active-menu"><a th:href="@{/category}">Category</a>
+								<li>Category
 									<ul class="sub-menu">
-										<li><a th:href="@{/category/getCategory}">product
-												category </a></li>
-										<li><a th:href="@{/category/getSubCategory}">product
-												subcategory</a></li>
-										<li><a th:href="@{/category/getBrand}">product brand</a></li>
-										<li><a th:href="@{/category/getModel}">product Model</a></li>
-										<li><a th:href="@{/category/getPricing}">product
-												Price</a></li>
-
+										<li><a th:href="@{/category/getCategory}">Manage Category </a></li>
 									</ul></li>
+								
+								<li>SubCategory
+									<ul class="sub-menu">
+										<li><a th:href="@{/category/getSubCategory}">Manage SubCategory </a></li>
+									</ul></li>
+								<li>Brand
+									<ul class="sub-menu">
+										<li><a th:href="@{/category/getBrand}">Manage Brand </a></li>
+									</ul></li>
+									
+									<li>Model
+									<ul class="sub-menu">
+										<li><a th:href="@{/category/getModel}">Manage Model</a></li>
+									</ul></li>
+									
+									<li>Pricing
+									<ul class="sub-menu">
+										<li><a th:href="@{/category/getPricing}">Manage Pricing</a></li>
+									</ul></li>
+									
 
-								</li>
-
+                               <li><a th:href="@{/user/transportation}">Transport Service</a></li>
 
 								<li><a th:href="@{/user/about}">About</a></li>
 
@@ -188,10 +199,9 @@
 							<li><a th:href="@{/category/getModel}">product model</a></li>
 							<li><a th:href="@{/category/getPricing}">product Price</a></li>
 						</ul></li>
-
-					</li>
-					</li>
-
+                                
+				
+                     <li><a th:href="@{/user/transportation}">Transport Service</a></li>
 
 
 
