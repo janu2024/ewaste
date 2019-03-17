@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+ <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +22,7 @@
 		<div class="container">
 			<div class="signup-content">
 				<div class="signup-img">
-					<img th:src="@{/images/signup-img.jpg}" alt="">
+					<img th:src="@{/images/earth.jpg}" alt="">
 				</div>
 				<div class="signup-form">
 					<form th:action="@{/login/saveUser}" class="register-form"
@@ -56,7 +57,7 @@
 						<div class="form-group">
 							<label for="pincode">Pincode :</label> <input type="text"
 								th:field="*{pincode}" required="required">
-						</div>
+						</div> 
 
 						<div class="form-radio">
 							<label for="gender" class="radio-label">Gender :</label>
@@ -77,12 +78,20 @@
 						</div>
 
 
+
+
 						<div class="form-group">
 							<div th:if="${userexists} == 'true'" style="color: red">Email
 								id already exists.</div>
 							<label for="email">Email ID :</label> <input type="email"
 								th:field="*{email}" placeholder="Email" required="required" />
 						</div>
+						<div>
+							<a th:href="@{/login}" class="txt1"> or login using </a>
+						</div>
+
+
+
 						<div class="form-submit">
 							<input type="reset" value="Reset All" class="submit" name="reset"
 								id="reset" /> <input type="submit" value="Submit Form"

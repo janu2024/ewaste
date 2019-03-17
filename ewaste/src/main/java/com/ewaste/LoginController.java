@@ -62,6 +62,17 @@ public class LoginController {
 
 		return modelAndView;
 	}
+	
+	@GetMapping(value="/forgotpassword")
+	public ModelAndView forgotpassword() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("forgotpassword");
+		modelAndView.addObject("user", new UserInfo());// blank object
+		modelAndView.addObject("userexists", "false");
+
+		return modelAndView;
+	}
+
 
 	@RequestMapping(value = "/doLogin", method = RequestMethod.POST)
 	public String doLogin(@ModelAttribute UserInfo user, Model model) {
