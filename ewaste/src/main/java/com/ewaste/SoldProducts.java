@@ -32,10 +32,19 @@ public class SoldProducts {
 	private UserInfo userInfo;
 	
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.LAZY, optional =true)
 	@JoinColumn(name = "transporter_id", nullable = true, referencedColumnName = "uid")
 	private UserInfo transporterInfo;
+	
+	
+	@Column(name = "product_image")
+	private String productImage;
+	
+	@Column(name = "product_bill")
+	private String productBill;
 
+	@Column(name = "product_status")
+	private String productStatus;
 
 	public Long getSpid() {
 		return spid;
@@ -84,6 +93,36 @@ public class SoldProducts {
 
 	public void setTransporterInfo(UserInfo transporterInfo) {
 		this.transporterInfo = transporterInfo;
+	}
+
+
+	public String getProductImage() {
+		return productImage;
+	}
+
+
+	public void setProductImage(String productImage) {
+		this.productImage = productImage;
+	}
+
+
+	public String getProductBill() {
+		return productBill;
+	}
+
+
+	public void setProductBill(String productBill) {
+		this.productBill = productBill;
+	}
+
+
+	public String getProductStatus() {
+		return productStatus;
+	}
+
+
+	public void setProductStatus(String productStatus) {
+		this.productStatus = productStatus;
 	}
 	
 	

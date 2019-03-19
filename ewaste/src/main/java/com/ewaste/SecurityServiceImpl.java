@@ -28,6 +28,19 @@ public class SecurityServiceImpl implements SecurityService{
 
         return null;
     }
+    
+    @Override
+	public UserInfo getLoggedInUser() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String username = null;
+		if (principal instanceof org.springframework.security.core.userdetails.User) {
+			username = ((org.springframework.security.core.userdetails.User) principal).getUsername();
+		} else {
+			username = principal.toString();
+		}
+		return userDetailsService.findByEmail(username);
+	}
+
 
     @Override
     public void autologin(String username, String password) {

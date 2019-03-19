@@ -3,6 +3,8 @@
  */
 package com.ewaste;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +15,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -39,6 +43,19 @@ public class ProductSellingController {
 	@Autowired
 	ProductPricingRepository pricingRepo;
 
+	@Autowired
+	private SecurityService securityService;
+	
+	@Autowired
+	UserRepository userRepo;
+
+
+	@Autowired
+	SoldProductsRepository soldProductsRepo;
+	
+	public static String uploadDir = "E:\\WorkSpace2\\maven.1548166232495\\ewaste\\src\\main\\resources\\static\\images\\upload";
+
+	
 	@GetMapping(value = "/sellProduct")
 	public ModelAndView getCategory() {
 
@@ -119,5 +136,30 @@ public class ProductSellingController {
 
 		return filteredList;
 	}
+
+	
+	@PostMapping(value = "/sellProduct")
+	public String saveModel(@ModelAttribute SoldProducts soldProducts, @RequestParam("productUploadImage") MultipartFile productImage, @RequestParam("sellindProductBillUploadImage") MultipartFile sellindProductBill) {
+
+		soldProducts.setPricing(pricingRepo.findById(soldProducts.getPricing().getPid()).get());
+		soldProducts.setUserInfo(securityService.getLoggedInUser());
+		Path mpath = Paths.get(uploadDir, productImage.getOriginalFilename());
+		Path mpath2 = Paths.get(uploadDir, sellindProductBill.getOriginalFilename());
+		
+		try {
+			java.nio.file.Files.write(mpath, productImage.getBytes());
+			java.nio.file.Files.write(mpath2, sellindProductBill.getBytes());
+			soldProducts.setProductImage("/images/upload/" + productImage.getOriginalFilename());
+			soldProducts.setProductBill("/images/upload/" + sellindProductBill.getOriginalFilename());
+
+		} catch (Exception e) {
+			System.out.print(e);
+		}
+
+		soldProductsRepo.save(soldProducts);
+		return "redirect:/productselling/sellProduct";
+
+	}
+	
 
 }
