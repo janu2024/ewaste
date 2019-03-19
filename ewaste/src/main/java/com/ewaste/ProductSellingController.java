@@ -45,17 +45,15 @@ public class ProductSellingController {
 
 	@Autowired
 	private SecurityService securityService;
-	
+
 	@Autowired
 	UserRepository userRepo;
 
-
 	@Autowired
 	SoldProductsRepository soldProductsRepo;
-	
+
 	public static String uploadDir = "E:\\WorkSpace2\\maven.1548166232495\\ewaste\\src\\main\\resources\\static\\images\\upload";
 
-	
 	@GetMapping(value = "/sellProduct")
 	public ModelAndView getCategory() {
 
@@ -125,7 +123,7 @@ public class ProductSellingController {
 		List<ProductPricing> filteredList = new ArrayList<>();
 		ProductPricing pricingObj;
 		for (ProductPricing pricing : resultList) {
-			pricingObj=new ProductPricing();
+			pricingObj = new ProductPricing();
 			pricingObj.setNumberOfYearsOld(pricing.getNumberOfYearsOld());
 			pricingObj.setPid(pricing.getPid());
 			pricingObj.setProductPrice(pricing.getProductPrice());
@@ -137,15 +135,16 @@ public class ProductSellingController {
 		return filteredList;
 	}
 
-	
 	@PostMapping(value = "/sellProduct")
-	public String saveModel(@ModelAttribute SoldProducts soldProducts, @RequestParam("productUploadImage") MultipartFile productImage, @RequestParam("sellindProductBillUploadImage") MultipartFile sellindProductBill) {
+	public String saveModel(@ModelAttribute SoldProducts soldProducts,
+			@RequestParam("productUploadImage") MultipartFile productImage,
+			@RequestParam("sellindProductBillUploadImage") MultipartFile sellindProductBill) {
 
 		soldProducts.setPricing(pricingRepo.findById(soldProducts.getPricing().getPid()).get());
 		soldProducts.setUserInfo(securityService.getLoggedInUser());
 		Path mpath = Paths.get(uploadDir, productImage.getOriginalFilename());
 		Path mpath2 = Paths.get(uploadDir, sellindProductBill.getOriginalFilename());
-		
+
 		try {
 			java.nio.file.Files.write(mpath, productImage.getBytes());
 			java.nio.file.Files.write(mpath2, sellindProductBill.getBytes());
@@ -160,6 +159,11 @@ public class ProductSellingController {
 		return "redirect:/productselling/sellProduct";
 
 	}
-	
+
+	@GetMapping(value = "/getSoldProducts")
+	@ResponseBody
+	public List<SoldProducts> getSoldProducts() {
+		return soldProductsRepo.findAll();
+	}
 
 }
