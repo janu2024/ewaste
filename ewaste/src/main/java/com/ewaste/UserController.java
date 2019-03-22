@@ -128,25 +128,7 @@ public class UserController {
 
 	}
 
-	@GetMapping(value = "/admin")
-	public ModelAndView admin() {
 
-		ModelAndView m = new ModelAndView();
-		m.addObject("userList", repo.findAll());// blank object
-		m.setViewName("admin");// html page
-		return m;
-
-	}
-
-	@GetMapping(value = "/admin/{userId}")
-	public ModelAndView getUserDetails(@PathVariable Long userId) {
-
-		ModelAndView m = new ModelAndView();
-		m.addObject("userObj", repo.findById(userId).get());// blank object
-		m.setViewName("admin");// html page
-		return m;
-
-	}
 
 	@GetMapping(value = "/tv")
 	public ModelAndView tv() {

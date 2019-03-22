@@ -21,7 +21,7 @@
 			</thead>
 			<tbody>
 				<tr th:each="user : ${userList}">
-					<td><a th:href="@{/user/admin/{uid}(uid=${user.uid})}"><span
+					<td><a th:href="@{/admin/editUser/{uid}(uid=${user.uid})}"><span
 							th:text="${user.uid}"></span></a></td>
 					<td th:text="${user.firstName}"></td>
 					<td th:text="${user.lastName}"></td>
@@ -31,9 +31,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<!-- 	<input type="text" th:value="${userObj.email}"> -->
-		<!-- 	<div th:text="${userObj.email}"></div>
- -->
+	
 	</div>
 
 </body>
