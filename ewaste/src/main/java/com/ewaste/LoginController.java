@@ -97,9 +97,9 @@ public class LoginController {
 	@RequestMapping(value = "/generatePassword", method = RequestMethod.POST)
 	public String generatePassword(@ModelAttribute UserInfo user, Model model) {
 		UserInfo existingUser = service.findByEmail(user.getEmail());
-
+		model.addAttribute("user", user);// blank object
+		
 		if (existingUser == null) {
-			model.addAttribute("user", new UserInfo());// blank object
 			model.addAttribute("userNotFound", "true");
 			model.addAttribute("emailSent", "false");
 			return "forgotpassword";
