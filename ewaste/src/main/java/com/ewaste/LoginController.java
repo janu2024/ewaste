@@ -1,5 +1,7 @@
 package com.ewaste;
 
+import java.util.UUID;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class LoginController {
 
 	@Autowired
 	UserService service;
+
+	@Autowired
+	private SmtpMailSender smtpMailSender;
 
 	@PostMapping(value = "/saveUser")
 	public String saveUserInfo(@ModelAttribute UserInfo u, Model model) {
@@ -52,8 +57,8 @@ public class LoginController {
 
 		return modelAndView;
 	}
-	
-	@GetMapping(value="/registration")
+
+	@GetMapping(value = "/registration")
 	public ModelAndView registeration() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("register");
@@ -62,8 +67,8 @@ public class LoginController {
 
 		return modelAndView;
 	}
-	
-	@GetMapping(value="/forgotpassword")
+
+	@GetMapping(value = "/forgotpassword")
 	public ModelAndView forgotpassword() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("forgotpassword");
@@ -72,7 +77,6 @@ public class LoginController {
 
 		return modelAndView;
 	}
-
 
 	@RequestMapping(value = "/doLogin", method = RequestMethod.POST)
 	public String doLogin(@ModelAttribute UserInfo user, Model model) {
@@ -87,6 +91,37 @@ public class LoginController {
 			return "login";
 
 		}
+
+	}
+
+	@RequestMapping(value = "/generatePassword", method = RequestMethod.POST)
+	public String generatePassword(@ModelAttribute UserInfo user, Model model) {
+		UserInfo existingUser = service.findByEmail(user.getEmail());
+
+		if (existingUser == null) {
+			model.addAttribute("user", new UserInfo());// blank object
+			model.addAttribute("userNotFound", "true");
+			model.addAttribute("emailSent", "false");
+			return "forgotpassword";
+		}
+
+		else {
+			try {
+				String uuid = UUID.randomUUID().toString();
+				existingUser.setPassword(uuid);
+				smtpMailSender.send(user.getEmail(), "New Password", "Your temporary password is :" + uuid);
+				service.saveUser(existingUser);
+				model.addAttribute("userNotFound", "false");
+				model.addAttribute("emailSent", "true");
+
+			} catch (Exception e) {
+				model.addAttribute("userNotFound", "true");
+				model.addAttribute("emailSent", "false");
+
+			}
+
+		}
+		return "forgotpassword";
 
 	}
 
