@@ -2,6 +2,7 @@ package com.ewaste;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +19,10 @@ public class UserController {
 
 	@Autowired
 	UserRepository repo;
-	
+
+	@Autowired
+	SecurityService securityService;
+
 	@GetMapping(value = "/index")
 	public ModelAndView index() {
 
@@ -28,7 +32,7 @@ public class UserController {
 		return m;
 
 	}
-	
+
 	@GetMapping(value = "/registraion")
 	public ModelAndView registraion() {
 
@@ -38,8 +42,6 @@ public class UserController {
 		return m;
 
 	}
-
-	
 
 	@GetMapping(value = "/index2")
 	public ModelAndView index2() {
@@ -114,11 +116,10 @@ public class UserController {
 		return m;
 
 	}
-	
-	
+
 	@GetMapping(value = "/profile")
 	public ModelAndView profile(@ModelAttribute UserInfo u) {
-		UserInfo u2 = service.saveUser(u);
+		UserInfo u2 = securityService.getLoggedInUser();
 
 		ModelAndView m = new ModelAndView();
 		m.addObject("user", u2);
@@ -126,8 +127,6 @@ public class UserController {
 		return m;
 
 	}
-	
-	
 
 	@GetMapping(value = "/admin")
 	public ModelAndView admin() {
@@ -188,7 +187,6 @@ public class UserController {
 		return m;
 
 	}
-	
 
 	@GetMapping(value = "/transportation")
 	public ModelAndView transportation() {
@@ -199,18 +197,22 @@ public class UserController {
 		return m;
 
 	}
-	
-	
-	
+
 
 	@PostMapping(value = "/saveUser")
-	public ModelAndView saveUserInfo(@ModelAttribute UserInfo u) {
-		UserInfo u2 = service.saveUser(u);
+	public String saveUserInfo(@ModelAttribute UserInfo u, Model model) {
 
-		ModelAndView m = new ModelAndView();
-		m.addObject("user", u2);
-		m.setViewName("register");
-		return m;
+		UserInfo dbInfo = service.findByEmail(u.getEmail());
+		dbInfo.setFirstName(u.getFirstName());
+		dbInfo.setLastName(u.getLastName());
+		dbInfo.setAddress(u.getAddress());
+		dbInfo.setAge(u.getAge());
+		dbInfo.setGender(u.getGender());
+		dbInfo.setPhone_no(u.getPassword());
+		dbInfo.setPinCode(u.getPinCode());
+		service.saveUser(dbInfo);
+
+		return "redirect:/user/profile";
 
 	}
 
