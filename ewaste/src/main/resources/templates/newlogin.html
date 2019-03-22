@@ -41,41 +41,7 @@
 <body style="background-color: #666666;">
 
 
-<div class="loginform">
-		<h1>Login Form</h1>
-		<div class="container">
-			<!-- main content -->
-			<div class="agile_info">
-				<div class="w3l_form">
-					<div class="left_grid_info">
-						<img src="images/left.png" alt="" />
-					</div>
-				</div>
-				<div class="w3_info">
-					<form th:action="@{/login/doLogin}" th:object="${user}"
-						method="post">
 
-						<div class="input-group">
-							<div th:if="${inValidInfo} == 'true'">Invalid Credentials.</div>
-							<span><i class="fa fa-envelope" aria-hidden="true"></i></span> <input
-								type="email" placeholder="Email" th:field="*{email}"
-								required="required">
-						</div>
-
-						<div class="input-group">
-							<span><i class="fa fa-lock" aria-hidden="true"></i></span> <input
-								type="Password" name="password" th:field="*{password}"
-								placeholder="Password" required="required">
-						</div>
-						<button class="btn btn-danger btn-block" type="submit">Login
-							Up</button>
-					</form>
-					<p class="account">
-						New user? Create Account <a href="/login/registration">Signup</a>
-					</p>
-				</div>
-			</div>
-			<!-- //main content -->
 		
 	<div class="limiter">
 		<div class="container-login100">
@@ -87,14 +53,14 @@
 
 					<div class="wrap-input100 validate-input"
 						data-validate="Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email"> <span
+						<input class="input100" type="text" name="email" th:field="*{email}" required="required"> <span
 							class="focus-input100"></span> <span class="label-input100">Email</span>
 					</div>
 
 
 					<div class="wrap-input100 validate-input"
 						data-validate="Password is required">
-						<input class="input100" type="password" name="pass"> <span
+						<input class="input100" type="password" name="pass"  th:field="*{password}" required="required"> <span
 							class="focus-input100"></span> <span class="label-input100">Password</span>
 					</div>
 
@@ -115,10 +81,17 @@
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">Login</button>
 					</div>
+					
+					<div>
+							<a th:href="@{/login/registration}" class="txt1"> or sign up using
+								 </a>
+						</div>
 
-					<div class="text-center p-t-46 p-b-20">
-						<span class="txt2"> or sign up using </span>
-					</div>
+					<!-- <div class="text-center p-t-46 p-b-20">
+					
+					<a th:href="@{/login/registration}">
+						<span class="txt2"> or sign up using  </span></a>
+					</div> -->
 
 					<div class="login100-form-social flex-c-m">
 						<a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">

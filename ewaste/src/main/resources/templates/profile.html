@@ -61,28 +61,60 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<input type="email" th:field="*{email}" disabled="disabled"
+										<input type="email" th:field="*{email}" readonly="readonly"
 											class="form-control input-lg" placeholder="Email Address"
 											tabindex="4">
 									</div>
-									<div class="row">
+									
+									<div class="col-xs-12 col-sm-6 col-md-6">
+											<div class="form-group">
+												<input type="text" th:field="*{age}"
+													required="required" class="form-control input-lg"
+													placeholder="Age" tabindex="2">
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-6 col-md-6">
+											<div class="form-group">
+												<input type="text" th:field="*{address}"
+													required="required" class="form-control input-lg"
+													placeholder="Address" tabindex="2">
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-6 col-md-6">
+											<div class="form-group">
+												<input type="text" th:field="*{pinCode}"
+													required="required" class="form-control input-lg"
+													placeholder="Pincode" tabindex="2">
+											</div>
+										</div>
+										
+										<div class="col-xs-12 col-sm-6 col-md-6">
+											<div class="form-group">
+												<input type="text" th:field="*{phone_no}"
+													required="required" class="form-control input-lg"
+													placeholder="Phone No" tabindex="2">
+											</div>
+										</div>
+										
 										<div class="col-xs-12 col-sm-6 col-md-6">
 											<div class="form-group">
 												<input type="password" name="password"
 													th:value="${user.password}" class="form-control input-lg"
 													required="required" placeholder="Password" tabindex="5">
 											</div>
-										</div>
+											
+										
+										
 
 										<input type="hidden" th:field="*{uid}">
 									</div>
 									<hr class="colorgraph">
-									<div class="row">
+								
 										<div class="col-xs-12 col-md-6"></div>
 										<div class="col-xs-12 col-md-6">
-											<a href="#" class="btn btn-success btn-block btn-lg">Save</a>
+											<button type="submit" class="btn btn-success btn-block btn-lg">Save</button>
 										</div>
-									</div>
+								
 								</form>
 							</div>
 						</div>
