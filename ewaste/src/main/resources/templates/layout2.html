@@ -14,7 +14,7 @@
 
 						<div class="right-top-bar flex-w h-full">
 							<a href="#" class="flex-c-m trans-04 p-lr-25"> Help & FAQs </a> <a
-								href="#" class="flex-c-m trans-04 p-lr-25"> My Account </a> <a
+								href="/user/profile" class="flex-c-m trans-04 p-lr-25"> My Account </a> <a
 								href="#" class="flex-c-m trans-04 p-lr-25"> EN </a> <a href="#"
 								class="flex-c-m trans-04 p-lr-25"> USD </a>
 						</div>
@@ -32,7 +32,7 @@
 						<!-- Menu desktop -->
 						<div class="menu-desktop">
 							<ul class="main-menu">
-								<li class="active-menu"><a th:href="@{/user/index}">Home</a>
+								<li class="active-menu" th:if="${userRole=='ROLE_USER'}"><a th:href="@{/user/index}">Home</a>
 									<ul class="sub-menu">
 										<li><a th:href="@{/user/productselling}">Product
 												Selling </a></li>
@@ -50,54 +50,57 @@
 
 
 
-								<li><a th:href="@{/user/product}">Shop</a></li>
+								<li th:if="${userRole=='ROLE_USER'}"><a th:href="@{/user/product}">Shop</a></li>
 
-								<li><a th:href="@{/user/productselling}">ProductSelling</a>
-								</li>
+								<li th:if="${userRole=='ROLE_USER'}"><a
+									th:href="@{/productselling/sellProduct}">ProductSelling</a></li>
 
 								<li class="label1" data-label1="hot"><a
 									th:href="@{/user/features}">Features</a></li>
 
 
-								<li>Category
+								<li th:if="${userRole=='ROLE_ADMIN'}">Category
 									<ul class="sub-menu">
-										<li><a th:href="@{/category/getCategory}">Manage
+										<li><a th:href="@{/admin/category/getCategory}">Manage
 												Category </a></li>
 									</ul>
 								</li>
 
-								<li>SubCategory
+								<li th:if="${userRole=='ROLE_ADMIN'}">SubCategory
 									<ul class="sub-menu">
-										<li><a th:href="@{/category/getSubCategory}">Manage
+										<li><a th:href="@{/admin/category/getSubCategory}">Manage
 												SubCategory </a></li>
 									</ul>
 								</li>
-								<li>Brand
+								<li th:if="${userRole=='ROLE_ADMIN'}">Brand
 									<ul class="sub-menu">
-										<li><a th:href="@{/category/getBrand}">Manage Brand </a></li>
+										<li><a th:href="@{/admin/category/getBrand}">Manage
+												Brand </a></li>
 									</ul>
 								</li>
 
-								<li>Model
+								<li th:if="${userRole=='ROLE_ADMIN'}">Model
 									<ul class="sub-menu">
-										<li><a th:href="@{/category/getModel}">Manage Model</a></li>
+										<li><a th:href="@{/admin/category/getModel}">Manage
+												Model</a></li>
 									</ul>
 								</li>
 
-								<li>Pricing
+								<li th:if="${userRole=='ROLE_ADMIN'}">Pricing
 									<ul class="sub-menu">
-										<li><a th:href="@{/category/getPricing}">Manage
+										<li><a th:href="@{/admin/category/getPricing}">Manage
 												Pricing</a></li>
 									</ul>
 								</li>
 
 
-								<li><a th:href="@{/user/transportation}">Transport
-										Service</a></li>
+								<li
+									th:if="${userRole=='ROLE_ADMIN' or userRole=='ROLE_TRANSPORTER'}"><a
+									th:href="@{/user/transportation}">Transport Service</a></li>
 
-								<li><a th:href="@{/user/about}">About</a></li>
+								<li th:if="${userRole=='ROLE_USER'}"><a th:href="@{/user/about}">About</a></li>
 
-								<li><a th:href="@{/user/contact}">Contact</a></li>
+								<li th:if="${userRole=='ROLE_USER'}"><a th:href="@{/user/contact}">Contact</a></li>
 							</ul>
 						</div>
 
@@ -169,56 +172,66 @@
 					<li>
 						<div class="right-top-bar flex-w h-full">
 							<a href="#" class="flex-c-m p-lr-10 trans-04"> Help & FAQs </a> <a
-								href="#" class="flex-c-m p-lr-10 trans-04"> My Account </a> <a
+								href="/user/profile" class="flex-c-m p-lr-10 trans-04"> My Account </a> <a
 								href="#" class="flex-c-m p-lr-10 trans-04"> EN </a> <a href="#"
 								class="flex-c-m p-lr-10 trans-04"> USD </a>
 						</div>
 					</li>
 				</ul>
 
-				<ul class="main-menu-m">
+				<ul class="main-menu-m" th:if="${userRole=='ROLE_USER'}">
 					<li class="active-menu"><a href="@{/user/index}">Home</a>
 						<ul class="sub-menu">
-							<li><a th:href="@{/user/productselling}">Product Selling
+
 							</a></li>
-							<li><a href="home-02.html">Product Buying</a></li>
-							<li><a href="home-03.html">Homepage 3</a></li>
-						</ul></li>
+					<li><a href="home-02.html">Product Buying</a></li>
+					<li><a href="home-03.html">Homepage 3</a></li>
+				</ul>
+				</li>
 
-					<li class=""><a th:href="@{/admin/userList}">Admin</a>
-						<ul class="sub-menu">
-							<li><a th:href="@{/user/productlist}">Product List </a></li>
-							<li><a href="home-02.html">User</a></li>
+				<li th:if="${userRole=='ROLE_ADMIN'}"><a
+					th:href="@{/admin/userList}">Admin</a>
+					<ul class="sub-menu">
+						<li><a th:href="@{/user/productlist}">Product List </a></li>
+						<li><a href="home-02.html">User</a></li>
 
-						</ul></li>
+					</ul></li>
 
-					<li><a th:href="@{/user/product}">Shop</a></li>
+				<li th:if="${userRole=='ROLE_USER'}"><a
+					th:href="@{/user/product}">Shop</a></li>
 
-					<li><a th:href="@{/user/productselling}">ProductSelling</a></li>
+				<li th:if="${userRole=='ROLE_USER'}"><a
+					th:href="@{/productselling/sellProduct}">ProductSelling</a></li>
 
-					<li class="label1" data-label1="hot"><a
-						th:href="@{/user/features}">Features</a></li>
+				<li class="label1" data-label1="hot"><a
+					th:href="@{/user/features}">Features</a></li>
 
-					<li class="active-menu"><a th:href="@{/category}">Category</a>
-						<ul class="sub-menu">
-							<li><a th:href="@{/category/getCategory}">product
-									category </a></li>
-							<li><a th:href="@{/category/getSubCategory}">product
-									subcategory</a></li>
-							<li><a th:href="@{/category/getBrand}">product brand</a></li>
-							<li><a th:href="@{/category/getModel}">product model</a></li>
-							<li><a th:href="@{/category/getPricing}">product Price</a></li>
-						</ul></li>
+				<li class="active-menu" th:if="${userRole=='ROLE_ADMIN'}"><a
+					th:href="@{/admin/category}">Category</a>
+					<ul class="sub-menu">
+						<li><a th:href="@{/admin/category/getCategory}">product
+								category </a></li>
+						<li><a th:href="@{/admin/category/getSubCategory}">product
+								subcategory</a></li>
+						<li><a th:href="@{/admin/category/getBrand}">product
+								brand</a></li>
+						<li><a th:href="@{/admin/category/getModel}">product
+								model</a></li>
+						<li><a th:href="@{/admin/category/getPricing}">product
+								Price</a></li>
+					</ul></li>
 
 
-					<li><a th:href="@{/user/transportation}">Transport Service</a></li>
+				<li><a th:href="@{/user/transportation}"
+					th:if="${userRole=='ROLE_ADMIN' or userRole=='ROLE_TRANSPORTER'}">Transport
+						Service</a></li>
 
 
 
 
-					<li><a th:href="@{/user/about}">About</a></li>
+				<li th:if="${userRole=='ROLE_USER'}"><a th:href="@{/user/about}">About</a></li>
 
-					<li><a th:href="@{/user/contact}">Contact</a></li>
+				<li th:if="${userRole=='ROLE_USER'}"><a th:href="@{/user/contact}">Contact</a></li>
 				</ul>
 			</div>
 

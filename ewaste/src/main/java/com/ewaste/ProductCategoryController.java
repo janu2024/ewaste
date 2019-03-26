@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "/category")
+@RequestMapping(value = "/admin/category")
 public class ProductCategoryController {
 
 	@Autowired
@@ -119,14 +119,14 @@ public class ProductCategoryController {
 	@PostMapping(value = "/saveCategory")
 	public String saveCategory(@ModelAttribute ProductCategory category) {
 		categoryRepo.save(category);
-		return "redirect:/category/getCategory";
+		return "redirect:/admin/category/getCategory";
 	}
 
 	@PostMapping(value = "/saveSubCategory")
 	public String saveSubCategory(@ModelAttribute ProductSubCategory subCategory) {
 		subCategory.setProductCategory(categoryRepo.findById(subCategory.getProductCategory().getCid()).get());
 		subCategoryRepo.save(subCategory);
-		return "redirect:/category/getSubCategory";
+		return "redirect:/admin/category/getSubCategory";
 	}
 
 	@GetMapping(value = "/getBrand")
@@ -143,7 +143,7 @@ public class ProductCategoryController {
 	public String saveBrand(@ModelAttribute ProductBrand brand) {
 		brand.setSubCategory(subCategoryRepo.findById(brand.getSubCategory().getPsid()).get());
 		brandRepo.save(brand);
-		return "redirect:/category/getBrand";
+		return "redirect:/admin/category/getBrand";
 	}
 
 	@GetMapping(value = "/manageBrand")
@@ -196,7 +196,7 @@ public class ProductCategoryController {
 	public String saveModel(@ModelAttribute ProductModel model) {
 		model.setProductBrand(brandRepo.findById(model.getProductBrand().getBid()).get());
 		modelRepo.save(model);
-		return "redirect:/category/getModel";
+		return "redirect:/admin/category/getModel";
 	}
 
 	@GetMapping(value = "/getPricing")
@@ -222,7 +222,7 @@ public class ProductCategoryController {
 	public String saveModel(@ModelAttribute ProductPricing pricing) {
 		pricing.setProductModel(modelRepo.findById(pricing.getProductModel().getMid()).get());
 		pricingRepo.save(pricing);
-		return "redirect:/category/getPricing";
+		return "redirect:/admin/category/getPricing";
 	}
 	
 	@GetMapping(value = "/managePricing/{pricingId}")

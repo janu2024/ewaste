@@ -19,7 +19,7 @@
 			<tbody>
 				<tr th:each="user : ${brandList}">
 					<td><a
-						th:href="@{/category/manageBrand/{uid}(uid=${user.bid})}"><span
+						th:href="@{/admin/category/manageBrand/{uid}(uid=${user.bid})}"><span
 							th:text="${user.bid}"></span></a></td>
 					<td th:text="${user.brandName}"></td>
 
@@ -30,7 +30,7 @@
 		</table>
 
 		<div class="form-group">
-			<a href="/category/manageBrand" class="btn btn-primary">Create
+			<a href="/admin/category/manageBrand" class="btn btn-primary">Create
 				Brand</a>
 		</div>
 	</div>

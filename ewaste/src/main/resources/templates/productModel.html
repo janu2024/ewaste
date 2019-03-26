@@ -20,7 +20,7 @@
 			<tbody>
 				<tr th:each="user : ${modelList}">
 					<td><a
-						th:href="@{/category/manageModel/{uid}(uid=${user.mid})}"><span
+						th:href="@{/admin/category/manageModel/{uid}(uid=${user.mid})}"><span
 							th:text="${user.mid}"></span></a></td>
 					<td th:text="${user.modelName}"></td>
 
@@ -31,7 +31,7 @@
 		</table>
 
 		<div class="form-group">
-			<a href="/category/manageModel" class="btn btn-primary">Create
+			<a href="/admin/category/manageModel" class="btn btn-primary">Create
 				Model</a>
 		</div>
 	</div>
