@@ -40,7 +40,8 @@
 										<li><a href="home-03.html">Homepage 3</a></li>
 									</ul></li>
 
-								<li><a th:href="@{/admin/userList}">Admin</a>
+								<li th:if="${userRole=='ROLE_ADMIN'}"><a
+									th:href="@{/admin/userList}">Admin</a>
 									<ul class="sub-menu">
 										<li><a th:href="@{/user/productlist}">Product List </a></li>
 										<li><a href="home-02.html">User</a></li>
@@ -60,30 +61,39 @@
 
 								<li>Category
 									<ul class="sub-menu">
-										<li><a th:href="@{/category/getCategory}">Manage Category </a></li>
-									</ul></li>
-								
+										<li><a th:href="@{/category/getCategory}">Manage
+												Category </a></li>
+									</ul>
+								</li>
+
 								<li>SubCategory
 									<ul class="sub-menu">
-										<li><a th:href="@{/category/getSubCategory}">Manage SubCategory </a></li>
-									</ul></li>
+										<li><a th:href="@{/category/getSubCategory}">Manage
+												SubCategory </a></li>
+									</ul>
+								</li>
 								<li>Brand
 									<ul class="sub-menu">
 										<li><a th:href="@{/category/getBrand}">Manage Brand </a></li>
-									</ul></li>
-									
-									<li>Model
+									</ul>
+								</li>
+
+								<li>Model
 									<ul class="sub-menu">
 										<li><a th:href="@{/category/getModel}">Manage Model</a></li>
-									</ul></li>
-									
-									<li>Pricing
-									<ul class="sub-menu">
-										<li><a th:href="@{/category/getPricing}">Manage Pricing</a></li>
-									</ul></li>
-									
+									</ul>
+								</li>
 
-                               <li><a th:href="@{/user/transportation}">Transport Service</a></li>
+								<li>Pricing
+									<ul class="sub-menu">
+										<li><a th:href="@{/category/getPricing}">Manage
+												Pricing</a></li>
+									</ul>
+								</li>
+
+
+								<li><a th:href="@{/user/transportation}">Transport
+										Service</a></li>
 
 								<li><a th:href="@{/user/about}">About</a></li>
 
@@ -199,9 +209,9 @@
 							<li><a th:href="@{/category/getModel}">product model</a></li>
 							<li><a th:href="@{/category/getPricing}">product Price</a></li>
 						</ul></li>
-                                
-				
-                     <li><a th:href="@{/user/transportation}">Transport Service</a></li>
+
+
+					<li><a th:href="@{/user/transportation}">Transport Service</a></li>
 
 
 
