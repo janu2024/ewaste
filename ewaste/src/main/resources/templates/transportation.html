@@ -18,31 +18,33 @@
 					<th>Address</th>
 					<th>PinCode</th>
 					<th>Assign Transport</th>
-					
+
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="user : ${userList}">
-					<td><a th:href="@{/user/admin/{uid}(uid=${user.spid})}">
-					<span
+					<td><a th:href="@{/user/admin/{uid}(uid=${user.spid})}"> <span
 							th:text="${user.spid}"></span></a></td>
 					<td th:text="${user.userInfo.firstName}"></td>
 					<td th:text="${user.userInfo.address}"></td>
-				    <td th:text="${user.userInfo.pinCode}"></td>
-					
-					   <td> <div class="form-group">
-			<a href="/" class="btn btn-primary">Assign Transport</a>
-		</div></td>
-					
+					<td th:text="${user.userInfo.pinCode}"></td>
+
+					<td>
+						<div class="form-group">
+							<a
+								th:href="@{'/productselling/getSoldProductInfo/' + ${user.spid}}"
+								class="btn btn-primary">Assign Transport</a>
+
+						</div>
+					</td>
+
 
 
 				</tr>
 			</tbody>
 		</table>
-		<!-- 	<input type="text" th:value="${userObj.email}"> -->
-		<!-- 	<div th:text="${userObj.email}"></div>
- -->
- 
+
+	</div>
 
 </body>
 </html>
