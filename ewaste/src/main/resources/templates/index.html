@@ -83,9 +83,9 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li class="active-menu">
-								<a href="@{/user/index}">Home</a>
+								<a th:href="@{/user/index}">Home</a>
 								<ul class="sub-menu">
-									<li><a th:href="@{/productselling}">Product Selling </a></li>
+									<li><a th:href="@{/productselling/sellProduct}">Product Selling </a></li>
 									<li><a href="home-02.html">Product Buying</a></li>
 									<li><a href="home-03.html">Homepage 3</a></li>
 								</ul>
@@ -100,7 +100,7 @@
 							</li>
 
 							<li>
-								<a th:href="@{/user/productselling}">ProductSelling</a>
+								<a th:href="@{/productselling/sellProduct}">ProductSelling</a>
 							</li>
 							
 							<li class="label1" data-label1="hot">
@@ -200,9 +200,9 @@
 
 			<ul class="main-menu-m">
 				<li>
-					<a th:href="@{/index.html}">Home</a>
+					<a th:href="@{/user/index}">Home</a>
 					<ul class="sub-menu-m">
-						<li><a th:href="@{/index.html}">ProductSelling</a></li>
+						<li><a th:href="@{/productselling/sellProduct}">ProductSelling</a></li>
 						<li><a href="home-02.html">Buying</a></li>
 						<li><a href="home-03.html">Homepage 3</a></li>
 					</ul>
@@ -218,7 +218,7 @@
 					<a th:href="@{/product.html}">Shop</a>
 				</li>
 				<li>
-					<a th:href="@{/user/productselling}">ProductSelling</a>
+					<a th:href="@{/productselling/sellProduct}">ProductSelling</a>
 				</li>
 				
 				<li>

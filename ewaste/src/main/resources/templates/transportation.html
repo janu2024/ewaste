@@ -16,23 +16,24 @@
 					<th>Sr No.</th>
 					<th>User List</th>
 					<th>Address</th>
-					<th  colspan="2">PinCode</th>
-					
+					<th>PinCode</th>
+					<th>Assign Transport</th>
 					
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="user : ${userList}">
-					<td><a th:href="@{/user/admin/{uid}(uid=${user.uid})}">
+					<td><a th:href="@{/user/admin/{uid}(uid=${user.spid})}">
 					<span
-							th:text="${user.uid}"></span></a></td>
-					<td th:text="${user.firstName}"></td>
-					<td th:text="${user.address}"></td>
-				    <td th:text="${user.pinCode}"> <div class="form-group">
-			<a href="/" class="btn btn-primary">Assign Transport</a>
-		</div>	</td>	 
+							th:text="${user.spid}"></span></a></td>
+					<td th:text="${user.userInfo.firstName}"></td>
+					<td th:text="${user.userInfo.address}"></td>
+				    <td th:text="${user.userInfo.pinCode}"></td>
 					
-		
+					   <td> <div class="form-group">
+			<a href="/" class="btn btn-primary">Assign Transport</a>
+		</div></td>
+					
 
 
 				</tr>
@@ -42,7 +43,6 @@
 		<!-- 	<div th:text="${userObj.email}"></div>
  -->
  
-	</div>
 
 </body>
 </html>

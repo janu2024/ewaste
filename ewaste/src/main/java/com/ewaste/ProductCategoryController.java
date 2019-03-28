@@ -233,5 +233,14 @@ public class ProductCategoryController {
 		m.setViewName("managePricing");// html page
 		return m;
 	}
+	@GetMapping(value = "/manageSubCategory/{subCatId}")
+	public ModelAndView editSubCategory(@PathVariable long subCatId) {
+		ModelAndView m = new ModelAndView();
+		m.addObject("subCategory", subCategoryRepo.findById(subCatId).get());
+		m.addObject("categoryList", categoryRepo.findAll());
+
+		m.setViewName("manageSubCategory");// html page
+		return m;
+	}
 
 }

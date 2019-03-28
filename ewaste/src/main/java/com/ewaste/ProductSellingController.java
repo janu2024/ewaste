@@ -52,7 +52,7 @@ public class ProductSellingController {
 	@Autowired
 	SoldProductsRepository soldProductsRepo;
 
-	public static String uploadDir = "E:\\WorkSpace2\\maven.1548166232495\\ewaste\\src\\main\\resources\\static\\images\\upload";
+	public static String uploadDir = "D:\\ewaste\\maven.1540996285866\\ewaste\\src\\main\\resources\\static\\images\\upload";
 
 	@GetMapping(value = "/sellProduct")
 	public ModelAndView getCategory() {
@@ -160,10 +160,19 @@ public class ProductSellingController {
 
 	}
 
+	
+	
 	@GetMapping(value = "/getSoldProducts")
-	@ResponseBody
-	public List<SoldProducts> getSoldProducts() {
-		return soldProductsRepo.findAll();
+	public ModelAndView transportation() {
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("userList", soldProductsRepo.findAll());//
+		m.setViewName("transportation");// html page
+		return m;
+
 	}
+	
+	
+
 
 }
