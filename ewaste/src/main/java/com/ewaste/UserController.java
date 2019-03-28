@@ -1,6 +1,7 @@
 package com.ewaste;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -180,6 +181,14 @@ public class UserController {
 
 	}
 
+	@GetMapping(value = "/logout")
+	public String logout() {
+
+		SecurityContextHolder.getContext().setAuthentication(null);
+		return "redirect:/login";
+		
+
+	}
 
 	@PostMapping(value = "/saveUser")
 	public String saveUserInfo(@ModelAttribute UserInfo u, Model model) {
