@@ -14,9 +14,9 @@
 
 						<div class="right-top-bar flex-w h-full">
 							<a href="#" class="flex-c-m trans-04 p-lr-25"> Help & FAQs </a> <a
-								href="/user/profile" class="flex-c-m trans-04 p-lr-25"> My Account </a> <a
-								href="#" class="flex-c-m trans-04 p-lr-25"> EN </a> <a href="#"
-								class="flex-c-m trans-04 p-lr-25"> USD </a>
+								href="/user/profile" class="flex-c-m trans-04 p-lr-25"> My
+								Account </a> <a href="#" class="flex-c-m trans-04 p-lr-25"> EN </a>
+							<a href="#" class="flex-c-m trans-04 p-lr-25"> USD </a>
 						</div>
 					</div>
 				</div>
@@ -32,7 +32,8 @@
 						<!-- Menu desktop -->
 						<div class="menu-desktop">
 							<ul class="main-menu">
-								<li class="active-menu" th:if="${userRole=='ROLE_USER'}"><a th:href="@{/user/index}">Home</a>
+								<li class="active-menu" th:if="${userRole=='ROLE_USER'}"><a
+									th:href="@{/user/index}">Home</a>
 									<ul class="sub-menu">
 										<li><a th:href="@{/user/productselling}">Product
 												Selling </a></li>
@@ -50,7 +51,8 @@
 
 
 
-								<li th:if="${userRole=='ROLE_USER'}"><a th:href="@{/user/product}">Shop</a></li>
+								<li th:if="${userRole=='ROLE_USER'}"><a
+									th:href="@{/user/product}">Shop</a></li>
 
 								<li th:if="${userRole=='ROLE_USER'}"><a
 									th:href="@{/productselling/sellProduct}">ProductSelling</a></li>
@@ -96,11 +98,14 @@
 
 								<li
 									th:if="${userRole=='ROLE_ADMIN' or userRole=='ROLE_TRANSPORTER'}"><a
-									th:href="@{/user/transportation}">Transport Service</a></li>
+									th:href="@{/productselling/getSoldProducts}">Transport
+										Service</a></li>
 
-								<li th:if="${userRole=='ROLE_USER'}"><a th:href="@{/user/about}">About</a></li>
+								<li th:if="${userRole=='ROLE_USER'}"><a
+									th:href="@{/user/about}">About</a></li>
 
-								<li th:if="${userRole=='ROLE_USER'}"><a th:href="@{/user/contact}">Contact</a></li>
+								<li th:if="${userRole=='ROLE_USER'}"><a
+									th:href="@{/user/contact}">Contact</a></li>
 							</ul>
 						</div>
 
@@ -172,67 +177,61 @@
 					<li>
 						<div class="right-top-bar flex-w h-full">
 							<a href="#" class="flex-c-m p-lr-10 trans-04"> Help & FAQs </a> <a
-								href="/user/profile" class="flex-c-m p-lr-10 trans-04"> My Account </a> <a
-								href="#" class="flex-c-m p-lr-10 trans-04"> EN </a> <a href="#"
-								class="flex-c-m p-lr-10 trans-04"> USD </a>
+								href="/user/profile" class="flex-c-m p-lr-10 trans-04"> My
+								Account </a> <a href="#" class="flex-c-m p-lr-10 trans-04"> EN </a>
+							<a href="#" class="flex-c-m p-lr-10 trans-04"> USD </a>
 						</div>
 					</li>
-				</ul>
 
-				<ul class="main-menu-m" th:if="${userRole=='ROLE_USER'}">
-					<li class="active-menu"><a href="@{/user/index}">Home</a>
+					<ul class="main-menu-m" th:if="${userRole=='ROLE_USER'}">
+						<li class="active-menu"><a href="@{/user/index}">Home</a></li>
+						<li><a href="home-02.html">Product Buying</a></li>
+						<li><a href="home-03.html">Homepage 3</a></li>
+					</ul>
+
+					<li th:if="${userRole=='ROLE_ADMIN'}"><a
+						th:href="@{/admin/userList}">Admin</a></li>
+
+					<li th:if="${userRole=='ROLE_USER'}"><a
+						th:href="@{/user/product}">Shop</a></li>
+
+					<li th:if="${userRole=='ROLE_USER'}"><a
+						th:href="@{/productselling/sellProduct}">ProductSelling</a></li>
+
+					<li class="label1" data-label1="hot"><a
+						th:href="@{/user/features}">Features</a></li>
+
+					<li class="active-menu" th:if="${userRole=='ROLE_ADMIN'}"><a
+						th:href="@{/admin/category}">Category</a>
 						<ul class="sub-menu">
+							<li><a th:href="@{/admin/category/getCategory}">product
+									category </a></li>
+							<li><a th:href="@{/admin/category/getSubCategory}">product
+									subcategory</a></li>
+							<li><a th:href="@{/admin/category/getBrand}">product
+									brand</a></li>
+							<li><a th:href="@{/admin/category/getModel}">product
+									model</a></li>
+							<li><a th:href="@{/admin/category/getPricing}">product
+									Price</a></li>
+						</ul></li>
 
-							</a></li>
-					<li><a href="home-02.html">Product Buying</a></li>
-					<li><a href="home-03.html">Homepage 3</a></li>
+
+					<li><a th:href="@{/productselling/getSoldProducts}"
+						th:if="${userRole=='ROLE_ADMIN' or userRole=='ROLE_TRANSPORTER'}">Transport
+							Service</a></li>
+
+
+
+
+					<li th:if="${userRole=='ROLE_USER'}"><a
+						th:href="@{/user/about}">About</a></li>
+
+					<li th:if="${userRole=='ROLE_USER'}"><a
+						th:href="@{/user/contact}">Contact</a></li>
 				</ul>
-				</li>
-
-				<li th:if="${userRole=='ROLE_ADMIN'}"><a
-					th:href="@{/admin/userList}">Admin</a>
-					<ul class="sub-menu">
-						<li><a th:href="@{/user/productlist}">Product List </a></li>
-						<li><a href="home-02.html">User</a></li>
-
-					</ul></li>
-
-				<li th:if="${userRole=='ROLE_USER'}"><a
-					th:href="@{/user/product}">Shop</a></li>
-
-				<li th:if="${userRole=='ROLE_USER'}"><a
-					th:href="@{/productselling/sellProduct}">ProductSelling</a></li>
-
-				<li class="label1" data-label1="hot"><a
-					th:href="@{/user/features}">Features</a></li>
-
-				<li class="active-menu" th:if="${userRole=='ROLE_ADMIN'}"><a
-					th:href="@{/admin/category}">Category</a>
-					<ul class="sub-menu">
-						<li><a th:href="@{/admin/category/getCategory}">product
-								category </a></li>
-						<li><a th:href="@{/admin/category/getSubCategory}">product
-								subcategory</a></li>
-						<li><a th:href="@{/admin/category/getBrand}">product
-								brand</a></li>
-						<li><a th:href="@{/admin/category/getModel}">product
-								model</a></li>
-						<li><a th:href="@{/admin/category/getPricing}">product
-								Price</a></li>
-					</ul></li>
-
-
-				<li><a th:href="@{/user/transportation}"
-					th:if="${userRole=='ROLE_ADMIN' or userRole=='ROLE_TRANSPORTER'}">Transport
-						Service</a></li>
-
-
-
-
-				<li th:if="${userRole=='ROLE_USER'}"><a th:href="@{/user/about}">About</a></li>
-
-				<li th:if="${userRole=='ROLE_USER'}"><a th:href="@{/user/contact}">Contact</a></li>
 				</ul>
+
 			</div>
 
 			<!-- Modal Search -->
