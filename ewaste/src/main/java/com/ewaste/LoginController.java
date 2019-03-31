@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "/login")
+@RequestMapping(value = "/login") // controller
 public class LoginController {
 
 	@Autowired
@@ -28,7 +28,7 @@ public class LoginController {
 	@Autowired
 	private SmtpMailSender smtpMailSender;
 
-	@PostMapping(value = "/saveUser")
+	@PostMapping(value = "/saveUser") // methods
 	public String saveUserInfo(@ModelAttribute UserInfo u, Model model) {
 
 		UserInfo dbInfo = service.findByEmail(u.getEmail());
@@ -52,8 +52,16 @@ public class LoginController {
 	public ModelAndView login() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("login");
-		modelAndView.addObject("user", new UserInfo());// blank object
-		modelAndView.addObject("userexists", "false");
+		modelAndView.addObject("user", new UserInfo());// create blank object of UserInfo(POJO class)
+
+		return modelAndView;
+	}
+
+	@GetMapping("/doLogin")
+	public ModelAndView relogin() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("login");
+		modelAndView.addObject("user", new UserInfo());// create blank object of UserInfo(POJO class)
 
 		return modelAndView;
 	}
@@ -73,7 +81,6 @@ public class LoginController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("forgotpassword");
 		modelAndView.addObject("user", new UserInfo());// blank object
-		modelAndView.addObject("userexists", "false");
 
 		return modelAndView;
 	}
@@ -83,6 +90,10 @@ public class LoginController {
 		UserInfo existingUser = service.findByEmail(user.getEmail());
 		if (existingUser != null && existingUser.getPassword().equals(user.getPassword())) {
 			securityService.autologin(existingUser.getEmail(), existingUser.getPassword());
+			if (existingUser.getRole().equalsIgnoreCase("ROLE_TRANSPORTER")) {
+				return "redirect:/productselling/getAssignedProducts";
+			}
+
 			return "redirect:/user/index";
 
 		} else {
@@ -98,7 +109,7 @@ public class LoginController {
 	public String generatePassword(@ModelAttribute UserInfo user, Model model) {
 		UserInfo existingUser = service.findByEmail(user.getEmail());
 		model.addAttribute("user", user);// blank object
-		
+
 		if (existingUser == null) {
 			model.addAttribute("userNotFound", "true");
 			model.addAttribute("emailSent", "false");

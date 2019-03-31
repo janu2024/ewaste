@@ -42,8 +42,7 @@
 									</ul></li>
 
 								<li th:if="${userRole=='ROLE_ADMIN'}"><a
-									th:href="@{/admin/userList}">Admin</a>
-									</li>
+									th:href="@{/admin/userList}">Admin</a></li>
 
 
 
@@ -92,10 +91,9 @@
 								</li>
 
 
-								<li
-									th:if="${userRole=='ROLE_ADMIN' or userRole=='ROLE_TRANSPORTER'}"><a
-									th:href="@{/productselling/getSoldProducts}">Transport
-										Service</a></li>
+								<li><a th:href="@{/productselling/getAssignedProducts}"
+									th:if="${userRole=='ROLE_TRANSPORTER'}">My Orders</a></li>
+
 
 								<li th:if="${userRole=='ROLE_USER'}"><a
 									th:href="@{/user/about}">About</a></li>
@@ -213,10 +211,8 @@
 						</ul></li>
 
 
-					<li><a th:href="@{/productselling/getSoldProducts}"
-						th:if="${userRole=='ROLE_ADMIN' or userRole=='ROLE_TRANSPORTER'}">Transport
-							Service</a></li>
-
+					<li><a th:href="@{/productselling/getAssignedProducts}"
+						th:if="${userRole=='ROLE_TRANSPORTER'}">My Orders</a></li>
 
 
 

@@ -1,3 +1,4 @@
+//
 package com.ewaste;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	}
 
-	@Override
+	@Override//login will open 1st //when ??? 
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/admin/category/*").access("hasRole('ROLE_ADMIN')").antMatchers("/css/**", "/images/**", "/js/**", "/login/*").permitAll()
 				.anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and().logout()

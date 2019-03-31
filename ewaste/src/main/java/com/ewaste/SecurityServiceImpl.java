@@ -42,7 +42,7 @@ public class SecurityServiceImpl implements SecurityService{
 	}
 
 
-    @Override
+    @Override//session
     public void autologin(String username, String password) {
     	org.springframework.security.core.userdetails.User userDetails = userDetailsService.loadUserByUsername(username);
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());

@@ -47,14 +47,14 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<form th:action="@{/login/doLogin}" th:object="${user}"
-					method="post" class="login100-form validate-form">
+					method="post" class="login100-form validate-form"><!-- user is a blank object from logincontroller -->
 
 					<span class="login100-form-title p-b-43"> Login to continue
 					</span>
 
 
 					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="email"
+						<input class="input100" type="email"
 							th:field="*{email}" required="required"> <span
 							class="focus-input100"></span> <span class="label-input100">Email</span>
 					</div>
@@ -62,7 +62,7 @@
 
 					<div class="wrap-input100 validate-input"
 						data-validate="Password is required">
-						<input class="input100" type="password" name="pass"
+						<input class="input100" type="password"
 							th:field="*{password}" required="required"> <span
 							class="focus-input100"></span> <span class="label-input100">Password</span>
 					</div>
@@ -80,14 +80,14 @@
 						</div>
 					</div>
 
-
+					<div th:if="${inValidInfo} == 'true'"><font color="red">Invalid User name or password</font></div>
 					<div class="flex-sb-m w-full p-t-3 p-b-32">
 						<button class="login100-form-btn">Login</button>
 					</div>
 
 					<div class="flex-sb-m w-full p-t-3 p-b-32" >
 						<a th:href="@{/login/registration}" class="txt1"> or sign up
-							using </a>
+							</a>
 					</div>
 
 
