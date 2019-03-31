@@ -10,4 +10,7 @@ public interface SoldProductsRepository extends JpaRepository<SoldProducts, Long
 
 	List<SoldProducts> findByTransporterInfo(UserInfo transporterInfo);
 	
+	List<SoldProducts> findByUserInfo(UserInfo userInfo);
+
+	
 }

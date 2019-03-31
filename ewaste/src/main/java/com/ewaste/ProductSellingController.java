@@ -178,6 +178,21 @@ public class ProductSellingController {
 
 	}
 
+	@GetMapping(value = "/getMyProducts")
+	public ModelAndView getMyProducts() {
+		UserInfo userInfo = securityService.getLoggedInUser();
+
+		if (!userInfo.getRole().equalsIgnoreCase("ROLE_USER")) {
+			return null;
+		}
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("myOrders", soldProductsRepo.findByUserInfo(userInfo));//
+		m.setViewName("myProducts");// html page
+		return m;
+
+	}
+
 	@GetMapping(value = "/getAssignedProductInfo/{productId}")
 	public ModelAndView getAssignedProductInfo(@PathVariable long productId) {
 
@@ -219,6 +234,8 @@ public class ProductSellingController {
 
 		ModelAndView m = new ModelAndView();
 		m.addObject("productInfo", soldProductsRepo.findById(productId).get());//
+		m.addObject("userList", userRepo.findByRole("ROLE_TRANSPORTER"));//
+
 		m.setViewName("soldProductInfo");// html page
 		return m;
 
@@ -262,7 +279,7 @@ public class ProductSellingController {
 			newTransporter = true;
 		}
 
-		if (soldProducts.getTransporterInfo() == null) {
+		if (soldProducts.getTransporterInfo() == null || soldProducts.getTransporterInfo().getUid()==null) {
 			dbProduct.setTransporterInfo(null);
 		} else {
 			dbProduct.setTransporterInfo(userRepo.findById(soldProducts.getTransporterInfo().getUid()).get());
