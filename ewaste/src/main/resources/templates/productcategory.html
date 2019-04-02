@@ -14,11 +14,11 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="user : ${categoryList}">
+				<tr th:each="category : ${categoryList}">
 					<td><a
-						th:href="@{/admin/category/manageCategory/{uid}(uid=${user.cid})}"><span
-							th:text="${user.cid}"></span></a></td>
-					<td th:text="${user.categoryName}"></td>
+						th:href="@{/admin/category/manageCategory/{uid}(uid=${category.cid})}"><span
+							th:text="${category.cid}"></span></a></td>
+					<td th:text="${category.categoryName}"></td>
 
 
 				</tr>

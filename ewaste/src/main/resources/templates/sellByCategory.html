@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout2">
+<body>
+	<title>ProductSelling</title>
+	<div id="page" layout:fragment="content">
+
+		<!-- Add dynamic content inside this div -->
+
+		<div id="dynamicContent">
+
+			<!-- Content page -->
+			<div class="container">
+				<div class=" bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+					<div class="page-content">
+
+						<!-- code added for testing layout -->
+						<div class="container-fluid">
+							<div class="row">
+								<ul class="gallery" th:each="processData : ${categoryList}"
+									th:if="${not #lists.isEmpty(categoryList)}">
+									<li class="thumbnail pr-2" th:onclick="getFormForProcess(this)"><i></i><a
+										href="#"> <img
+											src="https://s3n.cashify.in/cashify/productLine/img/xxhdpi/b5f8d065-6979.jpg"
+											class="pt-2"> <label style="text-align: center"
+											class="desc"> <span class="spanOverflowElipsis"
+												data-rel="tooltip" data-trigger="hover"
+												data-placement="left" th:title="${processData.categoryName}"
+												th:text="${processData.categoryName}"></span>
+										</label>
+									</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- code end for testing layout -->
+					</div>
+
+				</div>
+
+
+
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

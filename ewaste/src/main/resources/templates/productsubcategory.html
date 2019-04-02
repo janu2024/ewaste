@@ -17,13 +17,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="user : ${subCategoryList}">
+				<tr th:each="subcategory : ${subCategoryList}">
 					<td><a
-						th:href="@{/admin/category/manageSubCategory/{uid}(uid=${user.psid})}"><span
-							th:text="${user.psid}"></span></a></td>
-					<td th:text="${user.categoryName}"></td>
+						th:href="@{/admin/category/manageSubCategory/{uid}(uid=${subcategory.psid})}"><span
+							th:text="${subcategory.psid}"></span></a></td>
+					<td th:text="${subcategory.categoryName}"></td>
 
-					<td th:text="${user.productCategory.categoryName}"></td>
+					<td th:text="${subcategory.productCategory.categoryName}"></td>
 
 				</tr>
 			</tbody>

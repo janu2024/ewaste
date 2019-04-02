@@ -34,7 +34,13 @@ public class ProductCategoryController {
 
 	@GetMapping(value = "/getCategory")
 	public ModelAndView getCategory() {
+		/*List<ProductCategory> categoryList = categoryRepo.findAll();
 
+		for (ProductCategory category : categoryList) {
+
+		category.getCategoryName();
+		}*/
+	
 		ModelAndView m = new ModelAndView();
 		m.addObject("categoryList", categoryRepo.findAll());// blank object
 
@@ -224,7 +230,7 @@ public class ProductCategoryController {
 		pricingRepo.save(pricing);
 		return "redirect:/admin/category/getPricing";
 	}
-	
+
 	@GetMapping(value = "/managePricing/{pricingId}")
 	public ModelAndView editPricing(@PathVariable long pricingId) {
 		ModelAndView m = new ModelAndView();
@@ -233,6 +239,7 @@ public class ProductCategoryController {
 		m.setViewName("managePricing");// html page
 		return m;
 	}
+
 	@GetMapping(value = "/manageSubCategory/{subCatId}")
 	public ModelAndView editSubCategory(@PathVariable long subCatId) {
 		ModelAndView m = new ModelAndView();

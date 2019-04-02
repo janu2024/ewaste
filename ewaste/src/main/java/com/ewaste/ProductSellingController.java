@@ -57,6 +57,20 @@ public class ProductSellingController {
 
 	public static String uploadDir = "D:\\ewaste\\maven.1540996285866\\ewaste\\src\\main\\resources\\static\\images\\upload";
 
+	
+	@GetMapping(value = "/sellByCategory")
+	public ModelAndView sellByCategory() {
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("categoryList", categoryRepo.findAll());// blank object
+
+		m.setViewName("sellByCategory");
+		return m;
+
+	}
+	
+	
+	
 	@GetMapping(value = "/sellProduct")
 	public ModelAndView getCategory() {
 
