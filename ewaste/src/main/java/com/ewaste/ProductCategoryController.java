@@ -1,5 +1,7 @@
 package com.ewaste;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,13 +12,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/admin/category")
 public class ProductCategoryController {
 
+	String uploadPath = "C:\\Users\\admin\\Documents\\workspace-sts-3.9.5.RELEASE\\maven.1544709332374\\ewaste\\src\\main\\resources\\static\\images\\upload";
 	@Autowired
 	ProductCategoryRepository categoryRepo;
 
@@ -34,13 +39,14 @@ public class ProductCategoryController {
 
 	@GetMapping(value = "/getCategory")
 	public ModelAndView getCategory() {
-		/*List<ProductCategory> categoryList = categoryRepo.findAll();
+		/*
+		 * List<ProductCategory> categoryList = categoryRepo.findAll();
+		 * 
+		 * for (ProductCategory category : categoryList) {
+		 * 
+		 * category.getCategoryName(); }
+		 */
 
-		for (ProductCategory category : categoryList) {
-
-		category.getCategoryName();
-		}*/
-	
 		ModelAndView m = new ModelAndView();
 		m.addObject("categoryList", categoryRepo.findAll());// blank object
 
@@ -123,14 +129,35 @@ public class ProductCategoryController {
 	}
 
 	@PostMapping(value = "/saveCategory")
-	public String saveCategory(@ModelAttribute ProductCategory category) {
+	public String saveCategory(@ModelAttribute ProductCategory category,
+			@RequestParam("productUploadImage") MultipartFile productImage) {
+		Path mpath = Paths.get(uploadPath, productImage.getOriginalFilename());
+		try {
+			java.nio.file.Files.write(mpath, productImage.getBytes());
+			category.setProductImage("/images/upload/" + productImage.getOriginalFilename());
+
+		} catch (Exception e) {
+			System.out.print(e);
+		}
+
 		categoryRepo.save(category);
 		return "redirect:/admin/category/getCategory";
 	}
 
 	@PostMapping(value = "/saveSubCategory")
-	public String saveSubCategory(@ModelAttribute ProductSubCategory subCategory) {
+	public String saveSubCategory(@ModelAttribute ProductSubCategory subCategory,
+			@RequestParam("productUploadImage") MultipartFile productImage) {
 		subCategory.setProductCategory(categoryRepo.findById(subCategory.getProductCategory().getCid()).get());
+
+		Path mpath = Paths.get(uploadPath, productImage.getOriginalFilename());
+		try {
+			java.nio.file.Files.write(mpath, productImage.getBytes());
+			subCategory.setProductImage("/images/upload/" + productImage.getOriginalFilename());
+
+		} catch (Exception e) {
+			System.out.print(e);
+		}
+
 		subCategoryRepo.save(subCategory);
 		return "redirect:/admin/category/getSubCategory";
 	}
@@ -146,8 +173,19 @@ public class ProductCategoryController {
 	}
 
 	@PostMapping(value = "/saveBrand")
-	public String saveBrand(@ModelAttribute ProductBrand brand) {
+	public String saveBrand(@ModelAttribute ProductBrand brand,
+			@RequestParam("productUploadImage") MultipartFile productImage) {
 		brand.setSubCategory(subCategoryRepo.findById(brand.getSubCategory().getPsid()).get());
+
+		Path mpath = Paths.get(uploadPath, productImage.getOriginalFilename());
+		try {
+			java.nio.file.Files.write(mpath, productImage.getBytes());
+			brand.setProductImage("/images/upload/" + productImage.getOriginalFilename());
+
+		} catch (Exception e) {
+			System.out.print(e);
+		}
+
 		brandRepo.save(brand);
 		return "redirect:/admin/category/getBrand";
 	}
@@ -199,7 +237,17 @@ public class ProductCategoryController {
 	}
 
 	@PostMapping(value = "/saveModel")
-	public String saveModel(@ModelAttribute ProductModel model) {
+	public String saveModel(@ModelAttribute ProductModel model,
+			@RequestParam("productUploadImage") MultipartFile productImage) {
+		Path mpath = Paths.get(uploadPath, productImage.getOriginalFilename());
+		try {
+			java.nio.file.Files.write(mpath, productImage.getBytes());
+			model.setProductImage("/images/upload/" + productImage.getOriginalFilename());
+
+		} catch (Exception e) {
+			System.out.print(e);
+		}
+
 		model.setProductBrand(brandRepo.findById(model.getProductBrand().getBid()).get());
 		modelRepo.save(model);
 		return "redirect:/admin/category/getModel";

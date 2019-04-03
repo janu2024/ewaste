@@ -25,6 +25,23 @@ public class ProductModel {
 	@JoinColumn(name = "brand_id", nullable = false, referencedColumnName = "bid")
 	private ProductBrand productBrand;
 
+	
+
+	@Column(name = "product_image")
+	private String productImage;
+	
+	
+
+	public String getProductImage() {
+		return productImage;
+	}
+
+
+
+	public void setProductImage(String productImage) {
+		this.productImage = productImage;
+	}
+
 	public Long getMid() {
 		return mid;
 	}

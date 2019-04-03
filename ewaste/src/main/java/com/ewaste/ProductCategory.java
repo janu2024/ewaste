@@ -20,6 +20,7 @@ public class ProductCategory {
 	private Long cid;
 	
 	
+	
 	public Long getCid() {
 		return cid;
 	}
@@ -63,6 +64,21 @@ public class ProductCategory {
 	
 	@Column(name = "category_name")
 	private String categoryName;
+
+	@Column(name = "product_image")
+	private String productImage;
+	
+	
+
+	public String getProductImage() {
+		return productImage;
+	}
+
+
+
+	public void setProductImage(String productImage) {
+		this.productImage = productImage;
+	}
 
 
 	

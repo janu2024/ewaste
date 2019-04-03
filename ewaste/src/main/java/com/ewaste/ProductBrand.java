@@ -28,41 +28,42 @@ public class ProductBrand {
 	@JoinColumn(name = "m_id", nullable = false, referencedColumnName = "psid")
 	private ProductSubCategory subCategory;
 
-	
 	@Column(name = "brand_name")
 	private String brandName;
 
+	@Column(name = "product_image")
+	private String productImage;
+
+	public String getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(String productImage) {
+		this.productImage = productImage;
+	}
 
 	public Long getBid() {
 		return bid;
 	}
 
-
 	public void setBid(Long bid) {
 		this.bid = bid;
 	}
-
 
 	public ProductSubCategory getSubCategory() {
 		return subCategory;
 	}
 
-
 	public void setSubCategory(ProductSubCategory subCategory) {
 		this.subCategory = subCategory;
 	}
-
 
 	public String getBrandName() {
 		return brandName;
 	}
 
-
 	public void setBrandName(String brandName) {
 		this.brandName = brandName;
 	}
 
-	
-	
-	
 }

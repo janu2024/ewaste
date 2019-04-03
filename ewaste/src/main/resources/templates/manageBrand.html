@@ -7,7 +7,8 @@
 
 
 		<div id="dynamicContent">
-			<form th:action="@{/admin/category/saveBrand}" th:object="${brand}"
+			<form th:action="@{/admin/category/saveBrand}" 
+						enctype="multipart/form-data" th:object="${brand}"
 				method="post">
 				<div class="form-group">
 					<label for="usr">Product Sub Category</label> <select
@@ -19,6 +20,10 @@
 				<div class="form-group">
 					<label for="usr">Brand Name</label> <input type="text"
 						th:field="*{brandName}" class="form-control" required="required">
+				</div>
+				<div class="form-group">
+					<label for="usr">Image</label> <input type="file"
+						name="productUploadImage" required="required">
 				</div>
 				<input type="hidden" th:field="*{bid}" class="form-control">
 				<div class="form-group">

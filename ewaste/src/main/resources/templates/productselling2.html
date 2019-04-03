@@ -13,8 +13,7 @@
 			<!-- Content page -->
 			<div class="container">
 				<div class=" bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-					<form th:action="@{/productselling/sellProduct}"
-						enctype="multipart/form-data" method="post">
+					<form th:action="@{/productselling/sellProduct}" method="post">
 
 						<h4 class="mtext-105 cl2 txt-center p-b-30">Your Product</h4>
 
@@ -80,16 +79,6 @@
 						</div>
 
 
-						<div class="form-group">
-							<label for="usr">Product Image</label> <input type="file"
-								name="productUploadImage" required="required">
-						</div>
-						<input type="hidden" id="sellingProductId" name="pricing.pid">
-						<div class="form-group">
-							<label for="usr">Product Bill</label> <input type="file"
-								name="sellindProductBillUploadImage"
-								id="sellindProductBillUploadImage" required="required">
-						</div>
 						<button type="submit" class="btn btn-primary">Sell
 							Product</button>
 					</form>

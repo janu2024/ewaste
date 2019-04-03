@@ -24,6 +24,23 @@ public class ProductSubCategory {
 	@JoinColumn(name = "cat_id", nullable = false, referencedColumnName = "cid")
 	private ProductCategory productCategory;
 
+	
+
+	@Column(name = "product_image")
+	private String productImage;
+	
+	
+
+	public String getProductImage() {
+		return productImage;
+	}
+
+
+
+	public void setProductImage(String productImage) {
+		this.productImage = productImage;
+	}
+
 	public Long getPsid() {
 		return psid;
 	}

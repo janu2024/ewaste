@@ -5,27 +5,45 @@
 <body>
 	<div id="page" layout:fragment="content">
 
-		<table id="example" class="table table-striped table-bordered"
-			style="width: 100%">
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th>Category Name</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="category : ${categoryList}">
-					<td><a
-						th:href="@{/admin/category/manageCategory/{uid}(uid=${category.cid})}"><span
-							th:text="${category.cid}"></span></a></td>
-					<td th:text="${category.categoryName}"></td>
+		<div id="dynamicContent">
+
+			<!-- Content page -->
+			<div class="container">
+				<div th:if="${not #lists.isEmpty(categoryList)}"
+					class=" bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+					<div class="page-content">
+
+						<!-- code added for testing layout -->
+						<div class="container-fluid">
+							<div class="row">
+								<ul class="gallery" th:each="category : ${categoryList}">
+									<li class="thumbnail pr-2"><i></i><a
+										th:href="@{/admin/category/manageCategory/{uid}(uid=${category.cid})}">
+											<img style="max-height: 129px; max-width: 129px;"
+											th:src="@{${category.productImage}}" class="pt-2"> <label
+											style="text-align: center" class="desc"> <span
+												class="spanOverflowElipsis" data-rel="tooltip"
+												data-trigger="hover" data-placement="left"
+												th:title="${category.categoryName}"
+												th:text="${category.categoryName}"></span>
+										</label>
+									</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- code end for testing layout -->
+					</div>
+
+				</div>
 
 
-				</tr>
-			</tbody>
-		</table>
 
-		<div class="form-group">
+
+			</div>
+		</div>
+
+		<div class="form-group pt-2 pl-3">
 			<a href="/admin/category/manageCategory" class="btn btn-primary">Create
 				Category</a>
 		</div>

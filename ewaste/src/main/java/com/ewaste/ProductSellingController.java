@@ -57,7 +57,6 @@ public class ProductSellingController {
 
 	public static String uploadDir = "D:\\ewaste\\maven.1540996285866\\ewaste\\src\\main\\resources\\static\\images\\upload";
 
-	
 	@GetMapping(value = "/sellByCategory")
 	public ModelAndView sellByCategory() {
 
@@ -68,9 +67,7 @@ public class ProductSellingController {
 		return m;
 
 	}
-	
-	
-	
+
 	@GetMapping(value = "/sellProduct")
 	public ModelAndView getCategory() {
 
@@ -153,25 +150,10 @@ public class ProductSellingController {
 	}
 
 	@PostMapping(value = "/sellProduct")
-	public String saveModel(@ModelAttribute SoldProducts soldProducts,
-			@RequestParam("productUploadImage") MultipartFile productImage,
-			@RequestParam("sellindProductBillUploadImage") MultipartFile sellindProductBill) {
+	public String saveModel(@ModelAttribute SoldProducts soldProducts) {
 
 		soldProducts.setPricing(pricingRepo.findById(soldProducts.getPricing().getPid()).get());
 		soldProducts.setUserInfo(securityService.getLoggedInUser());
-		Path mpath = Paths.get(uploadDir, productImage.getOriginalFilename());
-		Path mpath2 = Paths.get(uploadDir, sellindProductBill.getOriginalFilename());
-
-		try {
-			java.nio.file.Files.write(mpath, productImage.getBytes());
-			java.nio.file.Files.write(mpath2, sellindProductBill.getBytes());
-			soldProducts.setProductImage("/images/upload/" + productImage.getOriginalFilename());
-			soldProducts.setProductBill("/images/upload/" + sellindProductBill.getOriginalFilename());
-
-		} catch (Exception e) {
-			System.out.print(e);
-		}
-
 		soldProductsRepo.save(soldProducts);
 		return "redirect:/productselling/sellProduct";
 
@@ -293,7 +275,7 @@ public class ProductSellingController {
 			newTransporter = true;
 		}
 
-		if (soldProducts.getTransporterInfo() == null || soldProducts.getTransporterInfo().getUid()==null) {
+		if (soldProducts.getTransporterInfo() == null || soldProducts.getTransporterInfo().getUid() == null) {
 			dbProduct.setTransporterInfo(null);
 		} else {
 			dbProduct.setTransporterInfo(userRepo.findById(soldProducts.getTransporterInfo().getUid()).get());
