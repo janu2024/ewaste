@@ -11,6 +11,10 @@
 			<!-- Content page -->
 			<div class="container pt-5">
 				<div class=" bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md"
+					th:if="${ #lists.isEmpty(subCategoryList)}">No Sub Categories Found</div>
+
+
+				<div class=" bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md"
 					th:if="${not #lists.isEmpty(subCategoryList)}">
 					<div class="page-content">
 
