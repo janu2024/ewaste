@@ -74,14 +74,15 @@ public class ProductSellingController {
 		ModelAndView m = new ModelAndView();
 		m.addObject("categoryList", categoryRepo.findAll());// blank object
 
-		m.setViewName("productselling2");
+		m.setViewName("productSellingCategory");
 		return m;
 
 	}
 
 	@GetMapping(value = "/getSubCategory/{categoryId}")
-	@ResponseBody
-	public List<ProductSubCategory> getSubCategory(@PathVariable long categoryId) {
+	public ModelAndView getSubCategory(@PathVariable long categoryId) {
+		ModelAndView m = new ModelAndView();
+
 		List<ProductSubCategory> filteredList = new ArrayList<>();
 		ProductSubCategory sc;
 		List<ProductSubCategory> resultList = subCategoryRepo
@@ -90,16 +91,20 @@ public class ProductSellingController {
 			sc = new ProductSubCategory();
 			sc.setCategoryName(c.getCategoryName());
 			sc.setPsid(c.getPsid());
+			sc.setProductImage(c.getProductImage());
 			filteredList.add(sc);
 		}
+		m.setViewName("productSellingSubCategory");
+		m.addObject("subCategoryList", filteredList);// blank object
 
-		return filteredList;
+		return m;
 
 	}
 
 	@GetMapping(value = "/getBrand/{subCategoryId}")
-	@ResponseBody
-	public List<ProductBrand> getBrand(@PathVariable long subCategoryId) {
+	public ModelAndView getBrand(@PathVariable long subCategoryId) {
+		ModelAndView m = new ModelAndView();
+
 		List<ProductBrand> resultList = brandRepo.findBySubCategory(subCategoryRepo.findById(subCategoryId).get());
 		ProductBrand brandObj;
 		List<ProductBrand> filteredList = new ArrayList<>();
@@ -107,27 +112,34 @@ public class ProductSellingController {
 			brandObj = new ProductBrand();
 			brandObj.setBid(brand.getBid());
 			brandObj.setBrandName(brand.getBrandName());
+			brandObj.setProductImage(brand.getProductImage());
 			filteredList.add(brandObj);
 		}
+		m.setViewName("productSellingBrand");
+		m.addObject("brandList", filteredList);// blank object
 
-		return filteredList;
+		return m;
 	}
 
 	@GetMapping(value = "/getModel/{brandId}")
-	@ResponseBody
-	public List<ProductModel> getModel(@PathVariable long brandId) {
+	public ModelAndView getModel(@PathVariable long brandId) {
 		List<ProductModel> resultList = modelRepo.findByProductBrand(brandRepo.findById(brandId).get());
 		List<ProductModel> filteredList = new ArrayList<>();
+		ModelAndView m = new ModelAndView();
 
 		ProductModel modelObj;
 		for (ProductModel model : resultList) {
 			modelObj = new ProductModel();
 			modelObj.setModelName(model.getModelName());
 			modelObj.setMid(model.getMid());
+			modelObj.setProductImage(model.getProductImage());
+
 			filteredList.add(modelObj);
 		}
+		m.setViewName("productSellingModel");
+		m.addObject("modelList", filteredList);// blank object
 
-		return filteredList;
+		return m;
 	}
 
 	@GetMapping(value = "/getPricing/{modelId}")

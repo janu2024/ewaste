@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout2">
+<body>
+	<div id="page" layout:fragment="content">
+
+
+		<div id="dynamicContent">
+
+			<!-- Content page -->
+			<div class="container">
+				<div class=" bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md"
+					th:if="${not #lists.isEmpty(subCategoryList)}">
+					<div class="page-content">
+
+						<!-- code added for testing layout -->
+						<div class="container-fluid">
+							<div class="row">
+								<ul class="gallery" th:each="category : ${subCategoryList}">
+									<li class="thumbnail pr-2"><i></i><a
+										th:href=@{/productselling/getBrand/{uid}(uid=${category.cid})}>
+											<img style="max-height: 129px; max-width: 129px;"
+											th:src="@{${category.productImage}}" class="pt-2"> <label
+											style="text-align: center" class="desc"> <span
+												class="spanOverflowElipsis" data-rel="tooltip"
+												data-trigger="hover" data-placement="left"
+												th:title="${category.categoryName}"
+												th:text="${category.categoryName}"></span>
+										</label>
+									</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- code end for testing layout -->
+					</div>
+
+				</div>
+
+
+
+
+			</div>
+		</div>
+
+
+	</div>
+</body>
+
+</html>

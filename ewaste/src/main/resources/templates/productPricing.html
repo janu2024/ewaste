@@ -18,13 +18,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="user : ${pricingList}">
+				<tr th:each="category : ${pricingList}">
 					<td><a
-						th:href="@{/admin/category/managePricing/{uid}(uid=${user.pid})}"><span
-							th:text="${user.pid}"></span></a></td>
-					<td th:text="${user.productModel.modelName}"></td>
+						th:href="@{/admin/category/managePricing/{uid}(uid=${category.pid})}"><span
+							th:text="${category.pid}"></span></a></td>
+					<td th:text="${category.productModel.modelName}"></td>
 
-					<td th:text="${user.productPrice}"></td>
+					<td th:text="${category.productPrice}"></td>
 
 				</tr>
 			</tbody>
