@@ -9,7 +9,7 @@
 		<div id="dynamicContent">
 
 			<!-- Content page -->
-			<div class="container">
+			<div class="container pt-5">
 				<div class=" bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md"
 					th:if="${not #lists.isEmpty(subCategoryList)}">
 					<div class="page-content">
@@ -19,7 +19,7 @@
 							<div class="row">
 								<ul class="gallery" th:each="category : ${subCategoryList}">
 									<li class="thumbnail pr-2"><i></i><a
-										th:href=@{/productselling/getBrand/{uid}(uid=${category.cid})}>
+										th:href=@{/productselling/getBrand/{uid}(uid=${category.psid})}>
 											<img style="max-height: 129px; max-width: 129px;"
 											th:src="@{${category.productImage}}" class="pt-2"> <label
 											style="text-align: center" class="desc"> <span
