@@ -20,8 +20,8 @@
 						<!-- code added for testing layout -->
 						<div class="container-fluid">
 							<div class="row">
-								<ul class="gallery" th:each="category : ${categoryList}">
-									<li class="thumbnail pr-2"><i></i><a
+								<ul class="flex-col-center border-light card-ui border-card-radius flwidth flheight pd-item" th:each="category : ${categoryList}">
+									<li class="thumbnail pr-2" ><i></i><a class="flex-col-center border-light card-ui border-card-radius flwidth flheight pd-item"
 										th:href="@{/productselling/getSubCategory/{uid}(uid=${category.cid})}">
 											<img style="max-height: 129px; max-width: 129px;"
 											th:src="@{${category.productImage}}" class="pt-2"> <label

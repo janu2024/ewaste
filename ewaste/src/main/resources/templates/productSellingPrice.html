@@ -9,22 +9,21 @@
 
 			<!-- Content page -->
 			<div class="container pt-5">
-				<div class=" bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md"
-					th:if="${not #lists.isEmpty(modelList)}">
+				<div class=" bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
 					<div class="page-content">
 
 						<!-- code added for testing layout -->
 						<div class="container-fluid">
 							<div class="row">
-								<ul class="gallery" th:each="model : ${modelList}">
+								<ul class="gallery">
 									<li class="thumbnail pr-2"><i></i><a
-										th:href="@{/productselling/getSellingPrice/{uid}(uid=${model.mid})}">
+										th:href="@{/productselling/getModel/{uid}(uid=${modelInfo.mid})}">
 											<img style="max-height: 129px; max-width: 129px;"
-											th:src="@{${model.productImage}}" class="pt-2"> <label
+											th:src="@{${modelInfo.productImage}}" class="pt-2"> <label
 											style="text-align: center" class="desc"> <span
 												class="spanOverflowElipsis" data-rel="tooltip"
 												data-trigger="hover" data-placement="left"
-												th:title="${model.modelName}" th:text="${model.modelName}"></span>
+												th:title="${modelInfo.modelName}" th:text="${modelInfo.modelName}"></span>
 										</label>
 									</a></li>
 								</ul>
@@ -36,9 +35,7 @@
 
 				</div>
 
-				<div class=" bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md"
-					th:if="${ #lists.isEmpty(modelList)}">No Models Found</div>
-
+				
 
 			</div>
 		</div>

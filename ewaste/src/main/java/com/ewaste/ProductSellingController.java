@@ -142,6 +142,30 @@ public class ProductSellingController {
 		return m;
 	}
 
+	@GetMapping(value = "/getSellingPrice/{modelId}")
+	public ModelAndView getSellingPrice(@PathVariable long modelId) {
+		ProductModel modelInfo = modelRepo.findById(modelId).get();
+
+		List<ProductPricing> resultList = pricingRepo.findByProductModel(modelRepo.findById(modelId).get());
+		List<ProductPricing> filteredList = new ArrayList<>();
+		ProductPricing pricingObj;
+		ModelAndView m = new ModelAndView();
+
+		for (ProductPricing pricing : resultList) {
+			pricingObj = new ProductPricing();
+			pricingObj.setNumberOfYearsOld(pricing.getNumberOfYearsOld());
+			pricingObj.setPid(pricing.getPid());
+			pricingObj.setProductPrice(pricing.getProductPrice());
+			pricingObj.setWorking(pricing.isWorking());
+			filteredList.add(pricingObj);
+
+		}
+		m.setViewName("productSellingPrice");
+		m.addObject("productPricing", filteredList);// blank object
+		m.addObject("modelInfo", modelInfo);
+		return m;
+	}
+
 	@GetMapping(value = "/getPricing/{modelId}")
 	@ResponseBody
 	public List<ProductPricing> getProductPricings(@PathVariable long modelId) {
