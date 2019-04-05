@@ -151,11 +151,17 @@ public class ProductSellingController {
 		ProductPricing pricingObj;
 		ModelAndView m = new ModelAndView();
 
+		Long produdctPricing = 0l;
+
 		for (ProductPricing pricing : resultList) {
 			pricingObj = new ProductPricing();
 			pricingObj.setNumberOfYearsOld(pricing.getNumberOfYearsOld());
 			pricingObj.setPid(pricing.getPid());
 			pricingObj.setProductPrice(pricing.getProductPrice());
+			if (pricing.getProductPrice() > produdctPricing) {
+				produdctPricing = pricing.getProductPrice();
+			}
+
 			pricingObj.setWorking(pricing.isWorking());
 			filteredList.add(pricingObj);
 
@@ -163,7 +169,29 @@ public class ProductSellingController {
 		m.setViewName("productSellingPrice");
 		m.addObject("productPricing", filteredList);// blank object
 		m.addObject("modelInfo", modelInfo);
+		m.addObject("maxPricing", produdctPricing);
 		return m;
+	}
+
+	@GetMapping(value = "/getSellingProductDetails/{modelId}")
+	@ResponseBody
+	public List<ProductPricing> getSellingProductDetails(@PathVariable long modelId) {
+
+		List<ProductPricing> resultList = pricingRepo.findByProductModel(modelRepo.findById(modelId).get());
+		List<ProductPricing> filteredList = new ArrayList<>();
+		ProductPricing pricingObj;
+
+		for (ProductPricing pricing : resultList) {
+			pricingObj = new ProductPricing();
+			pricingObj.setNumberOfYearsOld(pricing.getNumberOfYearsOld());
+			pricingObj.setPid(pricing.getPid());
+			pricingObj.setProductPrice(pricing.getProductPrice());
+
+			pricingObj.setWorking(pricing.isWorking());
+			filteredList.add(pricingObj);
+
+		}
+		return filteredList;
 	}
 
 	@GetMapping(value = "/getPricing/{modelId}")

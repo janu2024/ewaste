@@ -7,12 +7,12 @@
 
 		<div id="dynamicContent">
 
-			<!-- Content page -->
+			<!-- 			
 			<div class="container pt-5">
 				<div class=" bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
 					<div class="page-content">
 
-						<!-- code added for testing layout -->
+						code added for testing layout
 						<div class="container-fluid">
 							<div class="row">
 								<ul class="gallery">
@@ -23,21 +23,97 @@
 											style="text-align: center" class="desc"> <span
 												class="spanOverflowElipsis" data-rel="tooltip"
 												data-trigger="hover" data-placement="left"
-												th:title="${modelInfo.modelName}" th:text="${modelInfo.modelName}"></span>
+												th:title="${modelInfo.modelName}"
+												th:text="${modelInfo.modelName}"></span>
 										</label>
 									</a></li>
 								</ul>
 							</div>
 						</div>
 
-						<!-- code end for testing layout -->
+						code end for testing layout
 					</div>
 
 				</div>
 
-				
+
 
 			</div>
+			-->
+
+			<!-- Content page -->
+
+			<section class="bg0 p-b-116">
+				<div class="container">
+					<div class="flex-w flex-tr">
+						<div class="container">
+							<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+								<a th:href="@{/productselling/sellProduct}"
+									class="stext-109 cl8 hov-cl1 trans-04"> Main menu <i
+									class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+								</a> <a href="@{/category}" class="stext-109 cl8 hov-cl1 trans-04">
+									<span class="stext-109 cl4"
+									th:text="${' ' + modelInfo.productBrand.subCategory.productCategory.categoryName}">
+								</span> <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+								</a> <a href="@{/subcategory}"
+									class="stext-109 cl8 hov-cl1 trans-04"> <span
+									class="stext-109 cl4"
+									th:text="${' ' + modelInfo.productBrand.subCategory.categoryName}"></span>
+									<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+								</a> <a href="@{/subcategory}"
+									class="stext-109 cl8 hov-cl1 trans-04"> <span
+									class="stext-109 cl4"
+									th:text="${' ' + modelInfo.productBrand.brandName}"></span> <i
+									class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+								</a> <span class="stext-109 cl4"
+									th:text="${'' + modelInfo.modelName}"> </span>
+							</div>
+						</div>
+						<div
+							class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+
+							<h4 class="mtext-105 cl2 p-b-30 pl-50"
+								th:text="${'Sell old ' + modelInfo.modelName}"></h4>
+							<img height="288" width="288"
+								th:src="@{${modelInfo.productImage}}">
+
+						</div>
+
+						<div
+							class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
+							<div class="flex-w w-full p-b-42">
+								<span class="fs-18 cl5 txt-center size-211"> </span>
+
+								<div class="size-212 p-t-2">
+									<h4 class="mtext-105 cl2 p-b-30"
+										th:text="${'Get Upto: Rs ' + maxPricing}"></h4>
+
+									<p class="stext-115 cl6 size-213 p-t-18">
+									<h5 class="mtext-105 cl2 p-b-30">Specifications</h5>
+									</p>
+									<div class="stext-109 cl8 hov-cl1 trans-04">
+										<h5>8 Cores</h5>
+									</div>
+									<div class="stext-109 cl8 hov-cl1 trans-04">
+										<h5>16 MP Back Camera</h5>
+									</div>
+									<div class="stext-109 cl8 hov-cl1 trans-04">
+										<h5>64 GB Storage</h5>
+									</div>
+								</div>
+							</div>
+							<div>
+								<a th:href="@{/user/productsellingdetail}"
+									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+									Sell Your Product </a>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
 		</div>
 
 
