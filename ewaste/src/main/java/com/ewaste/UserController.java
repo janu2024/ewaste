@@ -33,6 +33,26 @@ public class UserController {
 		return m;
 
 	}
+	@GetMapping(value = "/productdetail")
+	public ModelAndView productdetail(@ModelAttribute UserInfo u) {
+		UserInfo u2 = service.saveUser(u);
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("user", u2);
+		m.setViewName("productdetail");
+		return m;
+
+	}
+	@GetMapping(value = "/productsellingdetail")
+	public ModelAndView productsellingdetail(@ModelAttribute UserInfo u) {
+		UserInfo u2 = service.saveUser(u);
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("user", u2);
+		m.setViewName("productsellingdetail");
+		return m;
+
+	}
 
 	@GetMapping(value = "/registraion")
 	public ModelAndView registraion() {

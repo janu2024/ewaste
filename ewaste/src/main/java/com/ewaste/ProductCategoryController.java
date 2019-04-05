@@ -39,13 +39,6 @@ public class ProductCategoryController {
 
 	@GetMapping(value = "/getCategory")
 	public ModelAndView getCategory() {
-		/*
-		 * List<ProductCategory> categoryList = categoryRepo.findAll();
-		 * 
-		 * for (ProductCategory category : categoryList) {
-		 * 
-		 * category.getCategoryName(); }
-		 */
 
 		ModelAndView m = new ModelAndView();
 		m.addObject("categoryList", categoryRepo.findAll());// blank object
