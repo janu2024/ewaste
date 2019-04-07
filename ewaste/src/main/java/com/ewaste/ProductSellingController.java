@@ -146,7 +146,7 @@ public class ProductSellingController {
 	@GetMapping(value = "/getSellingPrice/{modelId}")
 	public ModelAndView getSellingPrice(@PathVariable long modelId) {
 		ProductModel modelInfo = modelRepo.findById(modelId).get();
-		if(!StringUtils.isEmpty(modelInfo.getProductSpec())) {
+		if (!StringUtils.isEmpty(modelInfo.getProductSpec())) {
 			modelInfo.setProductSpec(modelInfo.getProductSpec().replaceAll("(\r\n|\n)", "<br />"));
 		}
 
@@ -376,6 +376,28 @@ public class ProductSellingController {
 
 		return "redirect:/productselling/getSoldProducts";
 
+	}
+
+	@GetMapping(value = "/getQuetions/{modelId}")
+	@ResponseBody
+	public List<ProductPricing> getQuetions(@PathVariable long modelId) {
+
+		List<ProductPricing> resultList = pricingRepo.findByProductModel(modelRepo.findById(modelId).get());
+		List<ProductPricing> filteredList = new ArrayList<>();
+		ProductPricing pricingObj;
+
+		for (ProductPricing pricing : resultList) {
+			pricingObj = new ProductPricing();
+			pricingObj.setNumberOfYearsOld(pricing.getNumberOfYearsOld());
+			pricingObj.setPid(pricing.getPid());
+			pricingObj.setProductPrice(pricing.getProductPrice());
+
+			pricingObj.setWorking(pricing.isWorking());
+			filteredList.add(pricingObj);
+
+		}
+
+		return filteredList;
 	}
 
 }

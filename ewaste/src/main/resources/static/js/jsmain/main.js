@@ -481,6 +481,7 @@ function loadProductModelForSelling() {
 }
 var productPricingData = [];
 function loadProductPricingForSelling() {
+	$("#oldPrductDiv").removeClass("d-none");
 	$("#numberOfYears").empty();
 	$("<option />", {
 		val : "",
@@ -492,7 +493,8 @@ function loadProductPricingForSelling() {
 		text : ""
 	}).appendTo($("#isWorking"));
 	$.ajax({
-		url : "/productselling/getPricing/" + $("#productModel").val(),
+		url : "/productselling/getSellingProductDetails/"
+				+ $("#productModel").val(),
 		type : "get",
 		success : function(data) {
 			productPricingData = data;
@@ -507,7 +509,10 @@ function loadProductPricingForSelling() {
 }
 
 function loadWorkingNonWorkingInfo() {
+	$("#oldPrductDiv").addClass("d-none");
+
 	$("#isWorking").empty();
+	$("#workingProductDiv").removeClass("d-none");
 	var numberOfYears = $("#numberOfYears").val();
 	$("<option />", {
 		val : "",
@@ -532,18 +537,16 @@ function showProductPricing() {
 	var isWorking = $("#isWorking").val();
 	var productPrice = 0;
 	var pricingId = 0;
-	$(productPricingData).each(
-			function() {
-				var fieldVal=this.working==false?'false':'true';
-				if (numberOfYears == this.numberOfYearsOld
-						&& isWorking == fieldVal) {
-					productPrice = this.productPrice;
-					pricingId = this.pid;
+	$(productPricingData).each(function() {
+		var fieldVal = this.working == false ? 'false' : 'true';
+		if (numberOfYears == this.numberOfYearsOld && isWorking == fieldVal) {
+			productPrice = this.productPrice;
+			pricingId = this.pid;
 
-				}
-			});
+		}
+	});
 
-	$("#availableSellingPrice").val(productPrice);
+	$("#productPricingDiv").html(productPrice);
 	$("#sellingProductId").val(pricingId);
 
 }
