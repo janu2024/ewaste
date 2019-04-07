@@ -19,9 +19,9 @@
 								<ul class="gallery" th:each="category : ${subCategoryList}">
 									<li class="thumbnail pr-2"><i></i><a
 										th:href="@{/admin/category/manageSubCategory/{uid}(uid=${category.psid})}">
-											<img style="max-height: 129px; max-width: 129px;"
+											<img
 											th:src="@{${category.productImage}}" class="pt-2"> <label
-											style="text-align: center" class="desc"> <span
+											style="text-align: cente" class="desc"> <span
 												class="spanOverflowElipsis" data-rel="tooltip"
 												data-trigger="hover" data-placement="left"
 												th:title="${category.categoryName}"

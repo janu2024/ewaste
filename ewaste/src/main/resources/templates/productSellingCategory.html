@@ -23,10 +23,10 @@
 								<ul class="flex-col-center border-light card-ui border-card-radius flwidth flheight pd-item" th:each="category : ${categoryList}">
 									<li class="thumbnail pr-2" ><i></i><a class="flex-col-center border-light card-ui border-card-radius flwidth flheight pd-item"
 										th:href="@{/productselling/getSubCategory/{uid}(uid=${category.cid})}">
-											<img style="max-height: 129px; max-width: 129px;"
-											th:src="@{${category.productImage}}" class="pt-2"> <label
+											<img
+											th:src="@{${category.productImage}}" class="pt-2 imgheight"> <label
 											style="text-align: center" class="desc"> <span
-												class="spanOverflowElipsis" data-rel="tooltip"
+												class="spanOverflowElipsis imgfont" data-rel="tooltip"
 												data-trigger="hover" data-placement="left"
 												th:title="${category.categoryName}"
 												th:text="${category.categoryName}"></span>

@@ -19,8 +19,8 @@
 								<ul class="gallery" th:each="brand : ${brandList}">
 									<li class="thumbnail pr-2"><i></i><a
 										th:href="@{/admin/category/manageBrand/{uid}(uid=${brand.bid})}">
-											<img style="max-height: 129px; max-width: 129px;"
-											th:src="@{${brand.productImage}}" class="pt-2"> <label
+											<img 
+											th:src="@{${brand.productImage}}" class="pt-2 imgheight"> <label
 											style="text-align: center" class="desc"> <span
 												class="spanOverflowElipsis" data-rel="tooltip"
 												data-trigger="hover" data-placement="left"

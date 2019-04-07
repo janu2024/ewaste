@@ -3712,3 +3712,67 @@ iframe {border: none;}
 .pointer-none {
 	pointer-events: none;
 }
+.imgheight
+{
+	max-height: 129px;
+    height: 129px;
+    max-width: 129px;
+    width: 129px;
+}
+.headfont{
+    font-size:30px ;
+    font-weight: 500!important;
+    color: grey;
+}
+.imgfont1{
+    font-size:15px ;
+    font-weight: 500!important;
+    color: grey;
+}
+.margin{
+    padding: 24px 0;}
+.flow-center
+{
+    display: flex!important;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;}
+    hr.new1 {
+  border-top: 1px solid red;
+}
+.overflow{
+  overflow: hidden;
+  text-align: center;
+}
+
+.afterbefore {
+  
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+.before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+.after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+h4{
+   width: 100%; 
+   text-align: center; 
+   border-bottom: 1px solid grey; 
+   line-height: 0.1em;
+   margin: 10px 0 20px; 
+} 
+
+h4 span { 
+    background:#fff; 
+    padding:0 10px; 
+}

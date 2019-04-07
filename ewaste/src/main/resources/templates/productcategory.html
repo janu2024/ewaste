@@ -12,15 +12,15 @@
 				<div th:if="${not #lists.isEmpty(categoryList)}"
 					class=" bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
 					<div class="page-content">
-
+<div class="headfont flow-center margin"><h4><span> Select Category</span></h4></div>
 						<!-- code added for testing layout -->
 						<div class="container-fluid">
 							<div class="row">
 								<ul class="gallery" th:each="category : ${categoryList}">
 									<li class="thumbnail pr-2"><i></i><a
-										th:href="@{/admin/category/manageCategory/{uid}(uid=${category.cid})}">
-											<img style="max-height: 129px; max-width: 129px;"
-											th:src="@{${category.productImage}}" class="pt-2"> <label
+										th:href="@{/admin/category/manageCategory/{uid}(uid=${category.cid})}" class="imgfont1">
+											<img 
+											th:src="@{${category.productImage}}" class="pt-2 imgheight"> <label
 											style="text-align: center" class="desc"> <span
 												class="spanOverflowElipsis" data-rel="tooltip"
 												data-trigger="hover" data-placement="left"
