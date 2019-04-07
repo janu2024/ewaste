@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -145,6 +146,9 @@ public class ProductSellingController {
 	@GetMapping(value = "/getSellingPrice/{modelId}")
 	public ModelAndView getSellingPrice(@PathVariable long modelId) {
 		ProductModel modelInfo = modelRepo.findById(modelId).get();
+		if(!StringUtils.isEmpty(modelInfo.getProductSpec())) {
+			modelInfo.setProductSpec(modelInfo.getProductSpec().replaceAll("(\r\n|\n)", "<br />"));
+		}
 
 		List<ProductPricing> resultList = pricingRepo.findByProductModel(modelRepo.findById(modelId).get());
 		List<ProductPricing> filteredList = new ArrayList<>();

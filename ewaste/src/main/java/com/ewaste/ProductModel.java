@@ -31,6 +31,9 @@ public class ProductModel {
 	private String productImage;
 	
 	
+	@Column(name = "product_spec")
+	private String productSpec;
+	
 
 	public String getProductImage() {
 		return productImage;
@@ -64,6 +67,18 @@ public class ProductModel {
 
 	public void setProductBrand(ProductBrand productBrand) {
 		this.productBrand = productBrand;
+	}
+
+
+
+	public String getProductSpec() {
+		return productSpec;
+	}
+
+
+
+	public void setProductSpec(String productSpec) {
+		this.productSpec = productSpec;
 	}
 
 }

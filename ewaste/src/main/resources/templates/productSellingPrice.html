@@ -51,16 +51,20 @@
 								<a th:href="@{/productselling/sellProduct}"
 									class="stext-109 cl8 hov-cl1 trans-04"> Main menu <i
 									class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-								</a> <a href="@{/category}" class="stext-109 cl8 hov-cl1 trans-04">
-									<span class="stext-109 cl4"
+								</a> <a
+									th:href="@{/productselling/getSubCategory/{uid}(uid=${modelInfo.productBrand.subCategory.productCategory.cid})}"
+									class="stext-109 cl8 hov-cl1 trans-04"> <span
+									class="stext-109 cl4"
 									th:text="${' ' + modelInfo.productBrand.subCategory.productCategory.categoryName}">
 								</span> <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-								</a> <a href="@{/subcategory}"
+								</a> <a
+									th:href="@{/productselling/getBrand/{uid}(uid=${modelInfo.productBrand.subCategory.psid})}"
 									class="stext-109 cl8 hov-cl1 trans-04"> <span
 									class="stext-109 cl4"
 									th:text="${' ' + modelInfo.productBrand.subCategory.categoryName}"></span>
 									<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-								</a> <a href="@{/subcategory}"
+								</a> <a
+									th:href="@{/productselling/getModel/{uid}(uid=${modelInfo.productBrand.bid})}"
 									class="stext-109 cl8 hov-cl1 trans-04"> <span
 									class="stext-109 cl4"
 									th:text="${' ' + modelInfo.productBrand.brandName}"></span> <i
@@ -92,13 +96,7 @@
 									<h5 class="mtext-105 cl2 p-b-30">Specifications</h5>
 									</p>
 									<div class="stext-109 cl8 hov-cl1 trans-04">
-										<h5>8 Cores</h5>
-									</div>
-									<div class="stext-109 cl8 hov-cl1 trans-04">
-										<h5>16 MP Back Camera</h5>
-									</div>
-									<div class="stext-109 cl8 hov-cl1 trans-04">
-										<h5>64 GB Storage</h5>
+										<h5 th:utext="${modelInfo.productSpec}"></h5>
 									</div>
 								</div>
 							</div>
