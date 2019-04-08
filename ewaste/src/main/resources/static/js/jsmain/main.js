@@ -571,6 +571,13 @@ function showProductPricing() {
 	$("#productPricingDiv").html(
 			"Congratulations! You will get Rs. " + productPrice);
 	$("#sellingProductId").val(pricingId);
+	$("#sellingProductPrice").val(productPrice);
+
 	$("#submitSellingProduct").removeClass("d-none");
+
+}
+
+function sellSelectedProduct() {
+	$("#sellProductForm").submit()
 
 }

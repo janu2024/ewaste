@@ -125,12 +125,18 @@
 									<option value=""></option>
 								</select>
 							</div>
+							<form th:action="@{/productselling/sellProduct}" method="post"
+								id="sellProductForm">
 
 
-							<input type="hidden" th:value="${modelInfo.mid}"
-								id="productModel" class="form-control"> <input
-								type="hidden" id="sellingProductId">
+								<input type="hidden" th:value="${modelInfo.mid}"
+									id="productModel" class="form-control"> <input
+									type="hidden" name="pricing.pid" id="sellingProductId">
+								<input type="hidden" name="productPrice"
+									id="sellingProductPrice">
 
+
+							</form>
 							<div>
 								<button onclick="loadProductPricingForSelling()"
 									id="sellProductBtn"
