@@ -482,6 +482,8 @@ function loadProductModelForSelling() {
 var productPricingData = [];
 function loadProductPricingForSelling() {
 	$("#oldPrductDiv").removeClass("d-none");
+	$("#sellProductBtn").addClass("d-none");
+
 	$("#numberOfYears").empty();
 	$("<option />", {
 		val : "",
@@ -514,6 +516,10 @@ function loadWorkingNonWorkingInfo() {
 	$("#isWorking").empty();
 	$("#workingProductDiv").removeClass("d-none");
 	var numberOfYears = $("#numberOfYears").val();
+
+	$("#yearsOldInfo").html(numberOfYears + " Year(s) old");
+	$("#myProductStatus").removeClass("d-none");
+
 	$("<option />", {
 		val : "",
 		text : ""
@@ -533,6 +539,8 @@ function loadWorkingNonWorkingInfo() {
 }
 
 function showProductPricing() {
+	$("#workingProductDiv").addClass("d-none");
+
 	var numberOfYears = $("#numberOfYears").val();
 	var isWorking = $("#isWorking").val();
 	var productPrice = 0;
@@ -546,7 +554,23 @@ function showProductPricing() {
 		}
 	});
 
-	$("#productPricingDiv").html(productPrice);
+	if (isWorking == 'false' || isWorking == false) {
+		$("#workingStatusInfo").html("Not Working");
+	} else {
+		$("#workingStatusInfo").html("Working");
+	}
+
+	if (pricingId == 0) {
+		$("#productPricingDiv").html(
+				"Sorry! We are not accepting a product with this status.");
+		$("#sellingProductId").val(0);
+
+		return;
+	}
+
+	$("#productPricingDiv").html(
+			"Congratulations! You will get Rs. " + productPrice);
 	$("#sellingProductId").val(pricingId);
+	$("#submitSellingProduct").removeClass("d-none");
 
 }

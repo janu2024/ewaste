@@ -98,6 +98,15 @@
 									<div class="stext-109 cl8 hov-cl1 trans-04">
 										<h5 th:utext="${modelInfo.productSpec}"></h5>
 									</div>
+									<div id="myProductStatus" class="pt-5 d-none">
+										<h5 class="mtext-105 cl2 pb-1">Your Product Status</h5>
+										<div class="stext-109 cl8 hov-cl1 trans-04">
+											<h5 id="workingStatusInfo"></h5>
+											<h5 id="yearsOldInfo" class="pt-2"></h5>
+										</div>
+
+									</div>
+
 								</div>
 							</div>
 
@@ -119,12 +128,18 @@
 
 
 							<input type="hidden" th:value="${modelInfo.mid}"
-								id="productModel" class="form-control">
-
+								id="productModel" class="form-control"> <input
+								type="hidden" id="sellingProductId">
 
 							<div>
 								<button onclick="loadProductPricingForSelling()"
+									id="sellProductBtn"
 									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+									Sell Your Product</button>
+
+								<button onclick="sellSelectedProduct()"
+									id="submitSellingProduct"
+									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 d-none">
 									Sell Your Product</button>
 
 							</div>
