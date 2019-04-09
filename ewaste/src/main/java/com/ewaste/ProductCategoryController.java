@@ -211,7 +211,7 @@ public class ProductCategoryController {
 
 	}
 
-	@GetMapping(value = "/manageModel")
+	@GetMapping(value = "/manageModel") 
 	public ModelAndView manageModel() {
 		ModelAndView m = new ModelAndView();
 		m.addObject("model", new ProductModel());
