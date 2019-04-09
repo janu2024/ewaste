@@ -10,21 +10,29 @@
 			<!-- Content page -->
 			<div class="container pt-5">
 
-				<div class=" bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md"
-					th:if="${ #lists.isEmpty(categoryList)}">No Categories Found</div>
+				<div class=" bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md"></div>
+				<div th:if="${ #lists.isEmpty(categoryList)}">No Categories
+					Found</div>
 
 				<div th:if="${not #lists.isEmpty(categoryList)}"
 					class=" bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
 					<div class="page-content">
-
+						<div class="headfont flow-center margin">
+							<h4>
+								<span> Select Category</span>
+							</h4>
+						</div>
 						<!-- code added for testing layout -->
 						<div class="container-fluid">
 							<div class="row">
-								<ul class="flex-col-center border-light card-ui border-card-radius flwidth flheight pd-item" th:each="category : ${categoryList}">
-									<li class="thumbnail pr-2" ><i></i><a class="flex-col-center border-light card-ui border-card-radius flwidth flheight pd-item"
-										th:href="@{/productselling/getSubCategory/{uid}(uid=${category.cid})}">
-											<img
-											th:src="@{${category.productImage}}" class="pt-2 imgheight"> <label
+								<ul
+									class="flex-col-center border-light card-ui border-card-radius flwidth flheight pd-item"
+									th:each="category : ${categoryList}">
+									<li class="thumbnail pr-2"><i></i><a
+										class="flex-col-center border-light card-ui border-card-radius flwidth flheight pd-item imgfont1"
+										th:href="@{/productselling/getSubCategory/{uid}(uid=${category.cid})}" >
+											<img th:src="@{${category.productImage}}"
+											class="pt-2 imgheight"> <label
 											style="text-align: center" class="desc"> <span
 												class="spanOverflowElipsis imgfont" data-rel="tooltip"
 												data-trigger="hover" data-placement="left"

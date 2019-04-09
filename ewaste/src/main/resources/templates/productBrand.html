@@ -9,16 +9,18 @@
 		<div id="dynamicContent">
 
 			<!-- Content page -->
-			<div class="container  p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-				<div class=" bor10" th:if="${not #lists.isEmpty(brandList)}">
+			<div class="container">
+			<div class=" bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+			
+				<div  th:if="${not #lists.isEmpty(brandList)}">
 					<div class="page-content">
-
+                              <div class="headfont flow-center margin"><h4><span> Select Brand</span></h4></div>
 						<!-- code added for testing layout -->
 						<div class="container-fluid">
 							<div class="row">
 								<ul class="gallery" th:each="brand : ${brandList}">
 									<li class="thumbnail pr-2"><i></i><a
-										th:href="@{/admin/category/manageBrand/{uid}(uid=${brand.bid})}">
+										th:href="@{/admin/category/manageBrand/{uid}(uid=${brand.bid})}" class="imgfont1">
 											<img 
 											th:src="@{${brand.productImage}}" class="pt-2 imgheight"> <label
 											style="text-align: center" class="desc"> <span
