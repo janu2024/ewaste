@@ -106,6 +106,10 @@
 							<li th:if="${userRole=='ROLE_USER'}"><a
 								th:href="@{/productselling/sellProduct}">ProductSelling</a></li>
 
+
+							<li th:if="${userRole=='ROLE_USER'}"><a
+								th:href="@{/productbuying/showBuyingProducts}">ProductBuying</a></li>
+
 							<li class="label1" data-label1="hot"><a
 								th:href="@{/user/features}">Features</a></li>
 
@@ -141,7 +145,7 @@
 								<ul class="sub-menu">
 									<li><a th:href="@{/admin/category/getPricing}">Selling
 											Pricing</a></li>
-									<li><a th:href="@{/admin/productbuying/getPricing}">Buying
+									<li><a th:href="@{/productbuying/getPricing}">Buying
 											Pricing</a></li>
 								</ul>
 
@@ -248,6 +252,8 @@
 
 				<li th:if="${userRole=='ROLE_USER'}"><a
 					th:href="@{/productselling/sellProduct}">ProductSelling</a></li>
+				<li th:if="${userRole=='ROLE_USER'}"><a
+					th:href="@{/productbuying/showBuyingProducts}">ProductBuying</a></li>
 
 				<li class="label1" data-label1="hot"><a
 					th:href="@{/user/features}">Features</a></li>

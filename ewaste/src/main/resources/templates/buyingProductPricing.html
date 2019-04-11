@@ -13,6 +13,7 @@
 					<th>Model Name</th>
 
 					<th>Product Pricing</th>
+					<th>Product Status</th>
 
 
 				</tr>
@@ -20,18 +21,19 @@
 			<tbody>
 				<tr th:each="category : ${pricingList}">
 					<td><a
-						th:href="@{/admin/category/managePricing/{uid}(uid=${category.pid})}"><span
+						th:href="@{/productbuying/managePricing/{uid}(uid=${category.pid})}"><span
 							th:text="${category.pid}"></span></a></td>
 					<td th:text="${category.productModel.modelName}"></td>
 
 					<td th:text="${category.productPrice}"></td>
+					<td th:text="${category.status}"></td>
 
 				</tr>
 			</tbody>
 		</table>
 
 		<div class="form-group">
-			<a href="/admin/productbuying/managePricing" class="btn btn-primary">Add
+			<a href="/productbuying/managePricing" class="btn btn-primary">Add
 				Product</a>
 		</div>
 	</div>

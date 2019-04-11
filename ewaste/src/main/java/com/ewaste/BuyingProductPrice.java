@@ -37,6 +37,10 @@ public class BuyingProductPrice {
 	
 	@Column(name = "product_image4")
 	private String productImage4;
+
+	
+	@Column(name = "product_status")
+	private String status;
 	
 	
 	
@@ -94,6 +98,14 @@ public class BuyingProductPrice {
 
 	public void setProductImage4(String productImage4) {
 		this.productImage4 = productImage4;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	

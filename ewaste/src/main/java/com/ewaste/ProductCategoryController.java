@@ -21,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/admin/category")
 public class ProductCategoryController {
 
-	String uploadPath = "D:\\ewaste\\maven.1540996285866\\ewaste\\src\\main\\resources\\static\\images\\upload";
+	String uploadPath = "E:\\WorkSpace2\\maven.1548166232495\\ewaste\\src\\main\\resources\\static\\images\\upload";
 	@Autowired
 	ProductCategoryRepository categoryRepo;
 

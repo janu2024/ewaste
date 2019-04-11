@@ -56,7 +56,7 @@ public class ProductSellingController {
 	@Autowired
 	private SmtpMailSender smtpMailSender;
 
-	public static String uploadDir = "D:\\ewaste\\maven.1540996285866\\ewaste\\src\\main\\resources\\static\\images\\upload";
+	public static String uploadDir = "E:\\WorkSpace2\\maven.1548166232495\\ewaste\\src\\main\\resources\\static\\images\\upload";
 
 	@GetMapping(value = "/sellByCategory")
 	public ModelAndView sellByCategory() {

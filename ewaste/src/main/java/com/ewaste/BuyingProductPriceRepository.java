@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BuyingProductPriceRepository extends JpaRepository<BuyingProductPrice, Long> {
+	List<BuyingProductPrice> findByStatus(String status);
 
 	
 }
