@@ -3,24 +3,25 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout2">
 <body>
-	<div id="page" layout:fragment="content">
+	<div id="page" layout:fragment="content"> 
 
 
 		<div id="dynamicContent">
 
 			<!-- Content page -->
-			<div class="container  p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-				<div class=" bor10" th:if="${not #lists.isEmpty(subCategoryList)}">
+               <div class="container">  
+			        <div class=" bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+				<div  th:if="${not #lists.isEmpty(subCategoryList)}">
 					<div class="page-content">
-
+                           <div class="headfont flow-center margin"><h4><span> Select Sub-Category</span></h4></div>
 						<!-- code added for testing layout -->
 						<div class="container-fluid">
 							<div class="row">
 								<ul class="gallery" th:each="category : ${subCategoryList}">
 									<li class="thumbnail pr-2"><i></i><a
-										th:href="@{/admin/category/manageSubCategory/{uid}(uid=${category.psid})}">
+										th:href="@{/admin/category/manageSubCategory/{uid}(uid=${category.psid})}" class="imgfont1">
 											<img
-											th:src="@{${category.productImage}}" class="pt-2"> <label
+											th:src="@{${category.productImage}}"  class="pt-2 imgheight"> <label
 											style="text-align: cente" class="desc"> <span
 												class="spanOverflowElipsis" data-rel="tooltip"
 												data-trigger="hover" data-placement="left"
