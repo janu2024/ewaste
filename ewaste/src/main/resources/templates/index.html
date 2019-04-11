@@ -57,7 +57,7 @@
 	<!-- Header -->
 	<header>
 		<!-- Header desktop -->
-		<div class="container-menu-desktop">   
+		<div class="container-menu-desktop">
 			<!-- Topbar -->
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
@@ -139,11 +139,13 @@
 
 							<li th:if="${userRole=='ROLE_ADMIN'}">Pricing
 								<ul class="sub-menu">
-									<li><a th:href="@{/admin/category/getPricing}">Manage
+									<li><a th:href="@{/admin/category/getPricing}">Selling
+											Pricing</a></li>
+									<li><a th:href="@{/admin/productbuying/getPricing}">Buying
 											Pricing</a></li>
 								</ul>
-							</li>
 
+							</li>
 
 							<li th:if="${userRole=='ROLE_ADMIN'}"><a
 								th:href="@{/productselling/getSoldProducts}">Transport
@@ -157,8 +159,8 @@
 
 							<li th:if="${userRole=='ROLE_USER'}"><a
 								th:href="@{/user/contact}">Contact</a></li>
-								
-								<li th:if="${userRole=='ROLE_USER'}"><a
+
+							<li th:if="${userRole=='ROLE_USER'}"><a
 								th:href="@{/user/productdetail}">productdetail</a></li>
 						</ul>
 					</div>
