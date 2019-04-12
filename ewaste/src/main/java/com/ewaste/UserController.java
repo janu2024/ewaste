@@ -100,7 +100,7 @@ public class UserController {
 
 		ModelAndView m = new ModelAndView();
 		m.addObject("user", u2);
-		m.setViewName("shopping-cart2");
+		m.setViewName("myProduct");
 		return m;
 
 	}

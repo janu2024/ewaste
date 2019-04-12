@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout2">
@@ -121,17 +121,14 @@
 								<tr class="table_head" >
 								<th class="column-1">Product Id</th>
 									<th class="column-2">Product</th>
-									<th class="column-3"></th>
+									<th class="column-3">Product Name</th>
 									<th class="column-4">Price</th>
-									<th class="column-5">Quantity</th>
-									<th class="column-6">Total</th>
+									
 								</tr>
 
 								<tr class="table_row" th:each="user : ${myOrders}">
 								<td class="column-1" th:text="${user.spid}">
-										<div class="how-itemcart1">
-											
-										</div>
+										
 									</td>
 									<td class="column-2">
 										<div class="how-itemcart1">
@@ -140,24 +137,10 @@
 											th:src="@{${user.pricing.productModel.productImage}}"> 
 										</div>
 									</td>
+									<td class="column-3" th:text="${user.pricing.productModel.modelName}"></td>
+									<td class="column-4" th:text="${user.productPrice}"></td>
 									
-									<td class="column-3" th:text="${user.productPrice}"></td>
-									<td class="column-4">$ 36.00</td>
-									<td class="column-5">
-										<div class="wrap-num-product flex-w m-l-auto m-r-0">
-											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-minus"></i>
-											</div>
-
-											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="1">
-
-											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-plus"></i>
-											</div>
-										</div>
-									</td>
-									<td class="column-5">$ 36.00</td>
-								</tr>
+									</tr>
 
 															</table>
 						</div>
