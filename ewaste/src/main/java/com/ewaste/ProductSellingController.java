@@ -52,6 +52,9 @@ public class ProductSellingController {
 
 	@Autowired
 	SoldProductsRepository soldProductsRepo;
+	
+	@Autowired
+	BuyingProductRepository buyingRepo;
 
 	@Autowired
 	private SmtpMailSender smtpMailSender;
@@ -252,6 +255,7 @@ public class ProductSellingController {
 
 		ModelAndView m = new ModelAndView();
 		m.addObject("myOrders", soldProductsRepo.findByUserInfo(userInfo));//
+		m.addObject("myBuyingOrders",buyingRepo.findByUserInfo(userInfo));
 		m.setViewName("myProducts");// html page
 		return m;
 

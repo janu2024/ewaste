@@ -24,6 +24,13 @@ public class BuyingProductController {
 
 	@Autowired
 	ProductModelRepository modelRepo;
+	
+	@Autowired
+	private SecurityService securityService;
+	
+	@Autowired
+	BuyingProductRepository buyingRepo;
+
 
 	String uploadDir = "E:\\WorkSpace2\\maven.1548166232495\\ewaste\\src\\main\\resources\\static\\images\\upload";
 
@@ -105,6 +112,16 @@ public class BuyingProductController {
 
 		repo.save(pricing);
 		return "redirect:/productbuying/getPricing";
+	}
+	
+	@PostMapping(value = "/buyProduct")
+	public String saveModel(@ModelAttribute BuyingProduct buyingProducts) {
+
+		buyingProducts.setPricing(repo.findById(buyingProducts.getPricing().getPid()).get());
+		buyingProducts.setUserInfo(securityService.getLoggedInUser());
+		buyingRepo.save(buyingProducts);
+		return "redirect:/productbuying/showBuyingProducts";
+
 	}
 
 }
