@@ -46,6 +46,17 @@ public class BuyingProductController {
 		return m;
 
 	}
+	
+	@GetMapping(value = "/showBuyingProducts/{pricingId}")
+	public ModelAndView showAvailableProductDetails(@PathVariable long pricingId) {
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("modelInfo", repo.findById(pricingId).get());// blank object
+		m.setViewName("showBuyingProductDetails");// html page
+		return m;
+
+	}
+
 
 	@GetMapping(value = "/managePricing")
 	public ModelAndView managePricing() {

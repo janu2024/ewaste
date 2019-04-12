@@ -11,8 +11,7 @@
 			<div class="container">
 
 
-				<div th:if="${ #lists.isEmpty(productList)}">No Categories
-					Found</div>
+				<div th:if="${ #lists.isEmpty(productList)}">No Products Found</div>
 
 				<div th:if="${not #lists.isEmpty(productList)}"
 					class=" bor10 p-lr-70 p-t-20 p-b-70 p-lr-15-lg w-full-md">
@@ -30,7 +29,7 @@
 									th:each="category : ${productList}">
 									<li class="thumbnail pr-2"><i></i><a
 										class="flex-col-center border-light card-ui border-card-radius flwidth flheight pd-item imgfont1"
-										th:href="@{/productselling/getSubCategory/{uid}(uid=${category.pid})}">
+										th:href="@{/productbuying/showBuyingProducts/{uid}(uid=${category.pid})}">
 											<img th:src="@{${category.productImage}}"
 											class="pt-2 imgheight"> <label
 											style="text-align: center" class="desc"> <span

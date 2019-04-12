@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout2">
+<body>
+	<div id="page" layout:fragment="content">
+
+		<div id="dynamicContent">
+
+
+			<!-- Content page -->
+
+			<section class="bg0 p-b-116">
+				<div class="container">
+					<div class="flex-w flex-tr">
+
+						<div
+							class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+
+							<h4 class="mtext-105 cl2 p-b-30 pl-50"
+								th:text="${'Buy ' + modelInfo.productModel.modelName}"></h4>
+							<img height="288" width="288"
+								th:src="@{${modelInfo.productImage}}">
+
+						</div>
+
+						<div
+							class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
+							<div class="flex-w w-full p-b-42">
+								<span class="fs-18 cl5 txt-center size-211"> </span>
+
+								<div class="size-212 p-t-2">
+									<h4 class="mtext-105 cl2 p-b-30" id="productPricingDiv"
+										th:text="${'Rs ' + modelInfo.productPrice}"></h4>
+
+									<p class="stext-115 cl6 size-213 p-t-18">
+									<h5 class="mtext-105 cl2 p-b-30">Specifications</h5>
+									</p>
+									<div class="stext-109 cl8 hov-cl1 trans-04">
+										<h5 th:utext="${modelInfo.productModel.productSpec}"></h5>
+									</div>
+
+
+								</div>
+							</div>
+
+						</div>
+						<form th:action="@{/productselling/sellProduct}" method="post"
+							id="sellProductForm">
+
+
+							<input type="hidden" th:value="${mid}"
+								id="productModel" class="form-control"> <input
+								type="hidden" name="pricing.pid" id="sellingProductId">
+							<input type="hidden" name="productPrice" id="sellingProductPrice">
+
+
+						</form>
+						<div>
+
+							<button onclick="sellSelectedProduct()" id="submitSellingProduct"
+								class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+								Buy Now</button>
+
+						</div>
+					</div>
+				</div>
+		</div>
+		</section>
+
+
+	</div>
+
+
+	</div>
+</body>
+
+</html>
