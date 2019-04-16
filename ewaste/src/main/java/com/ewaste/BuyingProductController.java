@@ -127,7 +127,29 @@ public class BuyingProductController {
 		return "redirect:/productbuying/showBuyingProducts";
 
 	}
+	@PostMapping(value = "/updateBuyingProductInfo")
+	public String updateBuyingProductInfo(@ModelAttribute BuyingProduct soldProducts) {
+		String userRole = securityService.getLoggedInUser().getRole();
 
+		if (!userRole.equalsIgnoreCase("ROLE_TRANSPORTER")) {
+			return null;
+		}
+		BuyingProduct dbProduct = buyingRepo.findById(soldProducts.getSpid()).get();
+
+		dbProduct.setProductStatus(soldProducts.getProductStatus());
+		buyingRepo.save(dbProduct);
+
+		try {
+			String message = "Your order has been updated. You can login to see more details";
+			smtpMailSender.send(dbProduct.getUserInfo().getEmail(), "Order Update", message);
+
+		} catch (Exception e) {
+
+		}
+
+		return "redirect:/productbuying/getAssignedProducts";
+
+	}
 	@PostMapping(value = "/updateTransportInfo")
 	public String updateTransportInfo(@ModelAttribute BuyingProduct buyingProduct) {
 		String userRole = securityService.getLoggedInUser().getRole();
@@ -208,4 +230,35 @@ public class BuyingProductController {
 		return m;
 
 	}
+	
+	@GetMapping(value = "/getAssignedProducts")
+	public ModelAndView getAssignedProducts() {
+		UserInfo userInfo = securityService.getLoggedInUser();
+
+		if (!userInfo.getRole().equalsIgnoreCase("ROLE_TRANSPORTER")) {
+			return null;
+		}
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("myOrders", buyingRepo.findByTransporterInfo(userInfo));//
+		m.setViewName("assignedBuyingProducts");// html page
+		return m;
+
+	}
+	@GetMapping(value = "/getAssignedProductInfo/{productId}")
+	public ModelAndView getAssignedProductInfo(@PathVariable long productId) {
+
+		String userRole = securityService.getLoggedInUser().getRole();
+
+		if (!userRole.equalsIgnoreCase("ROLE_TRANSPORTER")) {
+			return null;
+		}
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("productInfo", buyingRepo.findById(productId).get());//
+		m.setViewName("assignedBuyingProductInfo");// html page
+		return m;
+
+	}
+
 }

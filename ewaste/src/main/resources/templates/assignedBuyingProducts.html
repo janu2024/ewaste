@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout2">
+
+
+<body>
+	<div id="page" layout:fragment="content">
+
+
+
+		<table id="example" class="table table-striped table-bordered"
+			style="width: 100%">
+			<thead>
+				<tr>
+					<th>User Name</th>
+					<th>Address</th>
+					<th>PinCode</th>
+					<th>Contact</th>
+					<th>Product Status</th>
+
+					<th></th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user : ${myOrders}">
+					<td th:text="${user.userInfo.firstName}"></td>
+					<td th:text="${user.userInfo.address}"></td>
+					<td th:text="${user.userInfo.pinCode}"></td>
+					<td th:text="${user.userInfo.phone_no}"></td>
+					<td th:text="${user.productStatus}"></td>
+
+					<td>
+						<div class="form-group">
+							<a
+								th:href="@{'/productbuying/getAssignedProductInfo/' + ${user.spid}}"
+								class="btn btn-primary">Update</a>
+
+						</div>
+					</td>
+
+
+
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+</body>
+</html>

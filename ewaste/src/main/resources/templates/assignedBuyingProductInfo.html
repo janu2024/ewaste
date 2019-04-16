@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout2">
+<body>
+	<div id="page" layout:fragment="content">
+
+
+		<div id="dynamicContent">
+			<form th:action="@{/productbuying/updateBuyingProductInfo}"
+				th:object="${productInfo}" method="post">
+
+
+
+				<div class="form-group"
+					th:if="${productInfo.transporterInfo != null}">
+					<label for="usr">Product Owner</label> <input type="text"
+						th:value="${productInfo.userInfo.firstName}" disabled="disabled"
+						class="form-control" required="required">
+
+				</div>
+				<div class="form-group">
+					<label for="usr">Product Status</label> <select
+						class="form-control" th:field="*{productStatus}"
+						style="height: 46px;">
+						<option value="DELIVERED">Order Is Delivered</option>
+						<option value="ACCPTED_BY_TRANSPORTER">Transporter Has Accepted Order</option>
+						<option value="ON_THE_WAY">Transporter Will Deliver today</option>
+
+					</select>
+
+
+
+				</div>
+				<input type="hidden" th:field="*{spid}" class="form-control">
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">Update Info</button>
+				</div>
+
+			</form>
+
+
+
+		</div>
+	</div>
+</body>
+
+</html>
