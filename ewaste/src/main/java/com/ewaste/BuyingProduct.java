@@ -37,6 +37,9 @@ public class BuyingProduct {
 	private UserInfo transporterInfo;
 
 
+	@Column(name = "product_status")
+	private String productStatus;
+
 	public Long getSpid() {
 		return spid;
 	}
@@ -84,6 +87,16 @@ public class BuyingProduct {
 
 	public void setTransporterInfo(UserInfo transporterInfo) {
 		this.transporterInfo = transporterInfo;
+	}
+
+
+	public String getProductStatus() {
+		return productStatus;
+	}
+
+
+	public void setProductStatus(String productStatus) {
+		this.productStatus = productStatus;
 	}
 	
 	

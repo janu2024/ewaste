@@ -24,13 +24,18 @@ public class BuyingProductController {
 
 	@Autowired
 	ProductModelRepository modelRepo;
-	
+
 	@Autowired
 	private SecurityService securityService;
-	
+
 	@Autowired
 	BuyingProductRepository buyingRepo;
 
+	@Autowired
+	private SmtpMailSender smtpMailSender;
+
+	@Autowired
+	UserRepository userRepo;
 
 	String uploadDir = "E:\\WorkSpace2\\maven.1548166232495\\ewaste\\src\\main\\resources\\static\\images\\upload";
 
@@ -53,7 +58,7 @@ public class BuyingProductController {
 		return m;
 
 	}
-	
+
 	@GetMapping(value = "/showBuyingProducts/{pricingId}")
 	public ModelAndView showAvailableProductDetails(@PathVariable long pricingId) {
 
@@ -63,7 +68,6 @@ public class BuyingProductController {
 		return m;
 
 	}
-
 
 	@GetMapping(value = "/managePricing")
 	public ModelAndView managePricing() {
@@ -113,7 +117,7 @@ public class BuyingProductController {
 		repo.save(pricing);
 		return "redirect:/productbuying/getPricing";
 	}
-	
+
 	@PostMapping(value = "/buyProduct")
 	public String saveModel(@ModelAttribute BuyingProduct buyingProducts) {
 
@@ -124,4 +128,84 @@ public class BuyingProductController {
 
 	}
 
+	@PostMapping(value = "/updateTransportInfo")
+	public String updateTransportInfo(@ModelAttribute BuyingProduct buyingProduct) {
+		String userRole = securityService.getLoggedInUser().getRole();
+
+		if (!userRole.equalsIgnoreCase("ROLE_ADMIN")) {
+			return null;
+		}
+		BuyingProduct dbProduct = buyingRepo.findById(buyingProduct.getSpid()).get();
+		boolean newTransporter = false;
+
+		if (dbProduct.getTransporterInfo() == null) {
+			newTransporter = true;
+		}
+
+		if (buyingProduct.getTransporterInfo() == null || buyingProduct.getTransporterInfo().getUid() == null) {
+			dbProduct.setTransporterInfo(null);
+		} else {
+			dbProduct.setTransporterInfo(userRepo.findById(buyingProduct.getTransporterInfo().getUid()).get());
+		}
+
+		dbProduct.setProductStatus(buyingProduct.getProductStatus());
+		buyingRepo.save(dbProduct);
+
+		try {
+			String message = "Your order has been updated. You can login to see more details";
+			if (newTransporter) {
+				message = "Transporter has been updated. You can login to see more details";
+			}
+			smtpMailSender.send(dbProduct.getUserInfo().getEmail(), "Order Update", message);
+
+		} catch (Exception e) {
+
+		}
+
+		try {
+			if (dbProduct.getTransporterInfo() != null) {
+				String message = "An Order has been assigned to you. You can login to see more details";
+				smtpMailSender.send(dbProduct.getTransporterInfo().getEmail(), "Order Update", message);
+
+			}
+
+		} catch (Exception e) {
+
+		}
+
+		return "redirect:/productbuying/getbuyingProducts";
+
+	}
+
+	@GetMapping(value = "/getbuyingProducts/{productId}")
+	public ModelAndView getbuyingProducts(@PathVariable long productId) {
+
+		String userRole = securityService.getLoggedInUser().getRole();
+
+		if (!userRole.equalsIgnoreCase("ROLE_ADMIN")) {
+			return null;
+		}
+
+		ModelAndView m = new ModelAndView();
+		m.addObject("productInfo", buyingRepo.findById(productId).get());//
+		m.addObject("userList", userRepo.findByRole("ROLE_TRANSPORTER"));//
+
+		m.setViewName("buyingProductInfo");// html page
+		return m;
+
+	}
+
+	@GetMapping(value = "/getbuyingProducts")
+	public ModelAndView getbuyingProducts() {
+		String userRole = securityService.getLoggedInUser().getRole();
+
+		if (!userRole.equalsIgnoreCase("ROLE_ADMIN")) {
+			return null;
+		}
+		ModelAndView m = new ModelAndView();
+		m.addObject("userList", buyingRepo.findAll());//
+		m.setViewName("buyingTransportation");// html page
+		return m;
+
+	}
 }

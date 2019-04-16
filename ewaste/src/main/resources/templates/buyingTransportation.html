@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout2">
+
+
+<body>
+	<div id="page" layout:fragment="content">
+
+
+
+		<table id="example" class="table table-striped table-bordered"
+			style="width: 100%">
+			<thead>
+				<tr>
+					<th>Sr No.</th>
+					<th>User List</th>
+					<th>Address</th>
+					<th>PinCode</th>
+					<th>Assign Transport</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user : ${userList}">
+					<td><a th:href="@{/user/admin/{uid}(uid=${user.spid})}"> <span
+							th:text="${user.spid}"></span></a></td>
+					<td th:text="${user.userInfo.firstName}"></td>
+					<td th:text="${user.userInfo.address}"></td>
+					<td th:text="${user.userInfo.pinCode}"></td>
+
+					<td>
+						<div class="form-group">
+							<a
+								th:href="@{'/productbuying/getbuyingProducts/' + ${user.spid}}"
+								class="btn btn-primary">Assign Transport</a>
+
+						</div>
+					</td>
+
+
+
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+</body>
+</html>

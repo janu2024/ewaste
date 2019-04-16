@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout2">
+<body>
+	<div id="page" layout:fragment="content">
+
+
+		<div id="dynamicContent">
+			<form th:action="@{/productbuying/updateTransportInfo}"
+				th:object="${productInfo}" method="post">
+
+
+
+				<div class="form-group"
+					th:if="${productInfo.transporterInfo != null}">
+					<label for="usr">Product Owner</label> <input type="text"
+						th:value="${productInfo.userInfo.firstName}" disabled="disabled"
+						class="form-control" required="required">
+
+				</div>
+
+
+				<div class="form-group"
+					th:if="${productInfo.transporterInfo != null}">
+					<label for="usr">Current Transporter</label> <input type="text"
+						th:value="${productInfo.transporterInfo.firstName}"
+						disabled="disabled" class="form-control" required="required">
+
+				</div>
+				<div class="form-group">
+					<label for="usr">Select Transporter</label> <select
+						th:field="*{transporterInfo.uid}" class="form-control">
+						<option value=""></option>
+						<option th:each="i : ${userList}" th:value="${i.uid}"
+							th:text="${i.firstName}"></option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="usr">Product Status</label> <input type="text"
+						th:field="*{productStatus}" class="form-control"
+						required="required">
+				</div>
+				<input type="hidden" th:field="*{spid}" class="form-control">
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">Update Info</button>
+				</div>
+
+			</form>
+
+
+
+		</div>
+	</div>
+</body>
+
+</html>
