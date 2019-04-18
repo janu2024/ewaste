@@ -91,10 +91,7 @@ public class LoginController {
 		if (existingUser != null && existingUser.getPassword().equals(user.getPassword())) {
 			securityService.autologin(existingUser.getEmail(), existingUser.getPassword());
 			if (existingUser.getRole().equalsIgnoreCase("ROLE_TRANSPORTER")) {
-				return "redirect:/productselling/transport";
-			}
-			else if(existingUser.getRole().equalsIgnoreCase("ROLE_ADMIN")){
-				return "redirect:/admin/userList";
+				return "redirect:/productselling/getAssignedProducts";
 			}
 
 			return "redirect:/user/index";

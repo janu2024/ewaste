@@ -67,11 +67,8 @@
 						<a href="/user/logout" class="flex-c-m trans-04 p-lr-25">
 							Logout </a> <a th:href="@{/user/profile}"
 							class="flex-c-m trans-04 p-lr-25"> My Account </a> <a
-								th:href="@{/productselling/getMyProducts}"
-								class="flex-c-m trans-04 p-lr-25" th:if="${userRole=='ROLE_USER'}">Selling Orders </a>
-								<a
-								th:href="@{/productselling/getMyBuyingProducts}"
-								class="flex-c-m trans-04 p-lr-25" th:if="${userRole=='ROLE_USER'}">Buying Orders </a>
+							th:href="@{/productselling/getMyProducts}"
+							class="flex-c-m trans-04 p-lr-25"> My Orders </a>
 
 
 					</div>
@@ -103,7 +100,8 @@
 
 
 
-					
+							<li th:if="${userRole=='ROLE_USER'}"><a
+								th:href="@{/user/product}">Shop</a></li>
 
 							<li th:if="${userRole=='ROLE_USER'}"><a
 								th:href="@{/productselling/sellProduct}">ProductSelling</a></li>
@@ -112,8 +110,8 @@
 							<li th:if="${userRole=='ROLE_USER'}"><a
 								th:href="@{/productbuying/showBuyingProducts}">ProductBuying</a></li>
 
-							<li class="label1" data-label1="hot" th:if="${userRole=='ROLE_USER'}"><a
-								th:href="@{/productselling/getMyProducts}">Features</a></li>
+							<li class="label1" data-label1="hot"><a
+								th:href="@{/user/features}">Features</a></li>
 
 
 							<li th:if="${userRole=='ROLE_ADMIN'}">Category
@@ -153,12 +151,9 @@
 
 							</li>
 
-							</li>
-								<li th:if="${userRole=='ROLE_ADMIN'}">Transport Service
-								<ul><a th:href="@{/productselling/getSoldProducts}">Assign Pick Up	</a>
-									<a th:href="@{/productbuying/getbuyingProducts}">Assign Delivery</a>						
-								</ul></li>
-
+							<li th:if="${userRole=='ROLE_ADMIN'}"><a
+								th:href="@{/productselling/getSoldProducts}">Transport
+									Service</a></li>
 							<li><a th:href="@{/productselling/getAssignedProducts}"
 								th:if="${userRole=='ROLE_TRANSPORTER'}">My Orders</a></li>
 
@@ -169,7 +164,8 @@
 							<li th:if="${userRole=='ROLE_USER'}"><a
 								th:href="@{/user/contact}">Contact</a></li>
 
-							
+							<li th:if="${userRole=='ROLE_USER'}"><a
+								th:href="@{/user/productdetail}">productdetail</a></li>
 						</ul>
 					</div>
 
@@ -251,7 +247,8 @@
 				<li th:if="${userRole=='ROLE_ADMIN'}"><a
 					th:href="@{/admin/userList}">Admin</a></li>
 
-			
+				<li th:if="${userRole=='ROLE_USER'}"><a
+					th:href="@{/user/product}">Shop</a></li>
 
 				<li th:if="${userRole=='ROLE_USER'}"><a
 					th:href="@{/productselling/sellProduct}">ProductSelling</a></li>
@@ -259,7 +256,7 @@
 					th:href="@{/productbuying/showBuyingProducts}">ProductBuying</a></li>
 
 				<li class="label1" data-label1="hot"><a
-					th:href="@{/productselling/getMyProducts}">Features</a></li>
+					th:href="@{/user/features}">Features</a></li>
 
 				<li class="active-menu" th:if="${userRole=='ROLE_ADMIN'}"><a
 					th:href="@{/admin/category}">Category</a>

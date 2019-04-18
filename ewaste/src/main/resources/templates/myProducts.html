@@ -70,13 +70,13 @@
 	<!-- breadcrumb -->
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-			<a th:href="@{/user/index}" class="stext-109 cl8 hov-cl1 trans-04">
+			<a th:href="@{/index.html}" class="stext-109 cl8 hov-cl1 trans-04">
 				Home
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
 
 			<span class="stext-109 cl4">
-				Selling Cart
+				Shoping Cart
 			</span>
 		</div>
 	</div>
@@ -85,24 +85,16 @@
 	<!-- Shoping Cart -->
 	<form class="bg0 p-t-75 p-b-85">
 		<div class="container">
-		
 			<div class="row">
-			
 				<div class="col-lg-10 col-xl-10 m-lr-auto m-b-50">
-				<span class="stext-101"><h3>
-				Selling Cart</h3>	
-			</span>
 					<div class="m-l-25 m-r--38 m-lr-0-xl">
-					
 						<div class="wrap-table-shopping-cart">
-						
 							<table class="table-shopping-cart">
 								<tr class="table_head" >
 								<th class="column-1">Product Id</th>
 									<th class="column-3">Product</th>
-									<th class="column-2">Product Name</th>
-									<th class="column-2">Price</th>
-									<th class="column-2">Status</th>
+									<th class="column-3">Product Name</th>
+									<th class="column-3">Price</th>
 									
 								</tr>
 
@@ -117,9 +109,8 @@
 											th:src="@{${user.pricing.productModel.productImage}}"> 
 										</div>
 									</td>
-									<td class="column-2" th:text="${user.pricing.productModel.modelName}"></td>
-									<td class="column-2" th:text="${user.productPrice}"></td>
-									<td class="column-2" th:text="${user.productStatus}"></td>
+									<td class="column-3" th:text="${user.pricing.productModel.modelName}"></td>
+									<td class="column-3" th:text="${user.productPrice}"></td>
 									
 									</tr>
 
