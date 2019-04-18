@@ -229,6 +229,8 @@ public class ProductSellingController {
 		return "redirect:/productselling/sellProduct";
 
 	}
+	
+
 
 	@GetMapping(value = "/getAssignedProducts")
 	public ModelAndView getAssignedProducts() {
@@ -244,6 +246,22 @@ public class ProductSellingController {
 		return m;
 
 	}
+	
+	//new changes
+	@GetMapping(value = "/transport")
+	public ModelAndView transport() {
+		UserInfo userInfo = securityService.getLoggedInUser();
+
+		if (!userInfo.getRole().equalsIgnoreCase("ROLE_TRANSPORTER")) {
+			return null;
+		}
+
+		ModelAndView m = new ModelAndView();
+		//m.addObject("myOrders", soldProductsRepo.findByTransporterInfo(userInfo));//
+		m.setViewName("transport");// html page
+		return m;
+
+	}
 
 	@GetMapping(value = "/getMyProducts")
 	public ModelAndView getMyProducts() {
@@ -255,11 +273,28 @@ public class ProductSellingController {
 
 		ModelAndView m = new ModelAndView();
 		m.addObject("myOrders", soldProductsRepo.findByUserInfo(userInfo));//
-		m.addObject("myBuyingOrders",buyingRepo.findByUserInfo(userInfo));
+		//m.addObject("myBuyingOrders",buyingRepo.findByUserInfo(userInfo));
 		m.setViewName("myProducts");// html page
 		return m;
 
 	}
+	
+	@GetMapping(value = "/getMyBuyingProducts")
+	public ModelAndView getMyBuyingProducts() {
+		UserInfo userInfo = securityService.getLoggedInUser();
+
+		if (!userInfo.getRole().equalsIgnoreCase("ROLE_USER")) {
+			return null;
+		}
+
+		ModelAndView m = new ModelAndView();
+		
+		m.addObject("myBuyingOrders",buyingRepo.findByUserInfo(userInfo));
+		m.setViewName("myBuyingProducts");// html page
+		return m;
+
+	}
+	
 
 	@GetMapping(value = "/getAssignedProductInfo/{productId}")
 	public ModelAndView getAssignedProductInfo(@PathVariable long productId) {
@@ -336,7 +371,7 @@ public class ProductSellingController {
 	@PostMapping(value = "/updateTransportInfo")
 	public String updateTransportInfo(@ModelAttribute SoldProducts soldProducts) {
 		String userRole = securityService.getLoggedInUser().getRole();
-
+		
 		if (!userRole.equalsIgnoreCase("ROLE_ADMIN")) {
 			return null;
 		}
