@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout2">
+<body>
+	<div id="page" layout:fragment="content">
+
+		<div id="dynamicContent">
+
+			<!-- Content page -->
+			<div class="container">
+				<div 
+					class=" bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+					<div class="page-content">
+<div class="headfont flow-center margin"><h4><span> Select</span></h4></div>
+						<!-- code added for testing layout -->
+						<div class="container-fluid">
+							<div class="row">
+								<ul class="gallery">
+									<li class="thumbnail pr-2"><i></i>
+									<img 
+											th:src="@{/images/pick up.png}" class="pt-2 imgheight"> 
+											<a
+										th:href="@{/productselling/getAssignedProducts}" class="imgfont1">
+											<label
+											style="text-align: center" class="desc"> PICK UP ORDERS
+										</label>
+									</a></li>
+								</ul>
+								<ul class="gallery">
+									<li class="thumbnail pr-2"><i></i>
+									<img 
+											th:src="@{/images/delivery.jpg}" class="pt-2 imgheight"> 
+											<a
+										th:href="@{/productbuying/getAssignedProducts}" class="imgfont1">
+											<label
+											style="text-align: center" class="desc"> DELIVERY ORDERS
+										</label>
+									</a></li>
+								</ul>
+							
+							</div>
+							
+						</div>
+					
+						
+							
+						
+						<!-- code end for testing layout -->
+					</div>
+
+				</div>
+
+
+
+
+			</div>
+		</div>
+
+		
+	</div>
+</body>
+
+</html>

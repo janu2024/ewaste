@@ -61,7 +61,7 @@ public class ProductSellingController {
 
 	public static String uploadDir = "E:\\WorkSpace2\\maven.1548166232495\\ewaste\\src\\main\\resources\\static\\images\\upload";
 
-	@GetMapping(value = "/sellByCategory")
+	/*@GetMapping(value = "/sellByCategory")
 	public ModelAndView sellByCategory() {
 
 		ModelAndView m = new ModelAndView();
@@ -70,7 +70,7 @@ public class ProductSellingController {
 		m.setViewName("sellByCategory");
 		return m;
 
-	}
+	}*/
 
 	@GetMapping(value = "/sellProduct")
 	public ModelAndView getCategory() {
@@ -89,8 +89,9 @@ public class ProductSellingController {
 
 		List<ProductSubCategory> filteredList = new ArrayList<>();
 		ProductSubCategory sc;
+		ProductCategory category=categoryRepo.findById(categoryId).get();
 		List<ProductSubCategory> resultList = subCategoryRepo
-				.findByProductCategory(categoryRepo.findById(categoryId).get());
+				.findByProductCategory(category);
 		for (ProductSubCategory c : resultList) {
 			sc = new ProductSubCategory();
 			sc.setCategoryName(c.getCategoryName());
@@ -260,6 +261,22 @@ public class ProductSellingController {
 		return m;
 
 	}
+	@GetMapping(value = "/getMyBuyingProducts")
+	public ModelAndView getMyBuyingProducts() {
+		UserInfo userInfo = securityService.getLoggedInUser();
+
+		if (!userInfo.getRole().equalsIgnoreCase("ROLE_USER")) {
+			return null;
+		}
+
+		ModelAndView m = new ModelAndView();
+		
+		m.addObject("myBuyingOrders",buyingRepo.findByUserInfo(userInfo));
+		m.setViewName("myBuyingProducts");// html page
+		return m;
+
+	}
+	
 
 	@GetMapping(value = "/getAssignedProductInfo/{productId}")
 	public ModelAndView getAssignedProductInfo(@PathVariable long productId) {
@@ -402,6 +419,23 @@ public class ProductSellingController {
 		}
 
 		return filteredList;
+	}
+	
+	
+	//new changes
+	@GetMapping(value = "/transport")
+	public ModelAndView transport() {
+		UserInfo userInfo = securityService.getLoggedInUser();
+
+		if (!userInfo.getRole().equalsIgnoreCase("ROLE_TRANSPORTER")) {
+			return null;
+		}
+
+		ModelAndView m = new ModelAndView();
+		//m.addObject("myOrders", soldProductsRepo.findByTransporterInfo(userInfo));//
+		m.setViewName("transport");// html page
+		return m;
+
 	}
 
 }

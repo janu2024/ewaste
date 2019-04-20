@@ -76,7 +76,7 @@
 			</a>
 
 			<span class="stext-109 cl4">
-				Selling Cart
+				Buying Cart
 			</span>
 		</div>
 	</div>
@@ -85,17 +85,13 @@
 	<!-- Shoping Cart -->
 	<form class="bg0 p-t-75 p-b-85">
 		<div class="container">
-		
 			<div class="row">
-			
 				<div class="col-lg-10 col-xl-10 m-lr-auto m-b-50">
 				<span class="stext-101"><h3>
-				Selling Cart</h3>	
+				Buying Cart</h3>
 			</span>
 					<div class="m-l-25 m-r--38 m-lr-0-xl">
-					
 						<div class="wrap-table-shopping-cart">
-						
 							<table class="table-shopping-cart">
 								<tr class="table_head" >
 								<th class="column-1">Product Id</th>
@@ -106,7 +102,7 @@
 									
 								</tr>
 
-								<tr class="table_row" th:each="user : ${myOrders}">
+								<tr class="table_row" th:each="user : ${myBuyingOrders}">
 								<td class="column-1" th:text="${user.spid}">
 										
 									</td>

@@ -47,7 +47,7 @@ public class ProductCategoryController {
 		return m;
 
 	}
-
+/*
 	@GetMapping(value = "/ProductName")
 	public ModelAndView ProductName() {
 
@@ -56,9 +56,9 @@ public class ProductCategoryController {
 		m.setViewName("productname");// html page
 		return m;
 
-	}
+	}*/
 
-	@GetMapping(value = "/ProductPrice")
+	/*@GetMapping(value = "/ProductPrice")
 	public ModelAndView ProductPrice() {
 
 		ModelAndView m = new ModelAndView();
@@ -66,9 +66,9 @@ public class ProductCategoryController {
 		m.setViewName("productprice");// html page
 		return m;
 
-	}
+	}*/
 
-	@GetMapping(value = "/getSubCategoryFromCategory/{categoryId}")
+	/*@GetMapping(value = "/getSubCategoryFromCategory/{categoryId}")
 	@ResponseBody
 	public List<ProductSubCategory> getSubCategoryFromCategory(@PathVariable(name = "categoryId") Long categoryId) {
 		List<ProductSubCategory> resultList = categoryRepo.findById(categoryId).get().getSubCategory();
@@ -83,9 +83,9 @@ public class ProductCategoryController {
 		}
 
 		return filteredList;
-	}
+	}*/
 
-	@GetMapping(value = "/manageCategory")
+	@GetMapping(value = "/manageCategory")//admin creates category
 	public ModelAndView createCategory() {
 		ModelAndView m = new ModelAndView();
 		m.addObject("category", new ProductCategory());
@@ -93,7 +93,7 @@ public class ProductCategoryController {
 		return m;
 	}
 
-	@GetMapping(value = "/manageCategory/{categoryId}")
+	@GetMapping(value = "/manageCategory/{categoryId}")//edit existing category
 	public ModelAndView editCategory(@PathVariable long categoryId) {
 		ModelAndView m = new ModelAndView();
 		m.addObject("category", categoryRepo.findById(categoryId).get());
