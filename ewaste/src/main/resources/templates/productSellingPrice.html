@@ -104,7 +104,7 @@
 											<h5 id="workingStatusInfo"></h5>
 											<h5 id="yearsOldInfo" class="pt-2"></h5>
 										</div>
-	
+
 									</div>
 
 								</div>
@@ -135,6 +135,12 @@
 								<input type="hidden" name="productPrice"
 									id="sellingProductPrice">
 
+								<div class="form-group d-none" id="deliveryAddress">
+									<label for="usr">Delivery address (COD)</label>
+									<textarea th:text="${userAddress}" 
+										class="form-control input-lg" placeholder="Address"
+										tabindex="2"></textarea>
+								</div>
 
 							</form>
 							<div>
@@ -142,6 +148,8 @@
 									id="sellProductBtn"
 									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									Sell Your Product</button>
+
+
 
 								<button onclick="sellSelectedProduct()"
 									id="submitSellingProduct"

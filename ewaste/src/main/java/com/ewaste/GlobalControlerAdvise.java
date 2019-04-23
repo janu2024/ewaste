@@ -19,6 +19,7 @@ public class GlobalControlerAdvise {
 		UserInfo userInfo = service.getLoggedInUser();
 		if (userInfo != null) {
 			model.addAttribute("userEmail", userInfo.getEmail());
+			model.addAttribute("userAddress", userInfo.getAddress());
 			model.addAttribute("userRole", userInfo.getRole());
 			model.addAttribute("userName", userInfo.getFirstName()+" "+userInfo.getLastName());
 		} else {

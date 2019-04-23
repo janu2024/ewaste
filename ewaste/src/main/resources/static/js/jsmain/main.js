@@ -574,6 +574,7 @@ function showProductPricing() {
 	$("#sellingProductPrice").val(productPrice);
 
 	$("#submitSellingProduct").removeClass("d-none");
+	$("#deliveryAddress").removeClass("d-none");
 
 }
 

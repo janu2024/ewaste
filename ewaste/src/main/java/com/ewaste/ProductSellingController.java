@@ -240,13 +240,17 @@ public class ProductSellingController {
 	}
 
 	@PostMapping(value = "/sellProduct")
-	public String saveModel(@ModelAttribute SoldProducts soldProducts) {
+	public ModelAndView saveModel(@ModelAttribute SoldProducts soldProducts) {
 
 		soldProducts.setPricing(pricingRepo.findById(soldProducts.getPricing().getPid()).get());
 		soldProducts.setUserInfo(securityService.getLoggedInUser());
-		soldProductsRepo.save(soldProducts);
-		return "redirect:/productselling/sellProduct";
-
+		SoldProducts dbProduct=soldProductsRepo.save(soldProducts);
+		
+		
+		ModelAndView m = new ModelAndView();
+		m.addObject("myOrders", dbProduct);//
+		m.setViewName("sellingSummary");// html page
+		return m;
 	}
 
 	@GetMapping(value = "/getAssignedProducts")
