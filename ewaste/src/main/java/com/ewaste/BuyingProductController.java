@@ -289,7 +289,7 @@ public class BuyingProductController {
 	@RequestMapping(value = "/pdfreport", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
 	public ResponseEntity<InputStreamResource> citiesReport() throws IOException {
 
-		List<SoldProducts> result = soldProductsRepo.findAll();
+		List<BuyingProduct> result = buyingRepo.findAll();
 
 		ByteArrayInputStream bis = generateReport(result);
 
@@ -300,7 +300,7 @@ public class BuyingProductController {
 				.body(new InputStreamResource(bis));
 	}
 
-	public static ByteArrayInputStream generateReport(List<SoldProducts> soldProducts) {
+	public static ByteArrayInputStream generateReport(List<BuyingProduct> products) {
 
 		Document document = new Document();
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -322,11 +322,11 @@ public class BuyingProductController {
 			hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
 			table.addCell(hcell);
 
-			hcell = new PdfPCell(new Phrase("Transporter Name", headFont));
+			hcell = new PdfPCell(new Phrase("User Name", headFont));
 			hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
 			table.addCell(hcell);
 
-			for (SoldProducts sp : soldProducts) {
+			for (BuyingProduct sp : products) {
 
 				PdfPCell cell;
 
@@ -335,13 +335,13 @@ public class BuyingProductController {
 				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 				table.addCell(cell);
 
-				cell = new PdfPCell(new Phrase(sp.getProductPrice()));
+				cell = new PdfPCell(new Phrase(String.valueOf(sp.getProductPrice())));
 				cell.setPaddingLeft(5);
 				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 				cell.setHorizontalAlignment(Element.ALIGN_LEFT);
 				table.addCell(cell);
 
-				cell = new PdfPCell(new Phrase(String.valueOf(sp.getTransporterInfo().getFirstName())));
+				cell = new PdfPCell(new Phrase(String.valueOf(sp.getUserInfo().getFirstName())));
 				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 				cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
 				cell.setPaddingRight(5);

@@ -3,12 +3,19 @@
  */
 package com.ewaste;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +23,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 
 /**
  * @author jahnavi
@@ -437,5 +455,78 @@ public class ProductSellingController {
 		return m;
 
 	}
+	@RequestMapping(value = "/pdfreport", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	public ResponseEntity<InputStreamResource> citiesReport() throws IOException {
 
+		List<SoldProducts> result = soldProductsRepo.findAll();
+
+		ByteArrayInputStream bis = generateReport(result);
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition", "inline; filename=report.pdf");
+
+		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
+				.body(new InputStreamResource(bis));
+	}
+
+	public static ByteArrayInputStream generateReport(List<SoldProducts> soldProducts) {
+
+		Document document = new Document();
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+		try {
+
+			PdfPTable table = new PdfPTable(3);
+			table.setWidthPercentage(60);
+			table.setWidths(new int[] { 1, 3, 3 });
+
+			Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+
+			PdfPCell hcell;
+			hcell = new PdfPCell(new Phrase("Model Name", headFont));
+			hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+			table.addCell(hcell);
+
+			hcell = new PdfPCell(new Phrase("Price", headFont));
+			hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+			table.addCell(hcell);
+
+			hcell = new PdfPCell(new Phrase("User Name", headFont));
+			hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+			table.addCell(hcell);
+
+			for (SoldProducts sp : soldProducts) {
+
+				PdfPCell cell;
+
+				cell = new PdfPCell(new Phrase(sp.getPricing().getProductModel().getModelName()));
+				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+				cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+				table.addCell(cell);
+
+				cell = new PdfPCell(new Phrase(String.valueOf(sp.getProductPrice())));
+				cell.setPaddingLeft(5);
+				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+				cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+				table.addCell(cell);
+
+				cell = new PdfPCell(new Phrase(String.valueOf(sp.getUserInfo().getFirstName())));
+				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+				cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+				cell.setPaddingRight(5);
+				table.addCell(cell);
+			}
+
+			PdfWriter.getInstance(document, out);
+			document.open();
+			document.add(table);
+
+			document.close();
+
+		} catch (DocumentException ex) {
+
+		}
+
+		return new ByteArrayInputStream(out.toByteArray());
+	}
 }
