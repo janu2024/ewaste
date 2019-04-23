@@ -38,28 +38,30 @@
 									</p>
 									<div class="stext-109 cl8 hov-cl1 trans-04">
 										<h5 th:utext="${modelInfo.productModel.productSpec}"></h5>
-										
-											<button id="submitSellingProduct"
-								class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-								Buy Now</button>
-									</div>
 
-							
+									</div>
+									<form th:action="@{/productbuying/buyProduct}" method="post"
+										id="sellProductForm">
+
+
+										<input type="hidden" th:value="${mid}" id="productModel"
+											class="form-control"> <input type="hidden"
+											th:value="${modelInfo.pid}" name="pricing.pid"
+											id="sellingProductId"> <input type="hidden"
+											name="productPrice" th:value="${modelInfo.productPrice}"
+											id="sellingProductPrice">
+
+										<button id="submitSellingProduct" type="submit"
+											class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+											Buy Now</button>
+
+									</form>
+
 								</div>
 							</div>
 
 						</div>
-						<form th:action="@{/productbuying/buyProduct}" method="post"
-							id="sellProductForm">
 
-
-							<input type="hidden" th:value="${mid}" id="productModel"
-								class="form-control"> <input type="hidden" th:value="${modelInfo.pid}"
-								name="pricing.pid" id="sellingProductId"> <input
-								type="hidden" name="productPrice" th:value="${modelInfo.productPrice}" id="sellingProductPrice">
-							
-
-						</form>
 						<div></div>
 					</div>
 				</div>

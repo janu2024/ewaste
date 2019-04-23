@@ -141,12 +141,16 @@ public class BuyingProductController {
 	}
 
 	@PostMapping(value = "/buyProduct")
-	public String saveModel(@ModelAttribute BuyingProduct buyingProducts) {
+	public ModelAndView saveModel(@ModelAttribute BuyingProduct buyingProducts) {
 
 		buyingProducts.setPricing(repo.findById(buyingProducts.getPricing().getPid()).get());
 		buyingProducts.setUserInfo(securityService.getLoggedInUser());
-		buyingRepo.save(buyingProducts);
-		return "redirect:/productbuying/showBuyingProducts";
+		BuyingProduct dbProduct=buyingRepo.save(buyingProducts);
+		
+		ModelAndView m = new ModelAndView();
+		m.addObject("myOrders", dbProduct);//
+		m.setViewName("sellingSummary");// html page
+		return m;
 
 	}
 
