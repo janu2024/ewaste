@@ -33,6 +33,7 @@ public class UserController {
 		return m;
 
 	}
+
 	@GetMapping(value = "/productdetail")
 	public ModelAndView productdetail(@ModelAttribute UserInfo u) {
 		UserInfo u2 = service.saveUser(u);
@@ -43,6 +44,7 @@ public class UserController {
 		return m;
 
 	}
+
 	@GetMapping(value = "/productsellingdetail")
 	public ModelAndView productsellingdetail(@ModelAttribute UserInfo u) {
 		UserInfo u2 = service.saveUser(u);
@@ -149,8 +151,6 @@ public class UserController {
 
 	}
 
-
-
 	@GetMapping(value = "/tv")
 	public ModelAndView tv() {
 
@@ -206,7 +206,6 @@ public class UserController {
 
 		SecurityContextHolder.getContext().setAuthentication(null);
 		return "redirect:/login";
-		
 
 	}
 
