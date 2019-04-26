@@ -91,12 +91,7 @@
 						<ul class="main-menu">
 							<li class="active-menu" th:if="${userRole=='ROLE_USER'}"><a
 								th:href="@{/user/index}">Home</a>
-								<ul class="sub-menu">
-									<li><a th:href="@{/user/productselling}">Product
-											Selling </a></li>
-									<li><a href="home-02.html">Product Buying</a></li>
-									<li><a href="home-03.html">Homepage 3</a></li>
-								</ul></li>
+								</li>
 
 							<li th:if="${userRole=='ROLE_ADMIN'}"><a
 								th:href="@{/admin/userList}">Admin</a></li>
@@ -244,8 +239,7 @@
 
 				<ul class="main-menu-m" th:if="${userRole=='ROLE_USER'}">
 					<li class="active-menu"><a href="@{/user/index}">Home</a></li>
-					<li><a href="home-02.html">Product Buying</a></li>
-					<li><a href="home-03.html">Homepage 3</a></li>
+					
 				</ul>
 
 				<li th:if="${userRole=='ROLE_ADMIN'}"><a
